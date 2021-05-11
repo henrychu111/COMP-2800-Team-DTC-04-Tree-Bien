@@ -1,0 +1,108 @@
+body {
+    margin: 0px;
+}
+.logo {
+    text-align: center;
+    margin: 20px 0 20px;
+}
+.logo img {
+    width: 55%;
+}
+.search {
+    position: relative;
+    text-align: center;
+    padding: 0 20px;
+}
+.search input {
+    height: 44px;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 16px;
+}
+.search img {
+    width: 7%;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+.search input::-webkit-input-placeholder {
+    text-indent: 5px;
+}
+.content {margin-top: 20px;padding: 0 20px;}
+.content label {margin: 20px 0 60px;font-size: 18px;}
+.content div {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.content .size {
+    display: flex;
+    font-size: 10px;
+    justify-content: flex-start;
+}
+.content .size div {
+    flex: 1;
+    text-align: center;
+    border: 1px solid;
+    margin-right: 10px;
+    padding: 5px 0;
+    background: #F0EAD2;
+}
+.content .growth {
+    display: flex;
+    font-size: 12px;
+    justify-content: flex-start;
+}
+.content .growth div {
+    flex: 1;
+    text-align: center;
+    border: 1px solid;
+    margin-right: 10px;
+    padding: 5px 0;
+    background: #DDE5B6;
+}
+.content .native {
+    display: flex;
+    font-size: 12px;
+    justify-content: flex-start;
+}
+.content .native div {
+    width: 33%;
+    text-align: center;
+    border: 1px solid;
+    margin-right: 10px;
+    padding: 5px 0;
+    background: #ADC178;
+}
+.content .flower {
+    display: flex;
+    font-size: 12px;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.content .flower div {
+    width: calc(33% - 11px);
+    text-align: center;
+    border: 1px solid;
+    margin-right: 10px;
+    padding: 5px 0;
+    background: #A98467;
+}
+.footer {
+    display: flex;
+    background: #7b7b7b;
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.footer div {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
+.footer img {
+    width: 40%;
+    display: block;
+}
