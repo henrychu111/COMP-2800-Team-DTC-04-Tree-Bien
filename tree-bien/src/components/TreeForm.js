@@ -49,7 +49,7 @@ const TreeForm = (props) => {
           <h3 className="form-title">Add New Tree Info</h3>
           <input
             type="text"
-            placeholder="NAME"
+            placeholder="Name"
             className="form_input"
             value={name}
             onChange={(input) => setName(input.target.value)}
@@ -57,7 +57,7 @@ const TreeForm = (props) => {
           <br></br>
           <input
             type="text"
-            placeholder="GENDER"
+            placeholder="Gender"
             className="form_input"
             value={gender}
             onChange={(input) => setGender(input.target.value)}
@@ -65,7 +65,7 @@ const TreeForm = (props) => {
           <br></br>
           <input
             type="number"
-            placeholder="HEIGHT (CM)"
+            placeholder="Height (cm)"
             className="form_input"
             value={height}
             onChange={(input) => setHeight(input.target.value)}
@@ -74,7 +74,7 @@ const TreeForm = (props) => {
           <label id="bday-label">Birthday</label>
           <input
             type="date"
-            placeholder="BIRTHDAY"
+            placeholder="Birthday"
             className="form_input"
             id="b-day"
             value={birthday}
@@ -83,7 +83,7 @@ const TreeForm = (props) => {
           <br></br>
           <input
             type="text"
-            placeholder="TREE FAMILY"
+            placeholder="Tree Family"
             className="form_input"
             value={treeFamily}
             onChange={(input) => setTreeFamily(input.target.value)}
@@ -91,14 +91,14 @@ const TreeForm = (props) => {
           <br></br>
           <input
             type="text"
-            placeholder="PERSONALITY"
+            placeholder="Personality"
             className="form_input"
             value={personality}
             onChange={(input) => setPersonality(input.target.value)}
           />
           <br></br>
           <button type="submit" class="form_submit_button">
-            SET UP TREE!
+            Set Up Tree!
           </button>
         </form>
       </div>
