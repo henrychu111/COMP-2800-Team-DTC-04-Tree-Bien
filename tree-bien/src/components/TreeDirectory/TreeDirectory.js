@@ -3,28 +3,29 @@ import ReactDOM from "react-dom";
 import {BrowserRouter as Router, Route,Link} from "react-router-dom";
 import { Button, List, SearchBar,WhiteSpace,WingBlank,ListView,TabBar,NavBar, Icon,Tabs  } from 'antd-mobile';
 import 'antd-mobile/dist/antd-mobile.css';
-import '../TreeDirectory.css'
+import '../TreeDirectory/TreeDirectory.css'
 
 
-import pic_1 from '../images/p-1.jpg';
-import pic_2 from '../images/p-2.jpg';
-import pic_3 from '../images/p-3.jpg';
-import pic_4 from '../images/p-4.jpg';
-import pic_5 from '../images/p-5.jpg';
-import pic_6 from '../images/p-6.jpg';
-import pic_7 from '../images/p-7.jpg';
-import pic_8 from '../images/p-8.jpg';
-import pic_9 from '../images/p-9.jpg';
-import pic_10 from '../images/p-10.jpg';
-import pic_11 from '../images/p-11.jpg';
-import pic_12 from '../images/p-12.jpg';
-import pic_13 from '../images/p-13.jpg';
-import pic_14 from '../images/p-14.jpg';
-import pic_15 from '../images/p-15.jpg';
-import pic_16 from '../images/p-16.jpg';
-import pic_17 from '../images/p-17.jpg';
-import pic_18 from '../images/p-18.jpg';
-import pic_19 from '../images/p-19.jpg';
+import pic_1 from '../TreeDirectory/images/p-1.jpg';
+import pic_2 from '../TreeDirectory/images/p-2.jpg';
+import pic_3 from '../TreeDirectory/images/p-3.jpg';
+import pic_4 from '../TreeDirectory/images/p-4.jpg';
+import pic_5 from '../TreeDirectory/images/p-5.jpg';
+import pic_6 from '../TreeDirectory/images/p-6.jpg';
+import pic_7 from '../TreeDirectory/images/p-7.jpg';
+import pic_8 from '../TreeDirectory/images/p-8.jpg';
+import pic_9 from '../TreeDirectory/images/p-9.jpg';
+import pic_10 from '../TreeDirectory/images/p-10.jpg';
+import pic_11 from '../TreeDirectory/images/p-11.jpg';
+import pic_12 from '../TreeDirectory/images/p-12.jpg';
+import pic_13 from '../TreeDirectory/images/p-13.jpg';
+import pic_14 from '../TreeDirectory/images/p-14.jpg';
+import pic_15 from '../TreeDirectory/images/p-15.jpg';
+import pic_16 from '../TreeDirectory/images/p-16.jpg';
+import pic_17 from '../TreeDirectory/images/p-17.jpg';
+import pic_18 from '../TreeDirectory/images/p-18.jpg';
+import pic_19 from '../TreeDirectory/images/p-19.jpg';
+
 import SearchView from "./SearchView";
 const data = [
     {
