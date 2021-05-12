@@ -2,7 +2,7 @@ import React from "react";
 import { Button, List, SearchBar,WhiteSpace,WingBlank,ListView,TabBar,NavBar, Icon,Tabs  } from 'antd-mobile';
 import 'antd-mobile/dist/antd-mobile.css';
 import {BrowserRouter as Router, Route,Link} from "react-router-dom";
-import '../TreeDirecctory/TreeDirectory.css'
+import '../TreeDirectory/TreeDirectory.css'
 
 
 class SearchView extends React.Component{
