@@ -4,7 +4,6 @@ import 'antd-mobile/dist/antd-mobile.css';
 import {BrowserRouter as Router, Route,Link} from "react-router-dom";
 import '../TreeDirectory/TreeDirectory.css'
 
-
 class SearchView extends React.Component{
 
     constructor(props) {
@@ -14,7 +13,6 @@ class SearchView extends React.Component{
             color : '',
         };
     }
-
 
     updateSearch = (event) => {
         console.log('updateSearch')
