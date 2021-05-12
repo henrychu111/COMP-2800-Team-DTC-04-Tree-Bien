@@ -58,7 +58,7 @@
     ],
     "plantshop": [
         {
-            "shop_id" : "1",
+            "shop_id" : "6",
             "name": "The Home Depot",
             "address": "2700 Sweden Way",
             "city": "Richmond",
@@ -70,7 +70,7 @@
     
         },
         {
-            "site_id": "2",
+            "shop_id": "7",
             "name": "The Home Depot",
             "address": "1900 United Blvd",
             "city": "Coquitlam",
@@ -81,7 +81,7 @@
             "longitude": -122.81239334965035
         },
         {
-            "site_id": "3",
+            "shop_id": "8",
             "name": "The Home Depot",
             "address": "840 Main St", 
             "city": "West Vancouver",
@@ -92,7 +92,7 @@
             "longitude": -123.1229658496653
         },
         {
-            "site_id": "4",
+            "shop_id": "9",
             "name": "The Home Depot",
             "address": "900 Terminal Ave",
             "city": "Vancouver",
@@ -103,7 +103,7 @@
             "longitude": -123.08228463455015
         },
         {
-            "site_id": "5",
+            "shop_id": "10",
             "name": "The Home Depot",
             "address": "3950 Henning Dr",
             "city": "Burnaby",
