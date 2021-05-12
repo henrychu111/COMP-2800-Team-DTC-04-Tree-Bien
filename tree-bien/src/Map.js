@@ -6,7 +6,7 @@ function Map() {
     return (
         <div style = {{width: '100vw', height: "100vh"}}>
        
-      <GoogleMapReact bootstrapURLKeys = {{key : "AIzaSyCZGmMsYQX8uffhtpk7WC68LCnO80EE6Vw"}} 
+      <GoogleMapReact bootstrapURLKeys = {{key :  process.env.REACT_APP_GOOGLE_MAP_KEY}} 
       defaultZoom ={10} defaultCenter = {{lat: 49.263569, lng: -123.138573}}
       >
        {parksData.plantshop.map((shop) =>{
