@@ -1,0 +1,395 @@
+{
+    "nhits":216,
+    "parameters":{
+    "dataset":"parks",
+    "timezone":"UTC",
+    "rows":10,
+    "start":0,
+    "format":"json",
+    "facet":[
+    "specialfeatures",
+    "facilities",
+    "washrooms",
+    "neighbourhoodname"
+    ]
+    },
+    "records":[
+    {
+    "datasetid":"parks",
+    "recordid":"8f5d7b6ca20f3bfce8614a643307b8422866ff1b",
+    "fields":{
+    "washrooms":"Y",
+    "specialfeatures":"N",
+    "googlemapdest":[
+    49.256555,
+    -123.171406
+    ],
+    "name":"Carnarvon Park",
+    "facilities":"Y",
+    "hectare":3.79,
+    "official":1,
+    "parkid":2,
+    "advisories":"N",
+    "neighbourhoodurl":"https://vancouver.ca/news-calendar/arbutus-ridge.aspx",
+    "streetnumber":"2995",
+    "neighbourhoodname":"Arbutus-Ridge",
+    "nsstreet":"Mackenzie Street",
+    "streetname":"W 19th Avenue",
+    "ewstreet":"W 19th Avenue"
+    },
+    "geometry":{
+    "type":"Point",
+    "coordinates":[
+    -123.171406,
+    49.256555
+    ]
+    },
+    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
+    },
+    {
+    "datasetid":"parks",
+    "recordid":"60fd813593b55ae0b94060cee226eeed78004227",
+    "fields":{
+    "washrooms":"N",
+    "specialfeatures":"N",
+    "googlemapdest":[
+    49.247623,
+    -123.169948
+    ],
+    "name":"Park Site on Quesnel Drive",
+    "facilities":"N",
+    "hectare":0.03,
+    "official":0,
+    "parkid":5,
+    "advisories":"N",
+    "neighbourhoodurl":"https://vancouver.ca/news-calendar/arbutus-ridge.aspx",
+    "streetnumber":"4301",
+    "neighbourhoodname":"Arbutus-Ridge",
+    "nsstreet":"MacKenzie Street",
+    "streetname":"Quesnel Drive",
+    "ewstreet":"Quesnel Drive"
+    },
+    "geometry":{
+    "type":"Point",
+    "coordinates":[
+    -123.169948,
+    49.247623
+    ]
+    },
+    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
+    },
+    {
+    "datasetid":"parks",
+    "recordid":"5265d1535534264480a187bb7b21fb5f253eea09",
+    "fields":{
+    "washrooms":"N",
+    "specialfeatures":"N",
+    "googlemapdest":[
+    49.240902,
+    -123.155935
+    ],
+    "name":"Ravine Park",
+    "facilities":"N",
+    "hectare":0.72,
+    "official":1,
+    "parkid":7,
+    "advisories":"N",
+    "neighbourhoodurl":"https://vancouver.ca/news-calendar/arbutus-ridge.aspx",
+    "streetnumber":"2159",
+    "neighbourhoodname":"Arbutus-Ridge",
+    "nsstreet":"Arbutus Street",
+    "streetname":"W 36th Avenue",
+    "ewstreet":"W 36th Avenue"
+    },
+    "geometry":{
+    "type":"Point",
+    "coordinates":[
+    -123.155935,
+    49.240902
+    ]
+    },
+    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
+    },
+    {
+    "datasetid":"parks",
+    "recordid":"772c518d9e8ffe215c20b192ee9e666dc75909cc",
+    "fields":{
+    "washrooms":"N",
+    "specialfeatures":"N",
+    "googlemapdest":[
+    49.244396,
+    -123.165105
+    ],
+    "name":"Park Site on Trafalgar Street",
+    "facilities":"N",
+    "hectare":0.14,
+    "official":0,
+    "parkid":9,
+    "advisories":"N",
+    "neighbourhoodurl":"https://vancouver.ca/news-calendar/arbutus-ridge.aspx",
+    "streetnumber":"4600",
+    "neighbourhoodname":"Arbutus-Ridge",
+    "nsstreet":"Trafalgar Street",
+    "streetname":"Trafalgar Street",
+    "ewstreet":"W 31st Avenue"
+    },
+    "geometry":{
+    "type":"Point",
+    "coordinates":[
+    -123.165105,
+    49.244396
+    ]
+    },
+    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
+    },
+    {
+    "datasetid":"parks",
+    "recordid":"37b97b255224b486907c16faaca2afb564fceb11",
+    "fields":{
+    "washrooms":"N",
+    "specialfeatures":"Y",
+    "googlemapdest":[
+    49.292211,
+    -123.128206
+    ],
+    "name":"Cardero Park",
+    "facilities":"N",
+    "hectare":0.33,
+    "official":1,
+    "parkid":11,
+    "advisories":"N",
+    "neighbourhoodurl":"https://vancouver.ca/news-calendar/west-end.aspx",
+    "streetnumber":"1601",
+    "neighbourhoodname":"West End",
+    "nsstreet":"Cardero Street",
+    "streetname":"Bayshore Drive",
+    "ewstreet":"Bayshore Drive"
+    },
+    "geometry":{
+    "type":"Point",
+    "coordinates":[
+    -123.128206,
+    49.292211
+    ]
+    },
+    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
+    },
+    {
+    "datasetid":"parks",
+    "recordid":"c31f61a74112d630a61e655fe8453046a4825343",
+    "fields":{
+    "washrooms":"Y",
+    "specialfeatures":"Y",
+    "googlemapdest":[
+    49.290263,
+    -123.121924
+    ],
+    "name":"Harbour Green Park",
+    "facilities":"Y",
+    "hectare":3.1,
+    "official":1,
+    "parkid":21,
+    "advisories":"N",
+    "neighbourhoodurl":"https://vancouver.ca/news-calendar/downtown.aspx",
+    "streetnumber":"1199",
+    "neighbourhoodname":"Downtown",
+    "nsstreet":"Bute Street",
+    "streetname":"W Cordova Street",
+    "ewstreet":"W Cordova Street"
+    },
+    "geometry":{
+    "type":"Point",
+    "coordinates":[
+    -123.121924,
+    49.290263
+    ]
+    },
+    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
+    },
+    {
+    "datasetid":"parks",
+    "recordid":"f26683d1b285fd2c53b704bee86c40082e0688bb",
+    "fields":{
+    "washrooms":"N",
+    "specialfeatures":"Y",
+    "googlemapdest":[
+    49.292334,
+    -123.131296
+    ],
+    "name":"Marina Square",
+    "facilities":"N",
+    "hectare":0.63,
+    "official":1,
+    "parkid":24,
+    "advisories":"N",
+    "neighbourhoodurl":"https://vancouver.ca/news-calendar/downtown.aspx",
+    "streetnumber":"1675",
+    "neighbourhoodname":"Downtown",
+    "nsstreet":"Denman Street",
+    "streetname":"Bayshore Drive",
+    "ewstreet":"Bayshore Drive"
+    },
+    "geometry":{
+    "type":"Point",
+    "coordinates":[
+    -123.131296,
+    49.292334
+    ]
+    },
+    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
+    },
+    {
+    "datasetid":"parks",
+    "recordid":"a06ed9040af4cf7b7bddec4a32c599171ab64ebe",
+    "fields":{
+    "washrooms":"N",
+    "specialfeatures":"N",
+    "googlemapdest":[
+    49.281699,
+    -123.104588
+    ],
+    "name":"Pioneer Place (Pigeon Park)",
+    "facilities":"N",
+    "hectare":0.03,
+    "official":1,
+    "parkid":26,
+    "advisories":"N",
+    "neighbourhoodurl":"https://vancouver.ca/news-calendar/downtown.aspx",
+    "streetnumber":"399",
+    "neighbourhoodname":"Downtown",
+    "nsstreet":"Carrall Street",
+    "streetname":"Carrall Street",
+    "ewstreet":"W Hastings Street"
+    },
+    "geometry":{
+    "type":"Point",
+    "coordinates":[
+    -123.104588,
+    49.281699
+    ]
+    },
+    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
+    },
+    {
+    "datasetid":"parks",
+    "recordid":"1454208b706f404a2b76e7fb2a4c8ce5034d46fa",
+    "fields":{
+    "washrooms":"Y",
+    "specialfeatures":"N",
+    "googlemapdest":[
+    49.284942,
+    -123.102377
+    ],
+    "name":"CRAB Park at Portside",
+    "facilities":"Y",
+    "hectare":3.31,
+    "official":1,
+    "parkid":28,
+    "advisories":"N",
+    "neighbourhoodurl":"https://vancouver.ca/news-calendar/downtown.aspx",
+    "streetnumber":"101",
+    "neighbourhoodname":"Downtown",
+    "nsstreet":"Main Street",
+    "streetname":"E Waterfront Road",
+    "ewstreet":"E Waterfront Road"
+    },
+    "geometry":{
+    "type":"Point",
+    "coordinates":[
+    -123.102377,
+    49.284942
+    ]
+    },
+    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
+    },
+    {
+    "datasetid":"parks",
+    "recordid":"90690d96ac0608e2d14a4c16197b9ff0cf5b2be4",
+    "fields":{
+    "washrooms":"N",
+    "specialfeatures":"N",
+    "googlemapdest":[
+    49.282218,
+    -123.110133
+    ],
+    "name":"Victory Square",
+    "facilities":"N",
+    "hectare":0.39,
+    "official":1,
+    "parkid":31,
+    "advisories":"N",
+    "neighbourhoodurl":"https://vancouver.ca/news-calendar/downtown.aspx",
+    "streetnumber":"200",
+    "neighbourhoodname":"Downtown",
+    "nsstreet":"Cambie Street",
+    "streetname":"W Hastings Street",
+    "ewstreet":"W Hastings Street"
+    },
+    "geometry":{
+    "type":"Point",
+    "coordinates":[
+    -123.110133,
+    49.282218
+    ]
+    },
+    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
+    }
+    ],
+    "facet_groups":[
+    {
+    "facets":[
+    {
+    "count":153,
+    "path":"Y",
+    "state":"displayed",
+    "name":"Y"
+    },
+    {
+    "count":63,
+    "path":"N",
+    "state":"displayed",
+    "name":"N"
+    }
+    ],
+    "name":"facilities"
+    },
+    {
+    "facets":[
+    {
+    "count":145,
+    "path":"N",
+    "state":"displayed",
+    "name":"N"
+    },
+    {
+    "count":71,
+    "path":"Y",
+    "state":"displayed",
+    "name":"Y"
+    }
+    ],
+    "name":"washrooms"
+    },
+    {
+    "facets":[
+    {
+    "count":194,
+    "path":"N",
+    "state":"displayed",
+    "name":"N"
+    },
+    {
+    "count":22,
+    "path":"Y",
+    "state":"displayed",
+    "name":"Y"
+    }
+    ],
+    "name":"specialfeatures"
+    },
+    {
+    "facets":["too many elements to preview"],
+    "name":"neighbourhoodname"
+    }
+    ]
+    }
