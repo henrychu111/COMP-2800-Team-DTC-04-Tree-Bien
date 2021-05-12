@@ -1,395 +1,118 @@
 {
-    "nhits":216,
-    "parameters":{
-    "dataset":"parks",
-    "timezone":"UTC",
-    "rows":10,
-    "start":0,
-    "format":"json",
-    "facet":[
-    "specialfeatures",
-    "facilities",
-    "washrooms",
-    "neighbourhoodname"
-    ]
-    },
-    "records":[
+    "plantingsite":[
     {
-    "datasetid":"parks",
-    "recordid":"8f5d7b6ca20f3bfce8614a643307b8422866ff1b",
-    "fields":{
-    "washrooms":"Y",
-    "specialfeatures":"N",
-    "googlemapdest":[
-    49.256555,
-    -123.171406
-    ],
-    "name":"Carnarvon Park",
-    "facilities":"Y",
-    "hectare":3.79,
-    "official":1,
-    "parkid":2,
-    "advisories":"N",
-    "neighbourhoodurl":"https://vancouver.ca/news-calendar/arbutus-ridge.aspx",
-    "streetnumber":"2995",
-    "neighbourhoodname":"Arbutus-Ridge",
-    "nsstreet":"Mackenzie Street",
-    "streetname":"W 19th Avenue",
-    "ewstreet":"W 19th Avenue"
-    },
-    "geometry":{
-    "type":"Point",
-    "coordinates":[
-    -123.171406,
-    49.256555
-    ]
-    },
-    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
+        "site_id": "1",
+        "name": "Queen Elizabeth Park",
+        "address": "4600 Cambie St",
+        "city": "Vancouver",
+        "province": "BC",
+        "country": "Canada",
+        "postal_code": "V5Z 2Z1",
+        "latitude": 49.24508862223751,
+        "longitude": -123.11294500727794
     },
     {
-    "datasetid":"parks",
-    "recordid":"60fd813593b55ae0b94060cee226eeed78004227",
-    "fields":{
-    "washrooms":"N",
-    "specialfeatures":"N",
-    "googlemapdest":[
-    49.247623,
-    -123.169948
-    ],
-    "name":"Park Site on Quesnel Drive",
-    "facilities":"N",
-    "hectare":0.03,
-    "official":0,
-    "parkid":5,
-    "advisories":"N",
-    "neighbourhoodurl":"https://vancouver.ca/news-calendar/arbutus-ridge.aspx",
-    "streetnumber":"4301",
-    "neighbourhoodname":"Arbutus-Ridge",
-    "nsstreet":"MacKenzie Street",
-    "streetname":"Quesnel Drive",
-    "ewstreet":"Quesnel Drive"
-    },
-    "geometry":{
-    "type":"Point",
-    "coordinates":[
-    -123.169948,
-    49.247623
-    ]
-    },
-    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
+        "site_id": "2",
+        "name": "Trafalgar Park",
+        "address": "2610 W 23rd Ave",
+        "city": "Vancouver",
+        "province": "BC",
+        "country": "Canada",
+        "postal_code": "V6L 1N7",
+        "latitude": 49.25270554827162,
+        "longitude": -123.16195289351052
     },
     {
-    "datasetid":"parks",
-    "recordid":"5265d1535534264480a187bb7b21fb5f253eea09",
-    "fields":{
-    "washrooms":"N",
-    "specialfeatures":"N",
-    "googlemapdest":[
-    49.240902,
-    -123.155935
-    ],
-    "name":"Ravine Park",
-    "facilities":"N",
-    "hectare":0.72,
-    "official":1,
-    "parkid":7,
-    "advisories":"N",
-    "neighbourhoodurl":"https://vancouver.ca/news-calendar/arbutus-ridge.aspx",
-    "streetnumber":"2159",
-    "neighbourhoodname":"Arbutus-Ridge",
-    "nsstreet":"Arbutus Street",
-    "streetname":"W 36th Avenue",
-    "ewstreet":"W 36th Avenue"
-    },
-    "geometry":{
-    "type":"Point",
-    "coordinates":[
-    -123.155935,
-    49.240902
-    ]
-    },
-    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
+        "site_id": "3",
+        "name": "Grays Park",
+        "address": "4850 St Catherines St",
+        "city": "Vancouver",
+        "province": "BC",
+        "country": "Canada",
+        "postal_code": "V5V 4M7",
+        "latitude": 49.24425761366185, 
+        "longitude": -123.07878799581106
     },
     {
-    "datasetid":"parks",
-    "recordid":"772c518d9e8ffe215c20b192ee9e666dc75909cc",
-    "fields":{
-    "washrooms":"N",
-    "specialfeatures":"N",
-    "googlemapdest":[
-    49.244396,
-    -123.165105
-    ],
-    "name":"Park Site on Trafalgar Street",
-    "facilities":"N",
-    "hectare":0.14,
-    "official":0,
-    "parkid":9,
-    "advisories":"N",
-    "neighbourhoodurl":"https://vancouver.ca/news-calendar/arbutus-ridge.aspx",
-    "streetnumber":"4600",
-    "neighbourhoodname":"Arbutus-Ridge",
-    "nsstreet":"Trafalgar Street",
-    "streetname":"Trafalgar Street",
-    "ewstreet":"W 31st Avenue"
-    },
-    "geometry":{
-    "type":"Point",
-    "coordinates":[
-    -123.165105,
-    49.244396
-    ]
-    },
-    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
+        "site_id": "4",
+        "name": "Minoru Park",
+        "address": "7191 Granville Ave",
+        "city": "Richmond",
+        "province": "BC",
+        "country": "Canada",
+        "postal_code": "V6Y 4G2",
+        "latitude": 49.16587749097831, 
+        "longitude": -123.14539301111274
     },
     {
-    "datasetid":"parks",
-    "recordid":"37b97b255224b486907c16faaca2afb564fceb11",
-    "fields":{
-    "washrooms":"N",
-    "specialfeatures":"Y",
-    "googlemapdest":[
-    49.292211,
-    -123.128206
-    ],
-    "name":"Cardero Park",
-    "facilities":"N",
-    "hectare":0.33,
-    "official":1,
-    "parkid":11,
-    "advisories":"N",
-    "neighbourhoodurl":"https://vancouver.ca/news-calendar/west-end.aspx",
-    "streetnumber":"1601",
-    "neighbourhoodname":"West End",
-    "nsstreet":"Cardero Street",
-    "streetname":"Bayshore Drive",
-    "ewstreet":"Bayshore Drive"
-    },
-    "geometry":{
-    "type":"Point",
-    "coordinates":[
-    -123.128206,
-    49.292211
-    ]
-    },
-    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
-    },
-    {
-    "datasetid":"parks",
-    "recordid":"c31f61a74112d630a61e655fe8453046a4825343",
-    "fields":{
-    "washrooms":"Y",
-    "specialfeatures":"Y",
-    "googlemapdest":[
-    49.290263,
-    -123.121924
-    ],
-    "name":"Harbour Green Park",
-    "facilities":"Y",
-    "hectare":3.1,
-    "official":1,
-    "parkid":21,
-    "advisories":"N",
-    "neighbourhoodurl":"https://vancouver.ca/news-calendar/downtown.aspx",
-    "streetnumber":"1199",
-    "neighbourhoodname":"Downtown",
-    "nsstreet":"Bute Street",
-    "streetname":"W Cordova Street",
-    "ewstreet":"W Cordova Street"
-    },
-    "geometry":{
-    "type":"Point",
-    "coordinates":[
-    -123.121924,
-    49.290263
-    ]
-    },
-    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
-    },
-    {
-    "datasetid":"parks",
-    "recordid":"f26683d1b285fd2c53b704bee86c40082e0688bb",
-    "fields":{
-    "washrooms":"N",
-    "specialfeatures":"Y",
-    "googlemapdest":[
-    49.292334,
-    -123.131296
-    ],
-    "name":"Marina Square",
-    "facilities":"N",
-    "hectare":0.63,
-    "official":1,
-    "parkid":24,
-    "advisories":"N",
-    "neighbourhoodurl":"https://vancouver.ca/news-calendar/downtown.aspx",
-    "streetnumber":"1675",
-    "neighbourhoodname":"Downtown",
-    "nsstreet":"Denman Street",
-    "streetname":"Bayshore Drive",
-    "ewstreet":"Bayshore Drive"
-    },
-    "geometry":{
-    "type":"Point",
-    "coordinates":[
-    -123.131296,
-    49.292334
-    ]
-    },
-    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
-    },
-    {
-    "datasetid":"parks",
-    "recordid":"a06ed9040af4cf7b7bddec4a32c599171ab64ebe",
-    "fields":{
-    "washrooms":"N",
-    "specialfeatures":"N",
-    "googlemapdest":[
-    49.281699,
-    -123.104588
-    ],
-    "name":"Pioneer Place (Pigeon Park)",
-    "facilities":"N",
-    "hectare":0.03,
-    "official":1,
-    "parkid":26,
-    "advisories":"N",
-    "neighbourhoodurl":"https://vancouver.ca/news-calendar/downtown.aspx",
-    "streetnumber":"399",
-    "neighbourhoodname":"Downtown",
-    "nsstreet":"Carrall Street",
-    "streetname":"Carrall Street",
-    "ewstreet":"W Hastings Street"
-    },
-    "geometry":{
-    "type":"Point",
-    "coordinates":[
-    -123.104588,
-    49.281699
-    ]
-    },
-    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
-    },
-    {
-    "datasetid":"parks",
-    "recordid":"1454208b706f404a2b76e7fb2a4c8ce5034d46fa",
-    "fields":{
-    "washrooms":"Y",
-    "specialfeatures":"N",
-    "googlemapdest":[
-    49.284942,
-    -123.102377
-    ],
-    "name":"CRAB Park at Portside",
-    "facilities":"Y",
-    "hectare":3.31,
-    "official":1,
-    "parkid":28,
-    "advisories":"N",
-    "neighbourhoodurl":"https://vancouver.ca/news-calendar/downtown.aspx",
-    "streetnumber":"101",
-    "neighbourhoodname":"Downtown",
-    "nsstreet":"Main Street",
-    "streetname":"E Waterfront Road",
-    "ewstreet":"E Waterfront Road"
-    },
-    "geometry":{
-    "type":"Point",
-    "coordinates":[
-    -123.102377,
-    49.284942
-    ]
-    },
-    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
-    },
-    {
-    "datasetid":"parks",
-    "recordid":"90690d96ac0608e2d14a4c16197b9ff0cf5b2be4",
-    "fields":{
-    "washrooms":"N",
-    "specialfeatures":"N",
-    "googlemapdest":[
-    49.282218,
-    -123.110133
-    ],
-    "name":"Victory Square",
-    "facilities":"N",
-    "hectare":0.39,
-    "official":1,
-    "parkid":31,
-    "advisories":"N",
-    "neighbourhoodurl":"https://vancouver.ca/news-calendar/downtown.aspx",
-    "streetnumber":"200",
-    "neighbourhoodname":"Downtown",
-    "nsstreet":"Cambie Street",
-    "streetname":"W Hastings Street",
-    "ewstreet":"W Hastings Street"
-    },
-    "geometry":{
-    "type":"Point",
-    "coordinates":[
-    -123.110133,
-    49.282218
-    ]
-    },
-    "record_timestamp":"2019-09-09T11:01:31.443000+00:00"
+        "site_id": "5",
+        "name": "Richmond Nature Park",
+        "address": "11851 Westminster Hwy",
+        "city": "Richmond",
+        "province": "BC",
+        "country": "Canada",
+        "postal_code": "V6X 1B4",
+        "latitude": 49.17460064796491,
+        "longitude": -123.08668838098527
     }
     ],
-    "facet_groups":[
-    {
-    "facets":[
-    {
-    "count":153,
-    "path":"Y",
-    "state":"displayed",
-    "name":"Y"
-    },
-    {
-    "count":63,
-    "path":"N",
-    "state":"displayed",
-    "name":"N"
-    }
-    ],
-    "name":"facilities"
-    },
-    {
-    "facets":[
-    {
-    "count":145,
-    "path":"N",
-    "state":"displayed",
-    "name":"N"
-    },
-    {
-    "count":71,
-    "path":"Y",
-    "state":"displayed",
-    "name":"Y"
-    }
-    ],
-    "name":"washrooms"
-    },
-    {
-    "facets":[
-    {
-    "count":194,
-    "path":"N",
-    "state":"displayed",
-    "name":"N"
-    },
-    {
-    "count":22,
-    "path":"Y",
-    "state":"displayed",
-    "name":"Y"
-    }
-    ],
-    "name":"specialfeatures"
-    },
-    {
-    "facets":["too many elements to preview"],
-    "name":"neighbourhoodname"
-    }
+    "plantshop": [
+        {
+            "shop_id" : "1",
+            "name": "The Home Depot",
+            "address": "2700 Sweden Way",
+            "city": "Richmond",
+            "province": "BC",
+            "country": "Canada",
+            "postal_code": "V6V 1K1",
+            "latitude": 49.19850376862404,
+            "longitude": -123.08307409223046
+    
+        },
+        {
+            "site_id": "2",
+            "name": "The Home Depot",
+            "address": "1900 United Blvd",
+            "city": "Coquitlam",
+            "province": "BC",
+            "country": "Canada",
+            "postal_code": "V3K 6Z1",
+            "latitude": 49.233743214437354, 
+            "longitude": -122.81239334965035
+        },
+        {
+            "site_id": "3",
+            "name": "The Home Depot",
+            "address": "840 Main St", 
+            "city": "West Vancouver",
+            "province": "BC",
+            "country": "Canada",
+            "postal_code": "V7T 2Z3",
+            "latitude": 49.333045895072935, 
+            "longitude": -123.1229658496653
+        },
+        {
+            "site_id": "4",
+            "name": "The Home Depot",
+            "address": "900 Terminal Ave",
+            "city": "Vancouver",
+            "province": "BC",
+            "country": "Canada",
+            "postal_code": "V6A 4G4",
+            "latitude": 49.27260545892866, 
+            "longitude": -123.08228463455015
+        },
+        {
+            "site_id": "5",
+            "name": "The Home Depot",
+            "address": "3950 Henning Dr",
+            "city": "Burnaby",
+            "province": "BC",
+            "country": "Canada",
+            "postal_code": "V5C 6M2",
+            "latitude": 49.26661806232767, 
+            "longitude": -123.00617714448698
+        }
+
     ]
     }
