@@ -2,8 +2,7 @@ import React from "react";
 import { Button, List, SearchBar,WhiteSpace,WingBlank,ListView,TabBar,NavBar, Icon,Tabs  } from 'antd-mobile';
 import 'antd-mobile/dist/antd-mobile.css';
 import {BrowserRouter as Router, Route,Link} from "react-router-dom";
-import TreeHome from "./TreeHome";
-import '../css/footerbar.css'
+import '../TreeDirectory.css'
 
 
 class SearchView extends React.Component{
@@ -34,7 +33,6 @@ class SearchView extends React.Component{
     }
 
     render() {
-
         return (
            <div>
                <NavBar

@@ -1,25 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {BrowserRouter as Router, Route,Link} from "react-router-dom";
-import Footer from "react";
 import { Button, List, SearchBar,WhiteSpace,WingBlank,ListView,TabBar,NavBar, Icon,Tabs  } from 'antd-mobile';
 import 'antd-mobile/dist/antd-mobile.css';
-import '../css/TreeDirectory.css'
-
-import menu_1 from '../images/menu-1.png';
-import menu_1_active from '../images/menu-1-active.png';
-
-import menu_2 from '../images/menu-2.png';
-import menu_2_active from '../images/menu-2-active.png';
-
-import menu_3 from '../images/menu-3.png';
-import menu_3_active from '../images/menu-3-active.png';
-
-import menu_4 from '../images/menu-4.png';
-import menu_4_active from '../images/menu-4-active.png';
-
-import menu_5 from '../images/menu-5.png';
-import menu_5_active from '../images/menu-5-active.png';
+import '../TreeDirectory.css'
 
 
 import pic_1 from '../images/p-1.jpg';
@@ -245,7 +229,7 @@ function genData(pIndex = 0) {
     return dataBlob;
 }
 
-class TreeHome extends React.Component {
+class TreeDirectory extends React.Component {
     constructor(props) {
         super(props);
         const getSectionData = (dataBlob, sectionID) => dataBlob[sectionID];
@@ -355,160 +339,4 @@ class TreeHome extends React.Component {
     }
 }
 
-// class TreeHome extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             selectedTab: 'blueTab',
-//             hidden: false,
-//         };
-//     }
-//
-//     // renderContent(pageText) {
-//     //     return (
-//     //         <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
-//     //             <div style={{ paddingTop: 60 }}>Clicked “{pageText}” tab， show “{pageText}” information</div>
-//     //             <a style={{ display: 'block', marginTop: 40, marginBottom: 20, color: '#108ee9' }}
-//     //                onClick={(e) => {
-//     //                    e.preventDefault();
-//     //                    this.setState({
-//     //                        hidden: !this.state.hidden,
-//     //                    });
-//     //                }}
-//     //             >
-//     //                 Click to show/hide tab-bar
-//     //             </a>
-//     //         </div>
-//     //     );
-//     // }
-//
-//     render() {
-//         return (
-//             <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
-//                 <TabBar
-//                     unselectedTintColor="#949494"
-//                     tintColor="#33A3F4"
-//                     barTintColor="white"
-//                     tabBarPosition="bottom"
-//                     hidden={this.state.hidden}
-//                     prerenderingSiblingsNumber={0}
-//                 >
-//                     <TabBar.Item
-//                         title="Cart"
-//                         key="Cart"
-//                         icon={<div style={{
-//                             width: '22px',
-//                             height: '22px',
-//                             background: "url("+menu_1+") center center /  21px 21px no-repeat" }}
-//                         />
-//                         }
-//                         selectedIcon={<div style={{
-//                             width: '22px',
-//                             height: '22px',
-//                             background: "url("+menu_1_active+") center center /  21px 21px no-repeat" }}
-//                         />
-//                         }
-//                         selected={this.state.selectedTab === 'blueTab'}
-//                         badge={1}
-//                         onPress={() => {
-//                             this.setState({
-//                                 selectedTab: 'blueTab',
-//                             });
-//                         }}
-//                         data-seed="logId"
-//                     >
-//                         <ListViewCore />
-//                     </TabBar.Item>
-//                     <TabBar.Item
-//                         icon={
-//                             <div style={{
-//                                 width: '22px',
-//                                 height: '22px',
-//                                 background: "url("+menu_2+") center center /  21px 21px no-repeat" }}
-//                             />
-//                         }
-//                         selectedIcon={
-//                             <div style={{
-//                                 width: '22px',
-//                                 height: '22px',
-//                                 background: "url("+menu_2_active+") center center /  21px 21px no-repeat" }}
-//                             />
-//                         }
-//                         title="Flower"
-//                         key="Flower"
-//                         badge={'new'}
-//                         selected={this.state.selectedTab === 'redTab'}
-//                         onPress={() => {
-//                             this.setState({
-//                                 selectedTab: 'redTab',
-//                             });
-//                         }}
-//                         data-seed="logId1"
-//                     >
-//                         {/*{this.renderContent('Flower')}*/}
-//                         <ListViewCore />
-//                     </TabBar.Item>
-//                     <TabBar.Item
-//                         icon={
-//                             <div style={{
-//                                 width: '22px',
-//                                 height: '22px',
-//                                 background: "url("+menu_3+") center center /  21px 21px no-repeat" }}
-//                             />
-//                         }
-//                         selectedIcon={
-//                             <div style={{
-//                                 width: '22px',
-//                                 height: '22px',
-//                                 background: "url("+menu_3_active+") center center /  21px 21px no-repeat" }}
-//                             />
-//                         }
-//                         title="Home"
-//                         key="Home"
-//                         dot
-//                         selected={this.state.selectedTab === 'greenTab'}
-//                         onPress={() => {
-//                             this.setState({
-//                                 selectedTab: 'greenTab',
-//                             });
-//                         }}
-//                     >
-//                         {/*{this.renderContent('Home')}*/}
-//                         <ListViewCore />
-//                     </TabBar.Item>
-//                     <TabBar.Item
-//                         icon={{ uri: menu_4 }}
-//                         selectedIcon={{ uri: menu_4_active }}
-//                         title="Search"
-//                         key="Search"
-//                         selected={this.state.selectedTab === 'yellowTab'}
-//                         onPress={() => {
-//                             this.setState({
-//                                 selectedTab: 'yellowTab',
-//                             });
-//                         }}
-//                     >
-//                         {/*{this.renderContent('Search')}*/}
-//                         <ListViewCore />
-//                     </TabBar.Item>
-//                     <TabBar.Item
-//                         icon={{ uri: menu_5 }}
-//                         selectedIcon={{ uri: menu_5_active }}
-//                         title="Setting"
-//                         key="Setting"
-//                         selected={this.state.selectedTab === 'yellow2Tab'}
-//                         onPress={() => {
-//                             this.setState({
-//                                 selectedTab: 'yellow2Tab',
-//                             });
-//                         }}
-//                     >
-//                         {/*{this.renderContent('Setting')}*/}
-//                         <ListViewCore />
-//                     </TabBar.Item>
-//                 </TabBar>
-//             </div>
-//         );
-//     }
-// }
-export default TreeHome;
+export default TreeDirectory;
