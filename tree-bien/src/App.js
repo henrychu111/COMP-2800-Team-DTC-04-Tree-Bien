@@ -59,7 +59,7 @@ function App() {
           <Route
             path="/"
             exact
-            component={() => <Main handleLogout={handleLogout} />}
+            component={() => <Main handleLogout={handleLogout} />} 
           />
           {/* <Route component={defaultRoute} /> */}
           <Route
