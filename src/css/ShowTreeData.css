@@ -1,0 +1,46 @@
+body {
+  background-color: #f8ecd4;
+}
+
+.display-tree-info {
+  margin: 20px;
+}
+
+.info-item {
+  margin-left: 15%;
+  margin-right: 15%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1.5px solid #adc178;
+  font-size: 12px;
+  color: #a98468;
+}
+
+.info-item:hover {
+  background-color: #9eabe4;
+  background-image: linear-gradient(315deg, #9eabe4 0%, #b6f5e9 74%);
+}
+
+#tree-page-tree-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25%;
+  margin-bottom: 5%;
+  width: 100px;
+  height: 100px;
+}
+
+#tree-page-photo-album {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5%;
+
+  border: 1px solid #adc178;
+  border-radius: 2%;
+  font-size: 12px;
+  background-color: #dee6b6;
+  color: #a98468;
+  width: 70%;
+  height: 100px;
+}
