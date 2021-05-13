@@ -3,16 +3,17 @@ import GoogleMapReact from 'google-map-react';
 import { Popover } from 'antd';
 import 'antd/dist/antd.css';
 import { ShopOutlined } from '@ant-design/icons';
-import firebase from '../../firebase';
+import fire from '../../firebase';
 
 function Map() {
   const [plantingSites, setPlantingSites] = useState([]);
   const [plantShops, setPlantShops] = useState([]);
   const [location, setLocation] = useState({latitude: 49.263569, longitude: -123.138573})
+  const db = fire.firestore();
 
   useEffect(() => {
     const fetchPlantingSites = async () => {
-      const response = firebase.db.collection("plantingsites");
+      const response = db.collection("plantingsites");
       const data = await response.get();
       data.docs.forEach((site) => {
         setPlantingSites(oldSites => [...oldSites, { id: site.id, ...site.data() }])
@@ -23,7 +24,7 @@ function Map() {
 
   useEffect(() => {
     const fetchPlantingShops = async () => {
-      const response = firebase.db.collection("plantshops");
+      const response = db.collection("plantshops");
       const data = await response.get();
       data.docs.forEach((shop) => {
         setPlantShops(oldShops => [...oldShops, {id: shop.id, ...shop.data()}])
