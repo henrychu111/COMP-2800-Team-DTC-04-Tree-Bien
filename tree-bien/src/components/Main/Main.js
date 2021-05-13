@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Redirect, Link, Switch, Route } from "react-router-dom";
 import DailyTips from './DailyTips';
 import fire from '../../firebase';
+import '../css/Main.css';
 
 
 
