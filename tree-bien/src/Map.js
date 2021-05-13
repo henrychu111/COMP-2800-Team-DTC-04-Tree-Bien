@@ -15,7 +15,7 @@ function Map() {
       const response = firebase.db.collection("plantingsites");
       const data = await response.get();
       data.docs.forEach((site) => {
-        setPlantingSites([...plantingSites, { id: site.id, ...site.data() }])
+        setPlantingSites(oldSites => [...oldSites, { id: site.id, ...site.data() }])
       })
     }
     fetchPlantingSites();
@@ -26,7 +26,7 @@ function Map() {
       const response = firebase.db.collection("plantshops");
       const data = await response.get();
       data.docs.forEach((shop) => {
-        setPlantShops([...plantShops, { id: shop.id, ...shop.data() }])
+        setPlantShops(oldShops => [...oldShops, {id: shop.id, ...shop.data()}])
       })
     }
     fetchPlantingShops();
@@ -37,7 +37,7 @@ function Map() {
       navigator.geolocation.getCurrentPosition((position) => {
     setLocation({latitude: position.coords.latitude, longitude: position.coords.longitude});
   })
-}
+}  
   }, [])
   return (
     <div style={{ width: '90vw', height: "80vh", margin: "50px auto" }}>
