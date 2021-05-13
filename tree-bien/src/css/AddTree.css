@@ -1,0 +1,26 @@
+#no-tree-statement {
+  font-size: 15px;
+  color: #6c584c;
+  text-align: center;
+}
+
+#add-tree-button {
+  color: #6c584c;
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  width: 100%;
+  background: radial-gradient(
+    ellipse at top left,
+    rgba(173, 193, 120, 255) 0%,
+    rgba(238, 230, 182, 255) 75%,
+    rgba(173, 193, 120, 255) 100%
+  );
+}
+
+.addTreeSection {
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 40%;
+}
