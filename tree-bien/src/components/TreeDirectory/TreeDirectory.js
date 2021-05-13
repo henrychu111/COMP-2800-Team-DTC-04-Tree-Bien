@@ -2,10 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import {BrowserRouter as Router, Route,Link} from "react-router-dom";
 import { Button, List, SearchBar,WhiteSpace,WingBlank,ListView,TabBar,NavBar, Icon,Tabs  } from 'antd-mobile';
-// import { Button, List, SearchBar,WhiteSpace,WingBlank,ListView,TabBar,NavBar, Tabs  } from 'react-bootstrap';
-// import * as Icon from 'react-bootstrap-icons';
 import 'antd-mobile/dist/antd-mobile.css';
-// import 'bootstrap/dist/css/bootstrap.css'
 import '../../css/TreeDirectory.css';
 
 import pic_1 from '../TreeDirectory/images/p-1.jpg';
