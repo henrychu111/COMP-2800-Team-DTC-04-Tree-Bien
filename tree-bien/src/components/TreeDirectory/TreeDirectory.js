@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route,Link} from "react-router-dom";
 import { Button, List, SearchBar,WhiteSpace,WingBlank,ListView,TabBar,NavBar, Icon,Tabs  } from 'antd-mobile';
 import 'antd-mobile/dist/antd-mobile.css';
 import '../../css/TreeDirectory.css';
+// import firebase from '../firebase';
 
 import pic_1 from '../TreeDirectory/images/p-1.jpg';
 import pic_2 from '../TreeDirectory/images/p-2.jpg';
@@ -24,6 +25,10 @@ import pic_16 from '../TreeDirectory/images/p-16.jpg';
 import pic_17 from '../TreeDirectory/images/p-17.jpg';
 import pic_18 from '../TreeDirectory/images/p-18.jpg';
 import pic_19 from '../TreeDirectory/images/p-19.jpg';
+
+// const treedata = { firebase.db.collection("Tree-directory")
+
+// }
 
 const data = [
     {
