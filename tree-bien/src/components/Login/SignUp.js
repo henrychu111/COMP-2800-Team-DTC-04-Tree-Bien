@@ -26,6 +26,7 @@ const SignUp = (props) => {
 
     const handleSignUp = () => {
         clearErrors();
+        // clearInputs();
         fire
         .auth()
         .createUserWithEmailAndPassword(email, password)

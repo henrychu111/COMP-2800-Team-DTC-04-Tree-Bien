@@ -27,6 +27,7 @@ const Login = (props) => {
 
     const handleLogin = () => {
         clearErrors();
+        // clearInputs();
         fire
         .auth()
         .signInWithEmailAndPassword(email, password)
