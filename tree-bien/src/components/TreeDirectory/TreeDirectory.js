@@ -358,11 +358,10 @@ class TreeDirectory extends React.Component {
                 renderHeader={() => (
                     <div>
                         <NavBar
-                            icon={
-                                <Icon key="0" type="left" />
-                            }
+                            // icon={
+                            //     <Icon key="0" type="left" />
+                            // }
                             mode="light"
-                            // leftContent="Back"
                             rightContent={[
                                 <Link to="/search">
                                     <Icon key="1" type="ellipsis"/>
@@ -375,7 +374,6 @@ class TreeDirectory extends React.Component {
                             cancelText='cancel'
                             onSubmit={this.submitSearch}
                             onChange={this.onChange}
-                            // onCancel={this.submitCancel}
                         />
                         <WhiteSpace />
                     </div>
@@ -392,7 +390,7 @@ class TreeDirectory extends React.Component {
                 pageSize={10}
                 onScroll={() => { console.log('scroll'); }}
                 scrollRenderAheadDistance={500}
-                // onEndReached={this.onEndReached}
+
                 onEndReachedThreshold={10}
             />
         );
