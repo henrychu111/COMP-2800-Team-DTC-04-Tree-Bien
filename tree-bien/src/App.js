@@ -6,10 +6,11 @@ import Main from "./components/Main/Main";
 import fire from "./firebase";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Directory from "./components/TestPages/Directory";
 import Map from "./components/Map/Map";
 import MyTree from "./components/AddTree/myTreePage"; //Go to componenets/AddTree/myTreePage
 import BottomNav from "./components/Main/BottomNav";
+import SearchView from "./components/TreeDirectory/SearchView";
+import TreeDirectory from './components/TreeDirectory/TreeDirectory';
 
 function App() {
   const [user, setUser] = useState("");
@@ -41,7 +42,8 @@ function App() {
           <Route path="/" exact component={() => <Main />} />
           <Route path="/mytree" exact component={() => <MyTree />} />
           <Route path="/map" exact component={() => <Map />} />
-          <Route path="/directory" exact component={() => <Directory />} />
+          <Route path="/directory" exact component={() => <TreeDirectory />} />
+          <Route path="/directory/search" component={SearchView}></Route>
         </Switch>
         <BottomNav />
       </div>
