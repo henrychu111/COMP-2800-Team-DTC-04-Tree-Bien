@@ -10,7 +10,7 @@ import Settingimage from '../../images/settings-icon.png';
 import Popover from 'react-bootstrap/Popover';
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import '../css/main.css'
+import '../css/Main.css'
 
 
 import { BrowserRouter as Router, Redirect, Link, Switch, Route } from "react-router-dom";

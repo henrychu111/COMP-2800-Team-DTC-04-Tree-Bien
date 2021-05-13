@@ -7,7 +7,7 @@ import DailyTips from './DailyTips';
 
 const Main = () => {
     return (
-        <div class="container">
+        <div className="container">
             <div className="daily-tip-jumbotron">
                 <DailyTips />
             </div>
@@ -24,10 +24,6 @@ const Main = () => {
                 <div className="main-aboutus-button">
                     <button><Link to="/aboutus">About Us</Link></button>
                 </div>
-                
-            </div>
-            <div className>
-
             </div>
         </div>
       );

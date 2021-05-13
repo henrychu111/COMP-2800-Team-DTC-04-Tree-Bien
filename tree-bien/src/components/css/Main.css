@@ -33,9 +33,13 @@
         "directory"
         "aboutus";
 }
+
 .main-map-button { grid-area: map; }
+
 .main-mytree-button { grid-area: mytree; }
+
 .main-directory-button { grid-area: directory; }
+
 .main-aboutus-button { grid-area: aboutus; }
 
 .function-buttons div button {
