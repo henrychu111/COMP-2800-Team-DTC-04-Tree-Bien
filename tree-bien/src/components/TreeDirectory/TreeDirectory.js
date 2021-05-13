@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route,Link} from "react-router-dom";
 import { Button, List, SearchBar,WhiteSpace,WingBlank,ListView,TabBar,NavBar, Icon,Tabs  } from 'antd-mobile';
 import 'antd-mobile/dist/antd-mobile.css';
 import '../../css/TreeDirectory.css';
+// import '../TreeDirectory/SearchView';
 // import firebase from '../firebase';
 
 import pic_1 from '../TreeDirectory/images/p-1.jpg';
@@ -263,11 +264,15 @@ class TreeDirectory extends React.Component {
             dataSource,
             isLoading: true,
             height: (document.documentElement.clientHeight * 3) / 4,
-            feet_query:this.props.location.state ? this.props.location.state.feet : '',
-            color_query:this.props.location.state ? this.props.location.state.color : '',
+
+            feet_query:'',
+            color_query:'',
+
+            // feet_query:this.props.location.state ? this.props.location.state.feet : '',
+            // color_query:this.props.location.state ? this.props.location.state.color : '',
+       
             keyword_query:'',
         };
-
     }
 
     componentDidMount() {
