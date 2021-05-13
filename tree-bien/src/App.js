@@ -1,57 +1,52 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import Login from './components/Login/Login';
-import SignUp from './components/Login/SignUp';
-import Main from './components/Main/Main';
-import fire from './firebase';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import Login from "./components/Login/Login";
+import SignUp from "./components/Login/SignUp";
+import Main from "./components/Main/Main";
+import fire from "./firebase";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Directory from './components/TestPages/Directory';
-import Map from './components/TestPages/Map';
-import MyTree from './components/TestPages/MyTree';
-import BottomNav from './components/Main/BottomNav';
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import Directory from "./components/TestPages/Directory";
+import Map from "./components/TestPages/Map";
+import MyTree from "./components/AddTree/myTreePage"; //Go to componenets/AddTree/myTreePage
+import BottomNav from "./components/Main/BottomNav";
 
 function App() {
-
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState("");
   const history = useHistory();
 
   const handleLogout = () => {
-    fire
-    .auth().signOut();
-    setUser('');
+    fire.auth().signOut();
+    setUser("");
   };
 
   useEffect(() => {
-    fire.auth().onAuthStateChanged(loggedin => {
+    fire.auth().onAuthStateChanged((loggedin) => {
       console.log(loggedin, user);
       if (loggedin === null) {
         console.log("hi");
         history.push("/login");
-      }
-      else if (loggedin.email === user) {
+      } else if (loggedin.email === user) {
         history.push("/");
-      }
-      else {
+      } else {
         history.push("/login");
       }
-    })
+    });
   }, [user]);
 
   const defaultRoute = () => {
     return (
       <div>
-          <Switch>
-            <Route path="/" exact component={() => <Main />} />
-            <Route path="/mytree" exact component={() => <MyTree />} />
-            <Route path="/map" exact component={() => <Map />} />
-            <Route path="/directory" exact component={() => <Directory />} />
-          </Switch>
-          <BottomNav />
+        <Switch>
+          <Route path="/" exact component={() => <Main />} />
+          <Route path="/mytree" exact component={() => <MyTree />} />
+          <Route path="/map" exact component={() => <Map />} />
+          <Route path="/directory" exact component={() => <Directory />} />
+        </Switch>
+        <BottomNav />
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <div className="App">
@@ -59,27 +54,35 @@ function App() {
         <Route component={defaultRoute} />
       ) : (
         <Switch>
-          <Route path="/" exact component={() => <Main handleLogout={handleLogout}/>} />
+          <Route
+            path="/"
+            exact
+            component={() => <Main handleLogout={handleLogout} />}
+          />
           {/* <Route component={defaultRoute} /> */}
-          <Route path="/login" exact component={() => <Login 
-          setUser={setUser} />} />
-          <Route path="/signup" exact component={() => <SignUp 
-          setUser={setUser} />} />
+          <Route
+            path="/login"
+            exact
+            component={() => <Login setUser={setUser} />}
+          />
+          <Route
+            path="/signup"
+            exact
+            component={() => <SignUp setUser={setUser} />}
+          />
         </Switch>
       )}
-
     </div>
   );
-};
+}
 
 export default App;
-
 
 // <Switch>
 // <Route path="/" exact component={() => <Main handleLogout={handleLogout}/>} />
 // {/* <Route component={defaultRoute} /> */}
-// <Route path="/login" exact component={() => <Login 
+// <Route path="/login" exact component={() => <Login
 // setUser={setUser} />} />
-// <Route path="/signup" exact component={() => <SignUp 
+// <Route path="/signup" exact component={() => <SignUp
 // setUser={setUser} />} />
 // </Switch>

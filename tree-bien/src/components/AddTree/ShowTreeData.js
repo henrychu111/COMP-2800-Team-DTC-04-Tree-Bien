@@ -2,7 +2,7 @@ import React from "react";
 import "../../css/ShowTreeData.css";
 import treeImage from "../../images/tree-shadow.png";
 // import { render } from "@testing-library/react";
-import UpdateTreeData from "./UpdateTreeData"; //Fix during integration
+import UpdateTreeData from "../UpdateTree/UpdateTreeData"; //Fix during integration
 import ListGroup from "react-bootstrap/ListGroup";
 
 //https://www.carlrippon.com/formatting-dates-and-numbers-in-react/
