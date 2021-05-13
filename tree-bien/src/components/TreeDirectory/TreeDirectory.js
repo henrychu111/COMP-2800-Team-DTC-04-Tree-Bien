@@ -2,9 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import {BrowserRouter as Router, Route,Link} from "react-router-dom";
 import { Button, List, SearchBar,WhiteSpace,WingBlank,ListView,TabBar,NavBar, Icon,Tabs  } from 'antd-mobile';
+// import { Button, List, SearchBar,WhiteSpace,WingBlank,ListView,TabBar,NavBar, Tabs  } from 'react-bootstrap';
+// import * as Icon from 'react-bootstrap-icons';
 import 'antd-mobile/dist/antd-mobile.css';
-import '../TreeDirectory/TreeDirectory.css'
-
+// import 'bootstrap/dist/css/bootstrap.css'
+import '../../css/TreeDirectory.css';
 
 import pic_1 from '../TreeDirectory/images/p-1.jpg';
 import pic_2 from '../TreeDirectory/images/p-2.jpg';
@@ -26,7 +28,6 @@ import pic_17 from '../TreeDirectory/images/p-17.jpg';
 import pic_18 from '../TreeDirectory/images/p-18.jpg';
 import pic_19 from '../TreeDirectory/images/p-19.jpg';
 
-import SearchView from "./SearchView";
 const data = [
     {
         id: 1,
@@ -57,7 +58,7 @@ const data = [
         img: pic_4,
         title: 'Prairie Star Persimmon',
         size: '12',
-        color: 'Red',
+        color: 'Orange',
         desc: 'Diospyros Virginiana \'Prairie Star\' is one of the earliest varieties to ripen. This self-fertile tree will produce large juicy persimmons. Full Sun. Grows to 12ft.',
     },
     {
@@ -182,50 +183,65 @@ const data = [
     },
 ];
 
-const NUM_SECTIONS = 4;
-const NUM_ROWS_PER_SECTION = 5;
 let pageIndex = 0;
 
 const dataBlobs = {};
-let sectionIDs = [];
-let rowIDs = [];
-
-function SearchInput() {
-    return (
-        <div>
-            <NavBar
-                icon={
-                    <Icon key="0" type="left" />
-                }
-                mode="light"
-                // leftContent="Back"
-                rightContent={[
-                    <Link to="/search">
-                        <Icon key="1" type="ellipsis"/>
-                    </Link>
-                ]}
-            ></NavBar>
-            <SearchBar
-                placeholder="Which tree are you looking for"
-                maxLength={50}
-                cancelText='cancel'
-            />
-            <WhiteSpace />
-        </div>
-    )
-}
 
 const NUM_ROWS = data.length;
+console.log(NUM_ROWS)
 
-function hi() {
-
-}
-
-function genData(pIndex = 0) {
+function genData(keyword = '', feet = '', color = '') {
+    console.log(keyword,feet,color, '-----')
     const dataBlob = {};
     for (let i = 0; i < NUM_ROWS; i++) {
-        const ii = (pIndex * NUM_ROWS) + i;
-        dataBlob[`${ii}`] = `row - ${ii}`;
+        let row = data[i];
+
+        if (feet != '') {
+            if (feet == 'large') {
+                if (row.size *1  <= 30) {
+                    continue;
+                } else {
+                    dataBlob[`${i}`] = `row - ${i}`;
+                }
+            }
+            if (feet == 'medium') {
+                if (row.size *1  < 20 || row.size*1 > 30) {
+                    continue;
+                } else {
+                    dataBlob[`${i}`] = `row - ${i}`;
+                }
+            }
+            if (feet == 'small') {
+                if (row.size *1  >= 20) {
+                    continue;
+                } else {
+                    dataBlob[`${i}`] = `row - ${i}`;
+                }
+            }
+        }
+
+        if (color != '') {
+            let data_color = row.color.toLowerCase()
+
+            if (data_color == color) {
+                dataBlob[`${i}`] = `row - ${i}`;
+            } else {
+                continue;
+            }
+        }
+
+        if (keyword != '') {
+            let title = row.title.toLowerCase();
+            keyword = keyword.toLowerCase();
+            if (title.indexOf(keyword) !== -1) {
+                dataBlob[`${i}`] = `row - ${i}`;
+            } else {
+                continue;
+            }
+        }
+
+        dataBlob[`${i}`] = `row - ${i}`;
+
     }
     return dataBlob;
 }
@@ -233,6 +249,7 @@ function genData(pIndex = 0) {
 class TreeDirectory extends React.Component {
     constructor(props) {
         super(props);
+
         const getSectionData = (dataBlob, sectionID) => dataBlob[sectionID];
         const getRowData = (dataBlob, sectionID, rowID) => dataBlob[rowID];
 
@@ -244,14 +261,18 @@ class TreeDirectory extends React.Component {
             dataSource,
             isLoading: true,
             height: (document.documentElement.clientHeight * 3) / 4,
+            feet_query:this.props.location.state ? this.props.location.state.feet : '',
+            color_query:this.props.location.state ? this.props.location.state.color : '',
+            keyword_query:'',
         };
+
     }
 
     componentDidMount() {
         const hei = document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).parentNode.offsetTop;
 
         setTimeout(() => {
-            this.rData = genData();
+            this.rData = genData(this.state.keyword_query, this.state.feet_query, this.state.color_query);
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(this.rData),
                 isLoading: false,
@@ -260,19 +281,39 @@ class TreeDirectory extends React.Component {
         }, 600);
     }
 
-    onEndReached = (event) => {
-        if (this.state.isLoading && !this.state.hasMore) {
-            return;
-        }
-        console.log('reach end', event);
-        this.setState({ isLoading: true });
-        setTimeout(() => {
-            genData(++pageIndex);
+    onChange= (value) => {
+        this.setState({
+            keyword_query:value
+        });
+    };
+
+    submitCancel = () => {
+        console.log(this.refs)
+        this.refs.searchBar.doClear(false)
+        this.setState({
+            keyword_query : '',
+            feet_query : '',
+            color_query : '',
+        })
+        this.rData = genData('', '', '');
+        this.setState({
+            dataSource: this.state.dataSource.cloneWithRows(this.rData),
+            isLoading: false,
+        });
+    }
+
+    submitSearch = (event) => {
+        if (this.state.color_query || this.state.feet_query) {
             this.setState({
-                dataSource: this.state.dataSource.cloneWithRowsAndSections(dataBlobs, sectionIDs, rowIDs),
-                isLoading: false,
-            });
-        }, 1000);
+                keyword_query : ''
+            })
+        }
+
+        this.rData = genData(this.state.keyword_query, this.state.feet_query, this.state.color_query);
+        this.setState({
+            dataSource: this.state.dataSource.cloneWithRows(this.rData),
+            isLoading: false,
+        });
     }
 
     render() {
@@ -287,12 +328,8 @@ class TreeDirectory extends React.Component {
                 }}
             />
         );
-        let index = data.length - 1;
         const row = (rowData, sectionID, rowID) => {
-            if (index < 0) {
-                index = data.length - 1;
-            }
-            const obj = data[index--];
+            const obj = data[rowID];
             return (
                 <div key={rowID} style={{ padding: '0 15px' }}>
                     <div
@@ -303,12 +340,10 @@ class TreeDirectory extends React.Component {
                             fontWeight: 'bold',
                             borderBottom: '1px solid #F6F6F6',
                         }}
-                    >{obj.title} {obj.id}</div>
+                    >{obj.title}</div>
                     <div style={{ display: '-webkit-box', display: 'flex', padding: '15px 0' }}>
                         <img style={{ height: '64px', marginRight: '15px' }} src={obj.img} alt="" />
                         <div style={{ lineHeight: 1 }}>
-                            {/*<div style={{ marginBottom: '8px',textAlign:'left',color:'rgba(99,202,255,0.84)' }}>Color: {obj.color}</div>*/}
-                            {/*<div style={{ marginBottom: '8px',textAlign:'left',color:'rgba(73,188,255,0.91)' }}>Size: {obj.size}</div>*/}
                             <div style={{ marginBottom: '8px',textAlign:'left',color:'#ADC178' }}> {obj.desc}</div>
                         </div>
                     </div>
@@ -320,7 +355,31 @@ class TreeDirectory extends React.Component {
             <ListView
                 ref={el => this.lv = el}
                 dataSource={this.state.dataSource}
-                renderHeader={() => <SearchInput/>}
+                renderHeader={() => (
+                    <div>
+                        <NavBar
+                            icon={
+                                <Icon key="0" type="left" />
+                            }
+                            mode="light"
+                            // leftContent="Back"
+                            rightContent={[
+                                <Link to="/search">
+                                    <Icon key="1" type="ellipsis"/>
+                                </Link>
+                            ]}
+                        ></NavBar>
+                        <SearchBar
+                            placeholder="Which tree are you looking for"
+                            maxLength={50}
+                            cancelText='cancel'
+                            onSubmit={this.submitSearch}
+                            onChange={this.onChange}
+                            // onCancel={this.submitCancel}
+                        />
+                        <WhiteSpace />
+                    </div>
+                )}
                 renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
                     {this.state.isLoading ? 'Loading...' : 'Loaded'}
                 </div>)}
@@ -333,11 +392,10 @@ class TreeDirectory extends React.Component {
                 pageSize={10}
                 onScroll={() => { console.log('scroll'); }}
                 scrollRenderAheadDistance={500}
-                onEndReached={this.onEndReached}
+                // onEndReached={this.onEndReached}
                 onEndReachedThreshold={10}
             />
         );
     }
 }
-
 export default TreeDirectory;
