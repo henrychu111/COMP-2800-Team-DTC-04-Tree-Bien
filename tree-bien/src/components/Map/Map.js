@@ -5,7 +5,7 @@ import 'antd/dist/antd.css';
 import { ShopOutlined } from '@ant-design/icons';
 import fire from '../../firebase';
 
-function Map() {
+function Map() {  
   const [plantingSites, setPlantingSites] = useState([]);
   const [plantShops, setPlantShops] = useState([]);
   const [location, setLocation] = useState({latitude: 49.263569, longitude: -123.138573})
