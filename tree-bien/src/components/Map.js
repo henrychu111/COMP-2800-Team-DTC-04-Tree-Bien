@@ -40,7 +40,7 @@ function Map() {
 }  
   }, [])
   return (
-    <div style={{ width: '90vw', height: "80vh", margin: "50px auto" }}>
+    <div style={{ width: '90vw', height: "70vh", margin: "70px auto" }}>
         <div style={{marginBottom: '10px'}}>
         <img style={{ width: '25px' }} src="/shopping-cart-marker.png" />
         <span style={{marginRight: '20px'}}>= Tree Vendor</span>
