@@ -3,7 +3,7 @@ import GoogleMapReact from 'google-map-react';
 import { Popover } from 'antd';
 import 'antd/dist/antd.css';
 import { ShopOutlined } from '@ant-design/icons';
-import firebase from './firebase';
+import firebase from '../firebase';
 
 function Map() {
   const [plantingSites, setPlantingSites] = useState([]);

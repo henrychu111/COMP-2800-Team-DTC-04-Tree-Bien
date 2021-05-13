@@ -1,13 +1,16 @@
 import React from "react";
 import './App.css';
-import Map from "./Map";
+import Map from "./components/Map";
+import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 
 
 
 
 function App() {
   return (
-    <Map/>
+    <Switch>
+        <Route path="/map" component={() => <Map/>} />
+    </Switch>
   )
 
 }
