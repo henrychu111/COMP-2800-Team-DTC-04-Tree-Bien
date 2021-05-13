@@ -44,7 +44,7 @@ const AboutUsPage = () => {
         <div className="people-picture" id="april-info">
           <img src={April}></img>
           <p className="founders-name">April Cheng</p>
-          <p className="founders-title">Developer</p>
+          <p className="founders-title" id="april-title">Developer</p>
         </div>
       </div>
     </div>

@@ -11,6 +11,7 @@ import MyTree from "./components/AddTree/myTreePage"; //Go to componenets/AddTre
 import BottomNav from "./components/Main/BottomNav";
 import SearchView from "./components/TreeDirectory/SearchView";
 import TreeDirectory from './components/TreeDirectory/TreeDirectory';
+import AboutUs from '../src/AboutUs';
 
 function App() {
   const [user, setUser] = useState("");
@@ -37,13 +38,14 @@ function App() {
 
   const defaultRoute = () => {
     return (
-      <div>
+      <div className="add-padding-bottom">
         <Switch>
           <Route path="/" exact component={() => <Main />} />
           <Route path="/mytree" exact component={() => <MyTree />} />
           <Route path="/map" exact component={() => <Map />} />
           <Route path="/directory" exact component={() => <TreeDirectory />} />
           <Route path="/directory/search" component={SearchView}></Route>
+          <Route path="/aboutus" exact component={() => <AboutUs />} />
         </Switch>
         <BottomNav />
       </div>
@@ -56,11 +58,11 @@ function App() {
         <Route component={defaultRoute} />
       ) : (
         <Switch>
-          <Route
+          {/* <Route
             path="/"
             exact
             component={() => <Main handleLogout={handleLogout} />}
-          />
+          /> */}
           {/* <Route component={defaultRoute} /> */}
           <Route
             path="/login"

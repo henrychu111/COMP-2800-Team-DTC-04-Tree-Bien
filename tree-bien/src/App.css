@@ -135,3 +135,7 @@ button {
   color: rgb(108,88,76);
   border-radius: 3px;
 }
+
+.add-padding-bottom {
+  padding-bottom: 65px;
+}

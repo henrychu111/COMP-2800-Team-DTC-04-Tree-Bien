@@ -31,8 +31,6 @@ const BottomNav = () => {
     )
 
     return (
-
-        <Container>
             <Navbar expand="lg" variant="light" bg="light" fixed="bottom" >
                 <Link to="/map" className="bottomNavIcons">
                     <Image src={Mapimage} className="bottomNavImage" />
@@ -52,7 +50,6 @@ const BottomNav = () => {
                     </OverlayTrigger>
                 </div>
             </Navbar>
-        </Container>
     )
 }
 
