@@ -5,6 +5,11 @@ import SignUp from './components/Login/SignUp';
 import Main from './components/Main/Main';
 import fire from './firebase';
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Directory from './components/TestPages/Directory';
+import Map from './components/TestPages/Map';
+import MyTree from './components/TestPages/MyTree';
+import BottomNav from './components/Main/BottomNav';
 
 
 function App() {
@@ -34,17 +39,47 @@ function App() {
     })
   }, [user]);
 
+  const defaultRoute = () => {
+    return (
+      <div>
+          <Switch>
+            <Route path="/" exact component={() => <Main />} />
+            <Route path="/mytree" exact component={() => <MyTree />} />
+            <Route path="/map" exact component={() => <Map />} />
+            <Route path="/directory" exact component={() => <Directory />} />
+          </Switch>
+          <BottomNav />
+      </div>
+    )
+  }
+
   return (
     <div className="App">
+      {user ? (
+        <Route component={defaultRoute} />
+      ) : (
         <Switch>
           <Route path="/" exact component={() => <Main handleLogout={handleLogout}/>} />
+          {/* <Route component={defaultRoute} /> */}
           <Route path="/login" exact component={() => <Login 
           setUser={setUser} />} />
           <Route path="/signup" exact component={() => <SignUp 
           setUser={setUser} />} />
         </Switch>
+      )}
+
     </div>
   );
 };
 
 export default App;
+
+
+// <Switch>
+// <Route path="/" exact component={() => <Main handleLogout={handleLogout}/>} />
+// {/* <Route component={defaultRoute} /> */}
+// <Route path="/login" exact component={() => <Login 
+// setUser={setUser} />} />
+// <Route path="/signup" exact component={() => <SignUp 
+// setUser={setUser} />} />
+// </Switch>
