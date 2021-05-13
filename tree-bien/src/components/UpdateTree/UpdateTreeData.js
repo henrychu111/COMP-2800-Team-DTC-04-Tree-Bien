@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { db } from "../firebase";
+import fire from "../../firebase";
 import "../../css/UpdateTreeData.css";
 import Modal from "react-bootstrap/Modal";
 
@@ -7,6 +7,7 @@ import Modal from "react-bootstrap/Modal";
 const UpdateTree = (props) => {
   const [field, setField] = useState(props.value);
   console.log(props);
+  const db = fire.firestore();
 
   const handleSubmit = (e) => {
     e.preventDefault();
