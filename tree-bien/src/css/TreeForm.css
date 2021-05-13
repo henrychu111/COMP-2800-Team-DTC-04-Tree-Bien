@@ -36,11 +36,12 @@
 .form-close-button {
   border: none;
   border-radius: 20px;
-  background-color: #dee6b6;
+  background-color: transparent;
   float: right;
   font-size: 25px;
   margin-top: 10px;
   margin-right: 10px;
+  width: 8%;
 }
 
 .form_input {
@@ -52,6 +53,9 @@
 }
 
 .form_submit_button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin: 5px;
   margin-left: 18%;
   border: none;

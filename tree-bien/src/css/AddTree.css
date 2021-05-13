@@ -5,10 +5,13 @@
 }
 
 #add-tree-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: #6c584c;
   border: none;
   border-radius: 10px;
-  height: 30px;
+  height: 32px;
   width: 100%;
   background: radial-gradient(
     ellipse at top left,
