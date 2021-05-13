@@ -7,7 +7,7 @@ import fire from "./firebase";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Directory from "./components/TestPages/Directory";
-import Map from "./components/TestPages/Map";
+import Map from "./components/Map/Map";
 import MyTree from "./components/AddTree/myTreePage"; //Go to componenets/AddTree/myTreePage
 import BottomNav from "./components/Main/BottomNav";
 

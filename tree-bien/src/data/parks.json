@@ -1,0 +1,118 @@
+{
+    "plantingsite":[
+    {
+        "site_id": "1",
+        "name": "Queen Elizabeth Park",
+        "address": "4600 Cambie St",
+        "city": "Vancouver",
+        "province": "BC",
+        "country": "Canada",
+        "postal_code": "V5Z 2Z1",
+        "latitude": 49.24508862223751,
+        "longitude": -123.11294500727794
+    },
+    {
+        "site_id": "2",
+        "name": "Trafalgar Park",
+        "address": "2610 W 23rd Ave",
+        "city": "Vancouver",
+        "province": "BC",
+        "country": "Canada",
+        "postal_code": "V6L 1N7",
+        "latitude": 49.25270554827162,
+        "longitude": -123.16195289351052
+    },
+    {
+        "site_id": "3",
+        "name": "Grays Park",
+        "address": "4850 St Catherines St",
+        "city": "Vancouver",
+        "province": "BC",
+        "country": "Canada",
+        "postal_code": "V5V 4M7",
+        "latitude": 49.24425761366185, 
+        "longitude": -123.07878799581106
+    },
+    {
+        "site_id": "4",
+        "name": "Minoru Park",
+        "address": "7191 Granville Ave",
+        "city": "Richmond",
+        "province": "BC",
+        "country": "Canada",
+        "postal_code": "V6Y 4G2",
+        "latitude": 49.16587749097831, 
+        "longitude": -123.14539301111274
+    },
+    {
+        "site_id": "5",
+        "name": "Richmond Nature Park",
+        "address": "11851 Westminster Hwy",
+        "city": "Richmond",
+        "province": "BC",
+        "country": "Canada",
+        "postal_code": "V6X 1B4",
+        "latitude": 49.17460064796491,
+        "longitude": -123.08668838098527
+    }
+    ],
+    "plantshop": [
+        {
+            "shop_id" : "6",
+            "name": "The Home Depot",
+            "address": "2700 Sweden Way",
+            "city": "Richmond",
+            "province": "BC",
+            "country": "Canada",
+            "postal_code": "V6V 1K1",
+            "latitude": 49.19850376862404,
+            "longitude": -123.08307409223046
+    
+        },
+        {
+            "shop_id": "7",
+            "name": "The Home Depot",
+            "address": "1900 United Blvd",
+            "city": "Coquitlam",
+            "province": "BC",
+            "country": "Canada",
+            "postal_code": "V3K 6Z1",
+            "latitude": 49.233743214437354, 
+            "longitude": -122.81239334965035
+        },
+        {
+            "shop_id": "8",
+            "name": "The Home Depot",
+            "address": "840 Main St", 
+            "city": "West Vancouver",
+            "province": "BC",
+            "country": "Canada",
+            "postal_code": "V7T 2Z3",
+            "latitude": 49.333045895072935, 
+            "longitude": -123.1229658496653
+        },
+        {
+            "shop_id": "9",
+            "name": "The Home Depot",
+            "address": "900 Terminal Ave",
+            "city": "Vancouver",
+            "province": "BC",
+            "country": "Canada",
+            "postal_code": "V6A 4G4",
+            "latitude": 49.27260545892866, 
+            "longitude": -123.08228463455015
+        },
+        {
+            "shop_id": "10",
+            "name": "The Home Depot",
+            "address": "3950 Henning Dr",
+            "city": "Burnaby",
+            "province": "BC",
+            "country": "Canada",
+            "postal_code": "V5C 6M2",
+            "latitude": 49.26661806232767, 
+            "longitude": -123.00617714448698
+        }
+
+    ]
+    }
