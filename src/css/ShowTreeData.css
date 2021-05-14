@@ -13,7 +13,7 @@ body {
   padding-bottom: 5px;
   border: 1.5px solid #adc178;
   font-size: 12px;
-  color: #a98468;
+  color: black;
 }
 
 .info-item:hover {
@@ -39,8 +39,8 @@ body {
   border: 1px solid #adc178;
   border-radius: 2%;
   font-size: 12px;
-  background-color: #dee6b6;
-  color: #a98468;
+  background-color: transparent;
+  color: black;
   width: 70%;
   height: 100px;
 }

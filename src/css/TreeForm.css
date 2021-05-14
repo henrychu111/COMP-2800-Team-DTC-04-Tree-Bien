@@ -9,13 +9,12 @@
   margin: auto;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
 .popup_inner {
-  position: absolute;
-  left: 12%;
-  right: 12%;
-  top: 15%;
-  bottom: 20%;
+  display: table;
+  width: 80%;
   margin: auto;
+  margin-top: 25%;
   border-radius: 10px;
   background: radial-gradient(
     ellipse at top left,
@@ -35,51 +34,46 @@
 
 .form-close-button {
   border: none;
-  border-radius: 20px;
   background-color: transparent;
-  float: right;
   font-size: 25px;
-  margin-top: 10px;
-  margin-right: 10px;
-  width: 8%;
+  padding-right: 10px;
+  text-align: right;
 }
 
 .form_input {
   margin: 8px;
   border: none;
-  height: 8%;
-  width: 100%;
+  padding: 1%;
   border-radius: 5px;
+  width: 55%;
 }
 
 .form_submit_button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin: 5px;
-  margin-left: 18%;
   border: none;
   border-radius: 10px;
   font-size: 12px;
   background-color: #a98468;
   color: white;
-  width: 70%;
+  width: 60%;
   height: 10%;
-  margin-top: 15px;
+  margin-top: 5%;
+  margin-bottom: 10%;
 }
 
 .add_tree_form {
-  position: absolute;
-  left: 18%;
-  right: 20%;
-  top: 15%;
-  bottom: 25%;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 1%;
 }
 
 #bday-label {
   font-size: 11px;
-  margin-left: 10px;
   color: #677e27;
+  text-align: left;
 }
 #b-day {
   background-color: white;
