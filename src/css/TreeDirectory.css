@@ -10,14 +10,14 @@
 }
 
 .mybtn {
-    width: 27%;
+    /*width: 27%;*/
     background-color: #ADC178;
     border: #ADC178;
     color: white;
 }
 
 .mybtn-active {
-    width: 27%;
+    /*width: 27%;*/
     background-color: #8fc1b7;
     border: #8fc1b7;
     color: white;

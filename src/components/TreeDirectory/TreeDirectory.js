@@ -15,7 +15,7 @@ import {
 } from "antd-mobile";
 import "antd-mobile/dist/antd-mobile.css";
 import "../../css/TreeDirectory.css";
-// import fire from '../../firebase';
+// import firebase from '../firebase';
 
 import pic_1 from "../TreeDirectory/images/p-1.jpg";
 import pic_2 from "../TreeDirectory/images/p-2.jpg";
@@ -36,7 +36,6 @@ import pic_16 from "../TreeDirectory/images/p-16.jpg";
 import pic_17 from "../TreeDirectory/images/p-17.jpg";
 import pic_18 from "../TreeDirectory/images/p-18.jpg";
 import pic_19 from "../TreeDirectory/images/p-19.jpg";
-
 
 const data = [
   {
@@ -265,19 +264,19 @@ class TreeDirectory extends React.Component {
     const dataSource = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2,
     });
-
+console.log(this.props.location)
     this.state = {
       dataSource,
       isLoading: true,
       height: (document.documentElement.clientHeight * 3) / 4,
-      // feet_query: this.props.location.state
-      //   ? this.props.location.state.feet
-      //   : "",
-      // color_query: this.props.location.state
-      //   ? this.props.location.state.color
-      //   : "",
-      feet_query:"",
-      color_query:"",
+      feet_query: this.props.location.state
+        ? this.props.location.state.feet
+        : "",
+      color_query: this.props.location.state
+        ? this.props.location.state.color
+        : "",
+      // feet_query:"",
+      // color_query:"",
       keyword_query: "",
     };
   }
@@ -397,7 +396,8 @@ class TreeDirectory extends React.Component {
     };
     const loadingDiv = (<div style={{ padding: 30, textAlign: "center" }}>
     Loading...
-  </div>)
+    </div>)
+
     return (
       <ListView
         ref={(el) => (this.lv = el)}
@@ -405,9 +405,6 @@ class TreeDirectory extends React.Component {
         renderHeader={() => (
           <div>
             <NavBar
-              // icon={
-              //     <Icon key="0" type="left" />
-              // }
               mode="light"
               rightContent={[
                 <Link to="/directory/search">
@@ -425,6 +422,11 @@ class TreeDirectory extends React.Component {
             <WhiteSpace />
           </div>
         )}
+        // renderFooter={() => (
+        //   <div style={{ padding: 30, textAlign: "center" }}>
+        //     {this.state.isLoading ? "Loading..." : "Loaded"}
+        //   </div>
+        // )}
         renderFooter={() => (
           this.state.isLoading?loadingDiv:null
         )}
