@@ -53,7 +53,6 @@ function AddTree(loggedinUserMyTree) {
 function ShowTree(trees, loggedinUserMyTree) {
   return (
     <div>
-      <p>{loggedinUserMyTree}</p>
       {trees &&
         trees.map((tree, idx) => <ShowTreeData loggedinUserData={loggedinUserMyTree} key={idx} tree={tree} />)}
     </div>
