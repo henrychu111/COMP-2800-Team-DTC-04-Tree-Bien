@@ -37,19 +37,15 @@
     justify-content: center;
 }
 
-.button-rows button {
-    width: 130%;
+.button-rows a {
+    width: 90%;
     border-radius: 3px;
     background-color: rgb(238,238,238);
     border: 1px solid black;
 }
 
-.button-rows button a {
+.button-rows a button {
     text-decoration: none;
-    color: black;  
-    display: inline-block;     
-    position: relative;    
-    z-index: 1;     
-    padding: 1.2em 7em;     
-    margin: -3em; 
+    color: black;
+    background-color: rgb(238,238,238);
 }

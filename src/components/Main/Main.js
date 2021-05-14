@@ -32,20 +32,20 @@ const Main = () => {
                     <div className="daily-tip-jumbotron">
                         <DailyTips />
                     </div>
-                    <div className="function-buttons">
-                        <div className="main-map-button">
+                    <Container className="button-container">
+                        <Row className="justify-content-center button-rows">
                             <Link to="/map"><button>Map</button></Link>
-                        </div>
-                        <div className="main-mytree-button">
+                        </Row>
+                        <Row className="justify-content-center button-rows">
                             <Link to="/mytree"><button>My Tree</button></Link>
-                        </div>
-                        <div className="main-directory-button">
+                        </Row>
+                        <Row className="justify-content-center button-rows">
                             <Link to="/directory"><button>Directory</button></Link>
-                        </div>
-                        <div className="main-aboutus-button">
+                        </Row>
+                        <Row className="justify-content-center button-rows">
                             <Link to="/aboutus"><button>About Us</button></Link>
-                        </div>
-                    </div>
+                        </Row>
+                    </Container>
                 </Container>
             ) : null}
         </div>
