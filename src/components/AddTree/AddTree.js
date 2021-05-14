@@ -25,7 +25,7 @@ class AddTreeButton extends React.Component {
           Add a tree
         </button>
         {this.state.showPopup ? (
-          <TreeForm
+          <TreeForm loggedinUserTreeForm = {this.props.loggedinUserAddTree}
             // text='close'
             closePopup={this.togglePopup.bind(this)}
           />

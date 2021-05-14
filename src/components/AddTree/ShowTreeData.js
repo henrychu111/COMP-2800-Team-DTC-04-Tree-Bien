@@ -51,7 +51,7 @@ class ShowTreeData extends React.Component {
           ></img>
         </div>
         <div id="tree-page-photo-album">
-          Tree Photo Album Under Construction
+          Tree Album under construction...
         </div>
         <div className="display-item-details">
           <ListGroup>
@@ -105,13 +105,13 @@ class ShowTreeData extends React.Component {
             <ListGroup.Item
               className="info-item"
               onClick={this.makeTogglePopup.bind(this)(
-                "specie",
-                this.props.tree.specie
+                "species",
+                this.props.tree.species
               )}
               variant="danger"
             >
-              Specie:
-              <b> {this.props.tree.specie}</b>
+              Species:
+              <b> {this.props.tree.species}</b>
             </ListGroup.Item>
             <ListGroup.Item
               className="info-item"
@@ -128,6 +128,7 @@ class ShowTreeData extends React.Component {
 
           {this.state.showPopup ? (
             <UpdateTreeData
+              loggedinUserUpdate = {this.props.loggedinUserData}
               closePopup={this.togglePopup.bind(this)}
               dictKey={this.state.dictKey}
               value={this.state.value}

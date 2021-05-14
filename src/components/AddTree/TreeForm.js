@@ -2,26 +2,28 @@ import React, { useState } from "react";
 import fire from "../../firebase";
 import "../../css/TreeForm.css";
 
-const TreeForm = (props) => {
+const TreeForm = ( props) => {
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
   const [height, setHeight] = useState("");
   const [birthday, setBirthday] = useState("");
-  const [specie, setSpecie] = useState("");
+  const [species, setSpecies] = useState("");
   const [personality, setPersonality] = useState("");
   const db = fire.firestore();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    db.collection("add-new-tree")
+    db.collection("users")
+    .doc(props.loggedinUserTreeForm)
+    .collection("add-new-tree")
       .doc("New-Tree")
       .set({
         name: name,
         gender: gender,
         height: height,
         birthday: birthday,
-        specie: specie,
+        species: species,
         personality: personality,
       })
       .then(() => {
@@ -35,7 +37,7 @@ const TreeForm = (props) => {
     setGender("");
     setHeight("");
     setBirthday("");
-    setSpecie("");
+    setSpecies("");
     setPersonality("");
     props.closePopup();
   };
@@ -90,11 +92,11 @@ const TreeForm = (props) => {
           <br></br>
           <input
             type="text"
-            placeholder="Specie"
+            placeholder="Species"
             className="form_input"
-            value={specie.charAt(0).toUpperCase() + specie.slice(1)}
+            value={species.charAt(0).toUpperCase() + species.slice(1)}
             required
-            onChange={(input) => setSpecie(input.target.value)}
+            onChange={(input) => setSpecies(input.target.value)}
           />
           <br></br>
           <input
@@ -106,7 +108,7 @@ const TreeForm = (props) => {
             onChange={(input) => setPersonality(input.target.value)}
           />
           <br></br>
-          <button type="submit" class="form_submit_button">
+          <button type="submit" className="form_submit_button">
             Set Up Tree!
           </button>
         </form>
