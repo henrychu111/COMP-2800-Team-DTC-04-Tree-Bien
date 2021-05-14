@@ -1,8 +1,7 @@
 import React from "react";
 import "../../css/ShowTreeData.css";
-import treeImage from "../../images/tree-shadow.png";
-// import { render } from "@testing-library/react";
-import UpdateTreeData from "../UpdateTree/UpdateTreeData"; //Fix during integration
+import treeImage from "../../images/green_tree.png";
+import UpdateTreeData from "../UpdateTree/UpdateTreeData";
 import ListGroup from "react-bootstrap/ListGroup";
 
 //https://www.carlrippon.com/formatting-dates-and-numbers-in-react/
@@ -51,7 +50,9 @@ class ShowTreeData extends React.Component {
             id="tree-page-tree-image"
           ></img>
         </div>
-        <div id="tree-page-photo-album">Add Tree Image</div>
+        <div id="tree-page-photo-album">
+          Tree Photo Album Under Construction
+        </div>
         <div className="display-item-details">
           <ListGroup>
             <ListGroup.Item

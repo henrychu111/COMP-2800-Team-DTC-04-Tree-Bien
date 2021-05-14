@@ -3,7 +3,6 @@ import fire from "../../firebase";
 import "../../css/TreeForm.css";
 
 const TreeForm = (props) => {
-  // console.log(props);
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
   const [height, setHeight] = useState("");
@@ -16,17 +15,17 @@ const TreeForm = (props) => {
     e.preventDefault();
 
     db.collection("add-new-tree")
-      .doc("New-Tree") //added new document named New-Tree
+      .doc("New-Tree")
       .set({
         name: name,
         gender: gender,
-        height: height + "cm",
+        height: height,
         birthday: birthday,
         specie: specie,
         personality: personality,
       })
       .then(() => {
-        alert("Form submitted");
+        console.log("Form submitted");
       })
       .catch((error) => {
         alert(error.message);
@@ -44,17 +43,17 @@ const TreeForm = (props) => {
   return (
     <div className="popup">
       <div className="popup_inner">
-        <button className="form-close-button" onClick={props.closePopup}>
-          x
-        </button>
-
         <form className="add_tree_form" onSubmit={handleSubmit}>
+          <button className="form-close-button" onClick={props.closePopup}>
+            x
+          </button>
           <h3 className="form-title">Add New Tree Info</h3>
           <input
             type="text"
             placeholder="Name"
             className="form_input"
-            value={name}
+            value={name.charAt(0).toUpperCase() + name.slice(1)}
+            required
             onChange={(input) => setName(input.target.value)}
           />
           <br></br>
@@ -62,7 +61,8 @@ const TreeForm = (props) => {
             type="text"
             placeholder="Gender"
             className="form_input"
-            value={gender}
+            value={gender.charAt(0).toUpperCase() + gender.slice(1)}
+            required
             onChange={(input) => setGender(input.target.value)}
           />
           <br></br>
@@ -71,16 +71,20 @@ const TreeForm = (props) => {
             placeholder="Height (cm)"
             className="form_input"
             value={height}
+            required
             onChange={(input) => setHeight(input.target.value)}
           />
           <br></br>
           <label id="bday-label">Birthday</label>
+          <br></br>
+
           <input
             type="date"
             placeholder="Birthday"
             className="form_input"
             id="b-day"
             value={birthday}
+            required
             onChange={(input) => setBirthday(input.target.value)}
           />
           <br></br>
@@ -88,7 +92,8 @@ const TreeForm = (props) => {
             type="text"
             placeholder="Specie"
             className="form_input"
-            value={specie}
+            value={specie.charAt(0).toUpperCase() + specie.slice(1)}
+            required
             onChange={(input) => setSpecie(input.target.value)}
           />
           <br></br>
@@ -96,7 +101,8 @@ const TreeForm = (props) => {
             type="text"
             placeholder="Personality"
             className="form_input"
-            value={personality}
+            value={personality.charAt(0).toUpperCase() + personality.slice(1)}
+            required
             onChange={(input) => setPersonality(input.target.value)}
           />
           <br></br>
