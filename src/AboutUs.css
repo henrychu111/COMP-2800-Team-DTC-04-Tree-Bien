@@ -6,6 +6,11 @@
     width: 75%;
     margin: 12%;
 }
+.about-us-jumbo {
+    border: none;
+    margin-bottom: 10%;
+    margin-top: 0px;
+}
 
 .about-us-culture h1 {
     width: 75%;

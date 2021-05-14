@@ -13,45 +13,43 @@
 .jumbotron {
     background-color: rgb(238,238,238);
     padding: 20px 0px;
-    margin-top: 20px;
+    margin-top: 10%;
     border-radius: 3px;
     border: 1px solid black;
 }
 
-.function-buttons {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    gap: 30px 0px;
-    grid-template-areas:
-        "map"
-        "mytree"
-        "directory"
-        "aboutus";
+.bottom-nav-bar {
+    background-color: rgb(238,238,238);
 }
 
-.main-map-button { grid-area: map; }
+.button-container {
+    margin-top: 15%;
+    display: inline-flex;
+    flex-direction: column;
+}
 
-.main-mytree-button { grid-area: mytree; }
+.button-container > .button-rows {
+    margin: 5%;
+}
 
-.main-directory-button { grid-area: directory; }
+.function-buttons {
+    display: flex;
+    justify-content: center;
+}
 
-.main-aboutus-button { grid-area: aboutus; }
-
-.function-buttons div button {
-    width: 250px;
-    height: 40px;
+.button-rows button {
+    width: 130%;
     border-radius: 3px;
     background-color: rgb(238,238,238);
-    border: none;
+    border: 1px solid black;
 }
 
-.function-buttons div button a {
+.button-rows button a {
     text-decoration: none;
-    color: black;
+    color: black;  
+    display: inline-block;     
+    position: relative;    
+    z-index: 1;     
+    padding: 1.2em 7em;     
+    margin: -3em; 
 }

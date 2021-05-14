@@ -113,34 +113,6 @@ button {
   padding-bottom: 30px;
 }
 
-.main, .mytree, .buytree {
-  width: 100%;
-  min-height: 100vh;
-  background: rgb(169,132,103);
-}
-
-.navbar nav {
-  background: rgb(108,88,76);
-  width: 100%;
-  padding: 20px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.navbar nav h1 {
-  color: rgb(240,234,210);
-  font-size: 30px;
-}
-
-.navbar nav button {
-  width: 86px;
-  padding: 8px 0;
-  background: rgb(240,234,210);
-  color: rgb(108,88,76);
-  border-radius: 3px;
-}
-
 .add-padding-bottom {
   padding-bottom: 65px;
 }

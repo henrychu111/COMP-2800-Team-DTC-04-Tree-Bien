@@ -27,7 +27,7 @@ const BottomNav = ({logout}) => {
     )
 
     return (
-            <Navbar expand="lg" variant="light" bg="light" fixed="bottom" >
+            <Navbar expand="lg" variant="light" className="bottom-nav-bar" fixed="bottom" >
                 <Link to="/map" className="bottomNavIcons">
                     <Image src={Mapimage} className="bottomNavImage" />
                 </Link>

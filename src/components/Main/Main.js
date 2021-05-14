@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Redirect, Link, Switch, Route } from "react-ro
 import DailyTips from './DailyTips';
 import fire from '../../firebase';
 import '../css/Main.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 
 
@@ -24,7 +28,7 @@ const Main = () => {
     return (
         <div>
             {authenticated ? (
-                <div className="container">
+                <Container className="container">
                     <div className="daily-tip-jumbotron">
                         <DailyTips />
                     </div>
@@ -42,7 +46,7 @@ const Main = () => {
                             <Link to="/aboutus"><button>About Us</button></Link>
                         </div>
                     </div>
-                </div>
+                </Container>
             ) : null}
         </div>
       );
