@@ -53,7 +53,7 @@ function Map() {
         defaultCenter={{ lat: location.latitude, lng: location.longitude}}
       >
         {plantShops && plantShops.map((shop) => {
-          return <Popover lat={shop.latitude} lng={shop.longitude} key={shop.id}
+          return <Popover trigger = "click" lat={shop.latitude} lng={shop.longitude} key={shop.id}
             content={<div>{shop.address + ", " + shop.city} <br/>
               {shop.province + ", " + shop.country + ", " + shop.postalcode}<br/>
               <b> Specialty Trees: </b> {shop.specialties}
@@ -64,7 +64,7 @@ function Map() {
           </Popover>
         })}
         {plantingSites && plantingSites.map((site) => {
-          return <Popover lat={site.latitude} lng={site.longitude} key={site.id}
+          return <Popover trigger = "click" lat={site.latitude} lng={site.longitude} key={site.id}
             content={<div>{site.address + ", " + site.city}<br/>
               {site.province + ", " + site.country + ", " + site.postalcode}<br/>
               <b> Best Trees To Plant:</b> {site.suggestedplants}
