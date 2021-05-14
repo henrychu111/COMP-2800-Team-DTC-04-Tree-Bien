@@ -273,12 +273,14 @@ class TreeDirectory extends React.Component {
       dataSource,
       isLoading: true,
       height: (document.documentElement.clientHeight * 3) / 4,
-      feet_query: this.props.location.state
-        ? this.props.location.state.feet
-        : "",
-      color_query: this.props.location.state
-        ? this.props.location.state.color
-        : "",
+      // feet_query: this.props.location.state
+      //   ? this.props.location.state.feet
+      //   : "",
+      // color_query: this.props.location.state
+      //   ? this.props.location.state.color
+      //   : "",
+      feet_query:"",
+      color_query:"",
       keyword_query: "",
     };
   }
