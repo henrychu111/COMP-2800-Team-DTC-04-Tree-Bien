@@ -45,14 +45,10 @@ class SearchView extends React.Component{
         return (
            <div>
                <NavBar
-                //    icon={
-                //        <Link to="/">
-                //             <Icon key="1" type="left"/>
-                //        </Link>
-                //    }
                    mode="light"
                    rightContent={[
-                       <Link to="/search">
+                    //    <Link to="/search">
+                    <Link to="/directory">
                            <Icon key="1" type="ellipsis"/>
                        </Link>
                    ]}
