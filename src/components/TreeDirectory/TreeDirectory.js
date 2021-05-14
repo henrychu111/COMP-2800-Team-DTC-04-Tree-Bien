@@ -37,10 +37,6 @@ import pic_17 from "../TreeDirectory/images/p-17.jpg";
 import pic_18 from "../TreeDirectory/images/p-18.jpg";
 import pic_19 from "../TreeDirectory/images/p-19.jpg";
 
-// const treedata = { firebase.db.collection("Tree-directory")
-
-// }
-
 const data = [
   {
     id: 1,
@@ -268,19 +264,19 @@ class TreeDirectory extends React.Component {
     const dataSource = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2,
     });
-
+console.log(this.props.location)
     this.state = {
       dataSource,
       isLoading: true,
       height: (document.documentElement.clientHeight * 3) / 4,
-      // feet_query: this.props.location.state
-      //   ? this.props.location.state.feet
-      //   : "",
-      // color_query: this.props.location.state
-      //   ? this.props.location.state.color
-      //   : "",
-      feet_query:"",
-      color_query:"",
+      feet_query: this.props.location.state
+        ? this.props.location.state.feet
+        : "",
+      color_query: this.props.location.state
+        ? this.props.location.state.color
+        : "",
+      // feet_query:"",
+      // color_query:"",
       keyword_query: "",
     };
   }
@@ -398,6 +394,9 @@ class TreeDirectory extends React.Component {
         </div>
       );
     };
+    const loadingDiv = (<div style={{ padding: 30, textAlign: "center" }}>
+    Loading...
+    </div>)
 
     return (
       <ListView
@@ -406,12 +405,9 @@ class TreeDirectory extends React.Component {
         renderHeader={() => (
           <div>
             <NavBar
-              // icon={
-              //     <Icon key="0" type="left" />
-              // }
               mode="light"
               rightContent={[
-                <Link to="/search">
+                <Link to="/directory/search">
                   <Icon key="1" type="ellipsis" />
                 </Link>,
               ]}
@@ -426,10 +422,13 @@ class TreeDirectory extends React.Component {
             <WhiteSpace />
           </div>
         )}
+        // renderFooter={() => (
+        //   <div style={{ padding: 30, textAlign: "center" }}>
+        //     {this.state.isLoading ? "Loading..." : "Loaded"}
+        //   </div>
+        // )}
         renderFooter={() => (
-          <div style={{ padding: 30, textAlign: "center" }}>
-            {this.state.isLoading ? "Loading..." : "Loaded"}
-          </div>
+          this.state.isLoading?loadingDiv:null
         )}
         renderRow={row}
         renderSeparator={separator}
@@ -448,3 +447,4 @@ class TreeDirectory extends React.Component {
   }
 }
 export default TreeDirectory;
+

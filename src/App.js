@@ -45,7 +45,7 @@ function App() {
           <Route path="/" exact component={() => <Main />} />
           <Route path="/mytree" exact component={() => <MyTree />} />
           <Route path="/map" exact component={() => <Map />} />
-          <Route path="/directory" exact component={() => <TreeDirectory />} />
+          <Route path="/directory" exact component={TreeDirectory} />
           <Route path="/directory/search" component={SearchView}></Route>
           <Route path="/aboutus" exact component={() => <AboutUs />} />
         </Switch>
