@@ -148,6 +148,7 @@ button {
 .function-buttons button {
   color: black;
   font-weight: bold;
+  padding: 2px;
 }
 
 .function-buttons button:hover, button:active {
