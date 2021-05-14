@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Redirect, Link, Switch, Route } from "react-ro
 import DailyTips from './DailyTips';
 import fire from '../../firebase';
 import '../css/Main.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 
 
@@ -24,25 +28,25 @@ const Main = () => {
     return (
         <div>
             {authenticated ? (
-                <div className="container">
+                <Container className="container">
                     <div className="daily-tip-jumbotron">
                         <DailyTips />
                     </div>
-                    <div className="function-buttons">
-                        <div className="main-map-button">
+                    <Container className="button-container">
+                        <Row className="justify-content-center button-rows">
                             <button><Link to="/map">Map</Link></button>
-                        </div>
-                        <div className="main-mytree-button">
+                        </Row>
+                        <Row className="justify-content-center button-rows">
                             <button><Link to="/mytree">My Tree</Link></button>
-                        </div>
-                        <div className="main-directory-button">
+                        </Row>
+                        <Row className="justify-content-center button-rows">
                             <button><Link to="/directory">Directory</Link></button>
-                        </div>
-                        <div className="main-aboutus-button">
+                        </Row>
+                        <Row className="justify-content-center button-rows">
                             <button><Link to="/aboutus">About Us</Link></button>
-                        </div>
-                    </div>
-                </div>
+                        </Row>
+                    </Container>
+                </Container>
             ) : null}
         </div>
       );
