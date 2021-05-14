@@ -39,8 +39,9 @@ const UpdateTree = (props) => {
 
     const updateDoc = {};
     updateDoc[props.dictKey] = field;
-
-    db.collection("add-new-tree")
+    db.collection("users")
+    .doc(props.loggedinUserUpdate)
+    .collection("add-new-tree")
       .doc("New-Tree")
       .update(updateDoc)
       .then(() => {
