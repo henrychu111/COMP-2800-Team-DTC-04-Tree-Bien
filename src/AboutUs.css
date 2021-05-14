@@ -1,0 +1,43 @@
+#about-us-div {
+    text-align: center;
+}
+
+.about-us-culture {
+    width: 75%;
+    margin: 12%;
+}
+.about-us-jumbo {
+    border: none;
+    margin-bottom: 10%;
+    margin-top: 0px;
+}
+
+.about-us-culture h1 {
+    width: 75%;
+    margin: 12%;
+}
+
+#about-us-description p {
+    font-size: .9em;
+    margin: 0;
+}
+
+.people-picture {
+    margin-bottom: 30px;
+}
+
+.people-picture img {
+    border-radius: 50%;
+    width: 50%;
+}
+
+.founders-name {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 10px 0px 0px 0px;
+}
+
+.founders-title {
+    font-style: italic;
+    margin: 0;
+}

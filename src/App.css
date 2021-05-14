@@ -1,0 +1,129 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 15px 0;
+  color: rgb(108,88,76);
+  font-size: 16px;
+  letter-spacing: 1px;
+  background: rgb(240,234,210);
+  cursor: pointer;
+}
+
+.login {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 20px;
+  background: #e9e9e9;
+  display: flex;
+}
+
+.login .loginContainer {
+  padding: 25px 60px;
+  margin: auto;
+  width: 100%;
+  max-width: 520px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: radial-gradient(
+    ellipse at top left,
+    rgba(169, 132, 103, 1) 0%,
+    rgba(124, 107, 92, 0.9) 75%,
+    rgba(108, 88, 76, 0.9) 100%
+  );
+  box-shadow: 0 50px 70px -20px rgba(83, 65, 54, 0.8);
+  border-radius: 20px;
+}
+
+.login .loginContainer label {
+  color: rgb(240,234,210);
+  margin: 14px 0;
+  display: block;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.login .loginContainer input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 19px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgb(240,234,210);
+  letter-spacing: 1px;
+  border-radius: 3px;
+}
+
+.login .loginContainer .btnContainer {
+  width: 100%;
+  padding: 24px 0;
+}
+
+.btnContainer button {
+  font-weight: bold;
+}
+
+.login .loginContainer .btnContainer p {
+  margin: 14px 0 0 0;
+  text-align: right;
+  color: rgb(240,234,210);
+  font-size: 12px;
+}
+
+.login-link {
+  color: rgb(206, 229, 184);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: all 400ms ease-in-out;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  color: rgb(173,193,120);
+}
+
+.login .loginContainer .btnContainer button {
+  border-radius: 3px;
+}
+
+.login .loginContainer .btnContainer button:hover {
+  background: rgb(202,196,172);
+}
+
+.login .loginContainer .errorMsg {
+  color: rgb(240,234,210);
+  font-size: 16px;
+}
+
+.login .loginContainer .loginTitleContainer {
+  text-align: center;
+  color: rgb(240,234,210);
+  font-size: 30px;
+  padding-bottom: 30px;
+}
+
+.add-padding-bottom {
+  padding-bottom: 65px;
+}
+
+.function-buttons button {
+  color: black;
+  font-weight: bold;
+  padding: 2px;
+}
+
+.function-buttons button:hover, button:active {
+  color: white;
+  background-color: rgb(33, 37, 41);
+}
