@@ -17,16 +17,12 @@ import { BrowserRouter as Router, Redirect, Link, Switch, Route } from "react-ro
 
 
 
-const BottomNav = () => {
-
-    const testpopover = () => {
-        console.log("button clicked");
-    }
+const BottomNav = ({logout}) => {
 
     // Add onclick logout to button after merge
     const settingPopover = (
         <Popover id="popover-basic">
-            <Button variant="outline-dark" onClick={testpopover}>Logout</Button> 
+            <Button variant="outline-dark" style={{fontWeight: "bold"}} onClick={logout}>Logout</Button> 
         </Popover>
     )
 

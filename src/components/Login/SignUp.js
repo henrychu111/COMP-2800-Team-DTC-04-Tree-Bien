@@ -24,7 +24,8 @@ const SignUp = (props) => {
     setPasswordError('');
     };
 
-    const handleSignUp = () => {
+    const handleSignUp = (e) => {
+        e.preventDefault()
         clearErrors();
         // clearInputs();
         fire
@@ -78,7 +79,7 @@ const SignUp = (props) => {
 
     return ( 
         <section className="login">
-            <div className="loginContainer">
+            <form className="loginContainer">
                 <div className="loginTitleContainer">
                     <h1>Sign Up</h1>
                 </div>
@@ -118,11 +119,11 @@ const SignUp = (props) => {
                 </p>
 
                 <div className="btnContainer">
-                    <button onClick={handleSignUp}>Sign Up</button>
+                    <button type="submit" onClick={(e) => handleSignUp(e)}>Sign Up</button>
                     <p>Have an account? <Link className="login-link" to="/login">Sign in</Link>
                     </p>
                 </div>
-            </div>
+            </form>
         </section>
 )
 };

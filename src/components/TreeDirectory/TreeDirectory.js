@@ -419,7 +419,7 @@ class TreeDirectory extends React.Component {
             <SearchBar
               placeholder="Which tree are you looking for"
               maxLength={50}
-              cancelText="cancel"
+              cancelText="Cancel"
               onSubmit={this.submitSearch}
               onChange={this.onChange}
             />

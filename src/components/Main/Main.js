@@ -30,16 +30,16 @@ const Main = () => {
                     </div>
                     <div className="function-buttons">
                         <div className="main-map-button">
-                            <button><Link to="/map">Map</Link></button>
+                            <Link to="/map"><button>Map</button></Link>
                         </div>
                         <div className="main-mytree-button">
-                            <button><Link to="/mytree">My Tree</Link></button>
+                            <Link to="/mytree"><button>My Tree</button></Link>
                         </div>
                         <div className="main-directory-button">
-                            <button><Link to="/directory">Directory</Link></button>
+                            <Link to="/directory"><button>Directory</button></Link>
                         </div>
                         <div className="main-aboutus-button">
-                            <button><Link to="/aboutus">About Us</Link></button>
+                            <Link to="/aboutus"><button>About Us</button></Link>
                         </div>
                     </div>
                 </div>

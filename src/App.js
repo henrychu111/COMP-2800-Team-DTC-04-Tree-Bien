@@ -4,7 +4,7 @@ import Login from "./components/Login/Login";
 import SignUp from "./components/Login/SignUp";
 import Main from "./components/Main/Main";
 import fire from "./firebase";
-import { Route, Switch, Redirect, useHistory } from "react-router-dom";
+import { Route, Switch, Redirect, useHistory, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Map from "./components/Map/Map";
 import MyTree from "./components/AddTree/myTreePage"; //Go to componenets/AddTree/myTreePage
@@ -16,6 +16,7 @@ import AboutUs from '../src/AboutUs';
 function App() {
   const [user, setUser] = useState("");
   const history = useHistory();
+  const location = useLocation();
 
   const handleLogout = () => {
     fire.auth().signOut();
@@ -24,15 +25,16 @@ function App() {
 
   useEffect(() => {
     fire.auth().onAuthStateChanged((loggedin) => {
-      console.log(loggedin, user);
       if (loggedin === null) {
-        console.log("hi");
-        history.push("/login");
-      } else if (loggedin.email === user) {
-        history.push("/");
+          history.push("/login");
       } else {
-        history.push("/login");
-      }
+        if (loggedin.email === user) {
+          if(location.pathname === '/login' || location.pathname === '/signup')
+            history.push("/");
+        } else {
+          setUser(loggedin.email);
+        }
+      } 
     });
   }, [user]);
 
@@ -47,7 +49,7 @@ function App() {
           <Route path="/directory/search" component={SearchView}></Route>
           <Route path="/aboutus" exact component={() => <AboutUs />} />
         </Switch>
-        <BottomNav />
+        <BottomNav logout = {handleLogout} login/>
       </div>
     );
   };

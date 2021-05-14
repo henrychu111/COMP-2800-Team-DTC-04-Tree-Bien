@@ -12,7 +12,7 @@ const Login = (props) => {
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
-    const setUser = props.setUser;
+    const setUser = props.setUser
     
 
     const clearInputs =() => {
@@ -25,7 +25,8 @@ const Login = (props) => {
         setPasswordError('');
       };
 
-    const handleLogin = () => {
+    const handleLogin = (e) => {
+        e.preventDefault()
         clearErrors();
         // clearInputs();
         fire
@@ -35,7 +36,6 @@ const Login = (props) => {
             setUser(userCredentials.user.email);
         })
         .catch((err) => {
-            console.log(err);
             switch(err.code) {
                 case "auth/invalid-email":
                 case "auth/user-disabled":
@@ -51,7 +51,7 @@ const Login = (props) => {
 
     return ( 
         <section className="login">
-            <div className="loginContainer">
+            <form className="loginContainer">
                 <div className="loginTitleContainer">
                     <h1>Sign In</h1>
                 </div>
@@ -77,11 +77,11 @@ const Login = (props) => {
                 </p>
 
                 <div className="btnContainer">
-                    <button onClick={handleLogin}>Sign In</button>
+                    <button type="submit" onClick={(e)=>handleLogin(e)}>Sign In</button>
                     <p>Don't have an account? <Link className="login-link" to="/signup">Sign Up</Link>
                     </p>
                 </div>
-            </div>
+            </form>
         </section>
 )
 };
