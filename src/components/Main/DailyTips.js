@@ -1,31 +1,42 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 import '../css/Main.css'
+import fire from "../../firebase";
+
 
 
 const DailyTips = () => {
 
-    // firebase codes here for getting daily tips
+    const [dailyTips, setDailyTips] = useState([]);
+    const [randomTip, setRandomTip] = useState('');
+    const db = fire.firestore();
 
-    // access the database
-    // get the random document from collection
-    // assign this to a useState
-    // const [dailytip, setdailytip] = useState('');
+    useEffect(() => {
+        db.collection("tips")
+        .where("random", "==", 1)
+        .get()
+        .then(querySnapshot => {
+            const data = querySnapshot.docs.map(doc => doc.data());
+            setDailyTips(data);
+        })
+    }, [])
 
-    // const getdailytip =() => {
-    //     access the database
-    //     get the random document
-    //     setdailytip = the document string
-    // }
+    useEffect(() => {
+        if (!dailyTips || dailyTips.length === 0) return;
+        const chosenNumber = Math.floor(Math.random() * (dailyTips.length - 1));
+        console.log(dailyTips);
+        const chosenArray = dailyTips[chosenNumber];
+        const chosenTip = chosenArray["tip"];
+        setRandomTip(chosenTip);
+    }, [dailyTips])
 
     return (
         <Jumbotron fluid className="jumbotron">
             <Container>
-                <h1>Daily Tips</h1>
+                <h1>Daily Tip</h1>
                 <p>
-                    {/* This is where the dailytip will go */}
-                    It's always a great idea to take short showers to save the water!
+                    {randomTip}
                 </p>
             </Container>
         </Jumbotron>
