@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import fire from "../../firebase";
+import firebase from "../../firebase";
 import "../../css/TreeForm.css";
 
 const TreeForm = ( props) => {
@@ -9,7 +9,7 @@ const TreeForm = ( props) => {
   const [birthday, setBirthday] = useState("");
   const [species, setSpecies] = useState("");
   const [personality, setPersonality] = useState("");
-  const db = fire.firestore();
+  const db = firebase.firestore();
 
   const handleSubmit = (e) => {
     e.preventDefault();
