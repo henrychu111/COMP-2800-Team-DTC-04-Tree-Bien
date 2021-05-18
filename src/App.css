@@ -124,6 +124,10 @@ button {
   padding-bottom: 30px;
 }
 
+.login .loginContainer .loginTitleContainer h1 {
+  color: rgb(240,234,210);
+}
+
 .add-padding-bottom {
   padding-bottom: 65px;
 }
