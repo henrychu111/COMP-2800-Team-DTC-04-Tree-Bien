@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
-import '../css/Main.css'
+import '../../css/Main.css';
 import firebase from "../../firebase";
 
 
