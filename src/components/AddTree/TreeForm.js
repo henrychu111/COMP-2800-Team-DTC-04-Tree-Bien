@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import fire from "../../firebase";
 import "../../css/TreeForm.css";
 
-const TreeForm = ( props) => {
+const TreeForm = (props) => {
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
   const [height, setHeight] = useState("");
@@ -15,8 +15,8 @@ const TreeForm = ( props) => {
     e.preventDefault();
 
     db.collection("users")
-    .doc(props.loggedinUserTreeForm)
-    .collection("add-new-tree")
+      .doc(props.loggedinUserTreeForm)
+      .collection("add-new-tree")
       .doc("New-Tree")
       .set({
         name: name,
@@ -77,8 +77,6 @@ const TreeForm = ( props) => {
             onChange={(input) => setHeight(input.target.value)}
           />
           <br></br>
-          <label id="bday-label">Birthday</label>
-          <br></br>
 
           <input
             type="date"
@@ -89,6 +87,7 @@ const TreeForm = ( props) => {
             required
             onChange={(input) => setBirthday(input.target.value)}
           />
+
           <br></br>
           <input
             type="text"
