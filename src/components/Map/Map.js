@@ -10,7 +10,7 @@ function Map() {
   const [plantingSites, setPlantingSites] = useState([]);
   const [plantShops, setPlantShops] = useState([]);
   const [location, setLocation] = useState({latitude: 49.263569, longitude: -123.138573})
-  const [curLocation, setCurLocation] = useState({})
+  const [curLocation, setCurLocation] = useState(null)
   const db = fire.firestore();
 
   useEffect(() => {
