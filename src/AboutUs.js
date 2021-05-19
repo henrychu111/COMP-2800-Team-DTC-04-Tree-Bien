@@ -8,6 +8,7 @@ import Chris from "./images/AvatarMaker_Chris.png";
 import Patrick from "./images/AvatarMaker_Patrick.png";
 import Shachi from "./images/AvatarMaker_Shachi.png";
 import Hoda from "./images/AvatarMaker_Hoda.png";
+import { useDoubleTap } from 'use-double-tap';
 
 import "./AboutUs.css";
 
@@ -20,9 +21,21 @@ const AboutUsPage = () => {
   const [aprilphoto, setApril] = useState(true);
 
 
-  const changeInfo = (person) => {
+  const doubleTapHenry = useDoubleTap((event) => {
+    setHenry(!henryphoto)
+  });
 
-  }
+  const doubleTapPaul = useDoubleTap((event) => {
+    setPaul(!paulphoto)
+  });
+
+  const doubleTapApril = useDoubleTap((event) => {
+    setApril(!aprilphoto)
+  });
+
+  const doubleTapHannah = useDoubleTap((event) => {
+    setHannah(!hannahphoto)
+  });
 
   return (
     <div id="about-us-div">
@@ -50,7 +63,7 @@ const AboutUsPage = () => {
         <div className="people-picture" id="paul-info">
           <img 
           src={paulphoto ? Paul : Chris} 
-          onClick={() => setPaul(!paulphoto)}
+          {...doubleTapPaul}
           />
           <p className="founders-name">{paulphoto ? ("Paul Yeon") : ("Chris Thompson")}</p>
           <p className="founders-title">{paulphoto ? ("Product Manager") : ("DTC Project Lead Instructor")}</p>
@@ -58,15 +71,15 @@ const AboutUsPage = () => {
         <div className="people-picture" id="hannah-info">
           <img
           src={hannahphoto ? Hannah : Patrick} 
-          onClick={() => setHannah(!hannahphoto)} 
+          {...doubleTapHannah}
           />
           <p className="founders-name">{hannahphoto ? ("Hannah Kim") : ("Patrick Guichon")}</p>
           <p className="founders-title">{hannahphoto ? ("UX/UI Designer") : ("Project Team Supervisor")}</p>
         </div>
         <div className="people-picture" id="henry-info">
-          <img 
+          <img style={{cursor:'pointer'}}
           src={henryphoto ? Henry : Shachi} 
-          onClick={() => setHenry(!henryphoto)}
+          {...doubleTapHenry}
           />
           <p className="founders-name">{henryphoto ? ("Henry Chu") : ("Shachi Singh")}</p>
           <p className="founders-title">{henryphoto ? ("Lead Developer") : ("Project Team Supervisor")}</p>
@@ -74,7 +87,7 @@ const AboutUsPage = () => {
         <div className="people-picture" id="april-info">
           <img
           src={aprilphoto ? April : Hoda}
-          onClick={() => setApril(!aprilphoto)}
+          {...doubleTapApril}
           />
           <p className="founders-name">{aprilphoto ? ("April Cheng") : ("Hoda Rashedi")}</p>
           <p className="founders-title" id="april-title">{aprilphoto ? ("Developer") : ("Project Team Supervisor")}</p>
