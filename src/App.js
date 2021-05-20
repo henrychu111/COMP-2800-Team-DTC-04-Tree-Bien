@@ -24,6 +24,18 @@ function App() {
   };
 
   useEffect(() => {
+    const messaging = fire.messaging()
+    messaging.getToken().then(() => {
+      return messaging.getToken()
+    }).then( token => {
+      console.log(token);
+    }).catch(() => {
+      console.log('error');
+    })
+    
+  }, [])
+
+  useEffect(() => {
     fire.auth().onAuthStateChanged((loggedin) => {
       if (loggedin === null) {
           history.push("/login");
