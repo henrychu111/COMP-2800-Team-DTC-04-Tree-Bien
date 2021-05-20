@@ -1,0 +1,22 @@
+#tree-photos {
+  margin-left: 6%;
+  margin-right: 6%;
+  margin-bottom: 5%;
+}
+
+.ant-upload-list-picture-card-container {
+  width: 150px;
+  height: 150px;
+  margin: 2%;
+}
+
+.ant-upload.ant-upload-select-picture-card {
+  width: 150px;
+  height: 150px;
+  margin: 2%;
+}
+
+.ant-btn-primary {
+  visibility: hidden;
+}
+

@@ -3,6 +3,7 @@ import "../../css/ShowTreeData.css";
 import treeImage from "../../images/green_tree.png";
 import UpdateTreeData from "../UpdateTree/UpdateTreeData";
 import ListGroup from "react-bootstrap/ListGroup";
+import { Link } from "react-router-dom";
 
 //https://www.carlrippon.com/formatting-dates-and-numbers-in-react/
 function formatDate(change_date) {
@@ -51,7 +52,7 @@ class ShowTreeData extends React.Component {
           ></img>
         </div>
         <div id="tree-page-photo-album">
-          Tree Album under construction...
+          <Link to='/mytree/imageLogs'>Tree Album</Link>
         </div>
         <div className="display-item-details">
           <ListGroup>
