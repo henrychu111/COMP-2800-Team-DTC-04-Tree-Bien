@@ -10,6 +10,13 @@
     border: none;
     margin-bottom: 10%;
     margin-top: 0px;
+    width: 90%;
+}
+
+.jumbo-div {
+    margin-top: 7%;
+    display: flex;
+    justify-content: center;
 }
 
 .about-us-culture h1 {
@@ -40,4 +47,14 @@
 .founders-title {
     font-style: italic;
     margin: 0;
+}
+
+#founder-photo-container {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid rgb(235,235,238);
+    border-radius: 5px;
+    padding-top: 20px;
 }
