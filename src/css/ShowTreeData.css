@@ -31,6 +31,16 @@ body {
   height: 100px;
 }
 
+#tree-page-tree-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25%;
+  margin-bottom: 5%;
+  width: 100px;
+  height: 100px;
+}
+
 #tree-page-photo-album {
   margin-left: auto;
   margin-right: auto;
@@ -40,6 +50,7 @@ body {
   border: none;
   border-radius: 6%;
   font-size: 12px;
+  /* background-image: url("https://www.lantra.co.uk/sites/default/files/styles/crop_article_banner/public/2020-03/tree-3822149_1920.jpg?itok=BA7VY9bK"); */
   background-color: transparent;
   color: rgb(97, 97, 97);
   box-shadow: 2px 5px;

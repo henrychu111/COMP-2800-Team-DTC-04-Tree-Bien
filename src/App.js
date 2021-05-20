@@ -12,6 +12,7 @@ import BottomNav from "./components/Main/BottomNav";
 import SearchView from "./components/TreeDirectory/SearchView";
 import TreeDirectory from './components/TreeDirectory/TreeDirectory';
 import AboutUs from '../src/AboutUs';
+import ImageLogs from '../src/components/ImageLog/ImageLog';
 
 function App() {
   const [user, setUser] = useState("");
@@ -60,6 +61,7 @@ function App() {
           <Route path="/directory" exact component={TreeDirectory} />
           <Route path="/directory/search" component={SearchView}></Route>
           <Route path="/aboutus" exact component={() => <AboutUs />} />
+          <Route path="/mytree/imageLogs" exact component={() => <ImageLogs loggedinUserData={user} />} />
         </Switch>
         <BottomNav logout = {handleLogout} login/>
       </div>
