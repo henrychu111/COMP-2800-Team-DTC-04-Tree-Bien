@@ -16,6 +16,7 @@ import Popover from 'react-bootstrap/Popover';
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import '../../css/Main.css';
+import { Divider } from 'antd';
 
 
 import { BrowserRouter as Router, Redirect, Link, Switch, Route } from "react-router-dom";
@@ -60,24 +61,28 @@ const BottomNav = ({logout}) => {
                 : <Image src={MapimageSelected} className="bottomNavImage" />
                 }
                 </Link>
+                <Divider type="vertical" />
                 <Link to="/mytree" className="bottomNavIcons">
                     {bottomNavOn === "bottom-nav-my-tree" ?
                     <Image src={Treeimage} className="bottomNavImage" />
                 : <Image src={TreeimageSelected} className="bottomNavImage" />
                 }
                 </Link>
+                <Divider type="vertical" />
                 <Link to="/" className="bottomNavIcons">
                     {bottomNavOn === "bottom-nav-home" ?
                     <Image src={Homeimage} className="bottomNavImage" />
                 : <Image src={HomeimageSelected} className="bottomNavImage" />
                 }
                 </Link>
+                <Divider type="vertical" />
                 <Link to="/directory" className="bottomNavIcons">
                     {bottomNavOn === "bottom-nav-directory" ?
-                    <Image src={Searchimage} className="bottomNavImage" />
-                : <Image src={SearchimageSelected} className="bottomNavImage" />
+                    <Image src={Searchimage} className="bottomNavImage" id="search-item"/>
+                : <Image src={SearchimageSelected} className="bottomNavImage" id="search-item"/>
                 }
                 </Link>
+                <Divider type="vertical" />
                 <div className="bottomNavIcons">
                     <OverlayTrigger trigger="click" placement="top" overlay={settingPopover}>
                         {bottomNavSettings ? 

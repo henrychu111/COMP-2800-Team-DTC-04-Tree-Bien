@@ -65,3 +65,17 @@
 .logout-button {
     background-color: rgb(244,242,236);
 }
+
+.ant-divider {
+    background-color: rgb(225,225,228);
+    margin: 0px;
+}
+
+.ant-divider-vertical {
+    margin: 0px;
+}
+
+#search-item {
+    width: 27px;
+    height: auto;
+}
