@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
-import '../css/Main.css'
-import fire from "../../firebase";
+import '../../css/Main.css';
+import firebase from "../../firebase";
 
 
 
@@ -10,7 +10,7 @@ const DailyTips = () => {
 
     const [dailyTips, setDailyTips] = useState([]);
     const [randomTip, setRandomTip] = useState('');
-    const db = fire.firestore();
+    const db = firebase.firestore();
 
     useEffect(() => {
         db.collection("tips")

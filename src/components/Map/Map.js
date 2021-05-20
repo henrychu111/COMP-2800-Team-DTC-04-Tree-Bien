@@ -3,7 +3,7 @@ import GoogleMapReact from 'google-map-react';
 import { Popover } from 'antd';
 import 'antd/dist/antd.css';
 import { ShopOutlined } from '@ant-design/icons';
-import fire from '../../firebase';
+import firebase from '../../firebase';
 const outerLocationStyle = {width: '50px', height: '50px', backgroundColor: 'rgba(128, 204, 255, 0.5)', borderRadius:'50%'}
 const innerLocationStyle = {backgroundColor: '#4d94ff', transform:'translate(75%, 75%)', fontSize: '30px', width: '20px', height: '20px', border: '3px solid white', borderRadius: '50%'}
 function Map() {
@@ -11,7 +11,7 @@ function Map() {
   const [plantShops, setPlantShops] = useState([]);
   const [location, setLocation] = useState({latitude: 49.263569, longitude: -123.138573})
   const [curLocation, setCurLocation] = useState(null)
-  const db = fire.firestore();
+  const db = firebase.firestore();
 
   useEffect(() => {
     const fetchPlantingSites = async () => {

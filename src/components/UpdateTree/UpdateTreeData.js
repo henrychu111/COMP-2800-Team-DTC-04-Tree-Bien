@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import fire from "../../firebase";
+import firebase from "../../firebase";
 import "../../css/UpdateTreeData.css";
 import Modal from "react-bootstrap/Modal";
 
@@ -86,7 +86,7 @@ const UpdateTree = (props) => {
   const allowLength = getMaxLength(props.dictKey);
   const minHeight = getMin(props.dictKey);
   const maxHeight = getMax(props.dictKey);
-  const db = fire.firestore();
+  const db = firebase.firestore();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -133,7 +133,7 @@ const UpdateTree = (props) => {
                 required
                 onChange={(input) => setField(input.target.value)}
               />
-              <button type="submit" class="edit-submit-button">
+              <button type="submit" className="edit-submit-button">
                 Submit
               </button>
             </form>

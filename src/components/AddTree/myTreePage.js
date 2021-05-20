@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import AddTreeButton from "./AddTree";
 import ShowTreeData from "./ShowTreeData";
-import fire from "../../firebase";
+import firebase from "../../firebase";
 
 function MyTreePage({loggedinUserMyTree}) {
   //if database has NO entry, return AddTree
   //else return ShowTree
   const [trees, setTrees] = useState([]);
-  const db = fire.firestore();
+  const db = firebase.firestore();
 
 
   const fetchDb = () => {
