@@ -8,13 +8,14 @@
   bottom: 0;
   margin: auto;
   background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
 }
 
 .edit-data-popup-inner {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 40%;
+  margin-top: 35%;
   border-radius: 5%;
   width: 80%;
 }
@@ -56,4 +57,10 @@ span {
   margin-left: 28%;
   margin-right: 28%;
   padding: 8px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+  height: 2.375rem;
 }

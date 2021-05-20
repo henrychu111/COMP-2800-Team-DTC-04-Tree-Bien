@@ -27,11 +27,65 @@ function titleText(value, typeOfInput) {
   }
 }
 
+function getPattern(value) {
+  if (
+    value == "name" ||
+    value == "gender" ||
+    value == "species" ||
+    value == "personality"
+  ) {
+    return "[a-zA-Z ]+";
+  }
+}
+
+function getTitleMessage(value) {
+  if (
+    value == "name" ||
+    value == "gender" ||
+    value == "species" ||
+    value == "personality"
+  ) {
+    return "Should only contain letters";
+  } else {
+    return "Should only contain numbers";
+  }
+}
+
+function getMaxLength(value) {
+  if (
+    value == "name" ||
+    value == "gender" ||
+    value == "species" ||
+    value == "personality"
+  ) {
+    return "16";
+  } else {
+    return "10";
+  }
+}
+
+function getMin(value) {
+  if (value == "height") {
+    return 0;
+  }
+}
+
+function getMax(value) {
+  if (value == "height") {
+    return 99999999;
+  }
+}
+
 //for modal https://react-bootstrap.github.io/components/modal/
 const UpdateTree = (props) => {
   const [field, setField] = useState("");
   const measurement = checkIfHeight(props.dictKey);
   const typeOfInput = checkInputType(props.dictKey);
+  const pattern = getPattern(props.dictKey);
+  const title = getTitleMessage(props.dictKey);
+  const allowLength = getMaxLength(props.dictKey);
+  const minHeight = getMin(props.dictKey);
+  const maxHeight = getMax(props.dictKey);
   const db = fire.firestore();
 
   const handleSubmit = (e) => {
@@ -40,8 +94,8 @@ const UpdateTree = (props) => {
     const updateDoc = {};
     updateDoc[props.dictKey] = field;
     db.collection("users")
-    .doc(props.loggedinUserUpdate)
-    .collection("add-new-tree")
+      .doc(props.loggedinUserUpdate)
+      .collection("add-new-tree")
       .doc("New-Tree")
       .update(updateDoc)
       .then(() => {
@@ -71,6 +125,11 @@ const UpdateTree = (props) => {
                 className="edit-input"
                 type={typeOfInput}
                 value={titleText(field, typeOfInput)}
+                maxLength={allowLength}
+                pattern={pattern}
+                title={title}
+                min={minHeight}
+                max={maxHeight}
                 required
                 onChange={(input) => setField(input.target.value)}
               />
