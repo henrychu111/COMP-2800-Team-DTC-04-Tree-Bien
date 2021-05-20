@@ -11,6 +11,7 @@ import MapimageSelected from '../../images/map-icon-selected.png'
 import Homeimage from '../../images/home-icon.png';
 import HomeimageSelected from '../../images/home-icon-selected.png';
 import Settingimage from '../../images/settings-icon.png';
+import SettingimageSelected from '../../images/settings-icon-selected.png';
 import Popover from 'react-bootstrap/Popover';
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -24,6 +25,7 @@ import { BrowserRouter as Router, Redirect, Link, Switch, Route } from "react-ro
 const BottomNav = ({logout}) => {
 
     const [bottomNavOn, setBottomNavOn] = useState('');
+    const [bottomNavSettings, setbottomNavSettings] = useState(true);
 
     useEffect(() => {
         if (window.location.pathname === "/map") {
@@ -40,9 +42,13 @@ const BottomNav = ({logout}) => {
         }
     })
 
+    const handleonClick = () => {
+        setbottomNavSettings(!bottomNavSettings);
+    }
+    
     const settingPopover = (
         <Popover id="popover-basic">
-            <Button variant="outline-dark" style={{fontWeight: "bold"}} onClick={logout}>Logout</Button> 
+            <Button className="logout-button"variant="outline-dark" style={{fontWeight: "bold"}} onClick={logout}>Logout</Button> 
         </Popover>
     )
 
@@ -74,7 +80,10 @@ const BottomNav = ({logout}) => {
                 </Link>
                 <div className="bottomNavIcons">
                     <OverlayTrigger trigger="click" placement="top" overlay={settingPopover}>
-                        <Image src={Settingimage} className="bottomNavImage" id="settingImage" />
+                        {bottomNavSettings ? 
+                        <Image src={SettingimageSelected} className="bottomNavImage" id="settingImage" onClick={handleonClick}/> : 
+                        <Image src={Settingimage} className="bottomNavImage" id="settingImage" onClick={handleonClick}/>
+                        }
                     </OverlayTrigger>
                 </div>
             </Navbar>
