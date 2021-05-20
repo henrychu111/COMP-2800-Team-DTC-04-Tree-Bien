@@ -1,22 +1,22 @@
 import React, { useState } from "react";
-import fire from "../../firebase";
+import firebase from "../../firebase";
 import "../../css/TreeForm.css";
 
-const TreeForm = ( props) => {
+const TreeForm = (props) => {
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
   const [height, setHeight] = useState("");
   const [birthday, setBirthday] = useState("");
   const [species, setSpecies] = useState("");
   const [personality, setPersonality] = useState("");
-  const db = fire.firestore();
+  const db = firebase.firestore();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     db.collection("users")
-    .doc(props.loggedinUserTreeForm)
-    .collection("add-new-tree")
+      .doc(props.loggedinUserTreeForm)
+      .collection("add-new-tree")
       .doc("New-Tree")
       .set({
         name: name,
@@ -55,6 +55,9 @@ const TreeForm = ( props) => {
             placeholder="Name"
             className="form_input"
             value={name.charAt(0).toUpperCase() + name.slice(1)}
+            pattern="[a-zA-Z ]+"
+            title="Should only contain letters"
+            maxLength="16"
             required
             onChange={(input) => setName(input.target.value)}
           />
@@ -64,6 +67,9 @@ const TreeForm = ( props) => {
             placeholder="Gender"
             className="form_input"
             value={gender.charAt(0).toUpperCase() + gender.slice(1)}
+            pattern="[a-zA-Z ]+"
+            title="Should only contain letters"
+            maxLength="16"
             required
             onChange={(input) => setGender(input.target.value)}
           />
@@ -73,11 +79,12 @@ const TreeForm = ( props) => {
             placeholder="Height (cm)"
             className="form_input"
             value={height}
+            min="0"
+            max="99999999"
+            title="Should only contain numbers"
             required
             onChange={(input) => setHeight(input.target.value)}
           />
-          <br></br>
-          <label id="bday-label">Birthday</label>
           <br></br>
 
           <input
@@ -89,12 +96,16 @@ const TreeForm = ( props) => {
             required
             onChange={(input) => setBirthday(input.target.value)}
           />
+
           <br></br>
           <input
             type="text"
             placeholder="Species"
             className="form_input"
             value={species.charAt(0).toUpperCase() + species.slice(1)}
+            pattern="[a-zA-Z ]+"
+            title="Should only contain letters"
+            maxLength="16"
             required
             onChange={(input) => setSpecies(input.target.value)}
           />
@@ -104,6 +115,9 @@ const TreeForm = ( props) => {
             placeholder="Personality"
             className="form_input"
             value={personality.charAt(0).toUpperCase() + personality.slice(1)}
+            pattern="[a-zA-Z ]+"
+            title="Should only contain letters"
+            maxLength="16"
             required
             onChange={(input) => setPersonality(input.target.value)}
           />

@@ -3,15 +3,15 @@ import GoogleMapReact from 'google-map-react';
 import { Popover } from 'antd';
 import 'antd/dist/antd.css';
 import { ShopOutlined } from '@ant-design/icons';
-import fire from '../../firebase';
+import firebase from '../../firebase';
 const outerLocationStyle = {width: '50px', height: '50px', backgroundColor: 'rgba(128, 204, 255, 0.5)', borderRadius:'50%'}
 const innerLocationStyle = {backgroundColor: '#4d94ff', transform:'translate(75%, 75%)', fontSize: '30px', width: '20px', height: '20px', border: '3px solid white', borderRadius: '50%'}
 function Map() {
   const [plantingSites, setPlantingSites] = useState([]);
   const [plantShops, setPlantShops] = useState([]);
   const [location, setLocation] = useState({latitude: 49.263569, longitude: -123.138573})
-  const [curLocation, setCurLocation] = useState({})
-  const db = fire.firestore();
+  const [curLocation, setCurLocation] = useState(null)
+  const db = firebase.firestore();
 
   useEffect(() => {
     const fetchPlantingSites = async () => {
@@ -44,13 +44,7 @@ function Map() {
 }  
   }, [])
   return (
-    <div style={{ width: '90vw', height: "70vh", margin: "70px auto" }}>
-        <div style={{marginBottom: '10px'}}>
-        <img style={{ width: '25px' }} src="/shopping-cart-marker.png" />
-        <span style={{marginRight: '20px'}}>= Tree Vendor</span>
-        <img style={{ width: '25px' }} src="/tree_map_icon.png" />
-        <span>= Planting Site</span>
-        </div>
+    <div style={{ width: '100vw', height: "93vh" }}>
       <GoogleMapReact bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_KEY }}
         defaultZoom={13} center={{ lat: location.latitude, lng: location.longitude}}
         defaultCenter={{ lat: location.latitude, lng: location.longitude}}
@@ -79,6 +73,12 @@ function Map() {
           </Popover>
         })}
       </GoogleMapReact>
+      <div style={{position: 'absolute', top: '10px', left: '20px', backgroundColor: 'rgba(255,255,255,0.6)', padding: '5px 15px', borderRadius: '15px'}}>
+        <img style={{ width: '25px' }} src="/shopping-cart-marker.png" />
+        <span style={{marginRight: '20px', fontSize: '16px'}}> Tree Vendor</span>
+        <img style={{ width: '25px' }} src="/tree_map_icon.png" />
+        <span style={{fontSize: '16px'}}> Planting Site</span>
+        </div>
     </div>
   );
 }

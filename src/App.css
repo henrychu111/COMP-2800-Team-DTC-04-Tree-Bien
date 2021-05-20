@@ -89,6 +89,17 @@ button {
   text-decoration: none;
 }
 
+.email-signup {
+  text-decoration: none;
+  color: black;
+}
+
+.signin-methods button, .signin-methods a button {
+  border-radius: 3px;
+  margin: 5px;
+}
+
+
 .login-link:hover {
   color: rgb(173,193,120);
 }
@@ -113,8 +124,12 @@ button {
   padding-bottom: 30px;
 }
 
+.login .loginContainer .loginTitleContainer h1 {
+  color: rgb(240,234,210);
+}
+
 .add-padding-bottom {
-  padding-bottom: 65px;
+  padding-bottom: 40px;
 }
 
 .function-buttons button {
@@ -126,4 +141,8 @@ button {
 .function-buttons button:hover, button:active {
   color: white;
   background-color: rgb(33, 37, 41);
+}
+
+.ant-popover-arrow {
+  display: none !important;
 }
