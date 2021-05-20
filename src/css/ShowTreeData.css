@@ -34,15 +34,15 @@ body {
 #tree-page-photo-album {
   margin-left: auto;
   margin-right: auto;
+  margin-top: 6%;
   margin-bottom: 5%;
-
-  border: 1px solid #adc178;
-  border-radius: 2%;
+  width: 75%;
+  border: none;
+  border-radius: 6%;
   font-size: 12px;
   background-color: transparent;
-  color: black;
-  width: 75%;
-  height: 100px;
+  color: rgb(97, 97, 97);
+  box-shadow: 2px 5px;
 }
 
 /* Add wobble */
@@ -187,7 +187,6 @@ body {
   width: 32px;
   height: 50px;
   /* animation: walk 1s steps(12) infinite, forward 15s linear infinite; */
-
   animation: walk 1s steps(12) infinite, forward 15s linear infinite;
 }
 
@@ -203,11 +202,10 @@ body {
 @keyframes forward {
   0% {
     /* transform: translateX(-40px); */
-    transform: translateX(5vw);
+    transform: translateX(0vw);
   }
   100% {
     /* transform: translateX(500px); */
-
     transform: translateX(85vw);
   }
 }

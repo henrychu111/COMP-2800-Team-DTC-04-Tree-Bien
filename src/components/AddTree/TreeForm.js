@@ -79,6 +79,8 @@ const TreeForm = (props) => {
             placeholder="Height (cm)"
             className="form_input"
             value={height}
+            min="0"
+            max="99999999"
             title="Should only contain numbers"
             required
             onChange={(input) => setHeight(input.target.value)}

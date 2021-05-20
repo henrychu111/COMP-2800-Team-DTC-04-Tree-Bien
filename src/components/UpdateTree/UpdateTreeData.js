@@ -128,8 +128,8 @@ const UpdateTree = (props) => {
                 maxLength={allowLength}
                 pattern={pattern}
                 title={title}
-                // min={minHeight}
-                // max={maxHeight}
+                min={minHeight}
+                max={maxHeight}
                 required
                 onChange={(input) => setField(input.target.value)}
               />

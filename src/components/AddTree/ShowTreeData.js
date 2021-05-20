@@ -68,7 +68,6 @@ class ShowTreeData extends React.Component {
             Root For Trees
           </p> */}
         </div>
-        <div id="tree-page-photo-album">Tree Album under construction...</div>
         <div className="display-item-details">
           <ListGroup>
             <ListGroup.Item
@@ -156,8 +155,11 @@ class ShowTreeData extends React.Component {
               value={this.state.value}
             />
           ) : null}
-          <div id="panda"></div>
         </div>
+        <div id="tree-page-photo-album">
+          <button>My Tree Photo Album</button>
+        </div>
+        <div id="panda"></div>
       </div>
     );
   }
