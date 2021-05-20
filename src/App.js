@@ -24,15 +24,27 @@ function App() {
   };
 
   useEffect(() => {
+    const messaging = fire.messaging()
+    messaging.getToken().then(() => {
+      return messaging.getToken()
+    }).then( token => {
+      console.log(token);
+    }).catch(() => {
+      console.log('error');
+    })
+    
+  }, [])
+
+  useEffect(() => {
     fire.auth().onAuthStateChanged((loggedin) => {
       if (loggedin === null) {
           history.push("/login");
       } else {
-        if (loggedin.uid === user) {
+        if (loggedin.email === user) {
           if(location.pathname === '/login' || location.pathname === '/signup')
             history.push("/");
         } else {
-          setUser(loggedin.uid);
+          setUser(loggedin.email);
         }
       } 
     });
@@ -43,7 +55,7 @@ function App() {
       <div className="add-padding-bottom">
         <Switch>
           <Route path="/" exact component={() => <Main />} />
-          <Route path="/mytree" exact component={() => <MyTree loggedinUserMyTree = {user} />} />
+          <Route path="/mytree" exact component={() => <MyTree />} />
           <Route path="/map" exact component={() => <Map />} />
           <Route path="/directory" exact component={TreeDirectory} />
           <Route path="/directory/search" component={SearchView}></Route>
