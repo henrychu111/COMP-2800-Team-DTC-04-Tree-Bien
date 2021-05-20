@@ -55,9 +55,9 @@ const TreeForm = (props) => {
             placeholder="Name"
             className="form_input"
             value={name.charAt(0).toUpperCase() + name.slice(1)}
-            pattern="[a-zA-Z]{1,15}"
+            pattern="[a-zA-Z ]+"
             title="Should only contain letters"
-            maxLength="18"
+            maxLength="16"
             required
             onChange={(input) => setName(input.target.value)}
           />
@@ -67,9 +67,9 @@ const TreeForm = (props) => {
             placeholder="Gender"
             className="form_input"
             value={gender.charAt(0).toUpperCase() + gender.slice(1)}
-            pattern="[a-zA-Z]{1,15}"
+            pattern="[a-zA-Z ]+"
             title="Should only contain letters"
-            maxLength="18"
+            maxLength="16"
             required
             onChange={(input) => setGender(input.target.value)}
           />
@@ -101,9 +101,9 @@ const TreeForm = (props) => {
             placeholder="Species"
             className="form_input"
             value={species.charAt(0).toUpperCase() + species.slice(1)}
-            pattern="[a-zA-Z]{1,15}"
+            pattern="[a-zA-Z ]+"
             title="Should only contain letters"
-            maxLength="18"
+            maxLength="16"
             required
             onChange={(input) => setSpecies(input.target.value)}
           />
@@ -113,9 +113,9 @@ const TreeForm = (props) => {
             placeholder="Personality"
             className="form_input"
             value={personality.charAt(0).toUpperCase() + personality.slice(1)}
-            pattern="[a-zA-Z]{1,15}"
+            pattern="[a-zA-Z ]+"
             title="Should only contain letters"
-            maxLength="18"
+            maxLength="16"
             required
             onChange={(input) => setPersonality(input.target.value)}
           />

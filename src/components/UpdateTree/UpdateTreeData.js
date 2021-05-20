@@ -34,7 +34,7 @@ function getPattern(value) {
     value == "species" ||
     value == "personality"
   ) {
-    return "[a-zA-Zs]+{1,15}";
+    return "[a-zA-Z ]+";
   }
 }
 
@@ -58,7 +58,7 @@ function getMaxLength(value) {
     value == "species" ||
     value == "personality"
   ) {
-    return "18";
+    return "16";
   } else {
     return "10";
   }
@@ -128,8 +128,8 @@ const UpdateTree = (props) => {
                 maxLength={allowLength}
                 pattern={pattern}
                 title={title}
-                min={minHeight}
-                max={maxHeight}
+                // min={minHeight}
+                // max={maxHeight}
                 required
                 onChange={(input) => setField(input.target.value)}
               />
