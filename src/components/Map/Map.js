@@ -44,13 +44,7 @@ function Map() {
 }  
   }, [])
   return (
-    <div style={{ width: '90vw', height: "70vh", margin: "70px auto" }}>
-        <div style={{marginBottom: '10px'}}>
-        <img style={{ width: '25px' }} src="/shopping-cart-marker.png" />
-        <span style={{marginRight: '20px'}}>= Tree Vendor</span>
-        <img style={{ width: '25px' }} src="/tree_map_icon.png" />
-        <span>= Planting Site</span>
-        </div>
+    <div style={{ width: '100vw', height: "93vh" }}>
       <GoogleMapReact bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_KEY }}
         defaultZoom={13} center={{ lat: location.latitude, lng: location.longitude}}
         defaultCenter={{ lat: location.latitude, lng: location.longitude}}
@@ -79,6 +73,12 @@ function Map() {
           </Popover>
         })}
       </GoogleMapReact>
+      <div style={{position: 'absolute', top: '10px', left: '20px', backgroundColor: 'rgba(255,255,255,0.6)', padding: '5px 15px', borderRadius: '15px'}}>
+        <img style={{ width: '25px' }} src="/shopping-cart-marker.png" />
+        <span style={{marginRight: '20px', fontSize: '16px'}}> Tree Vendor</span>
+        <img style={{ width: '25px' }} src="/tree_map_icon.png" />
+        <span style={{fontSize: '16px'}}> Planting Site</span>
+        </div>
     </div>
   );
 }

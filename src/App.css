@@ -114,7 +114,7 @@ button {
 }
 
 .add-padding-bottom {
-  padding-bottom: 65px;
+  padding-bottom: 40px;
 }
 
 .function-buttons button {
@@ -126,4 +126,8 @@ button {
 .function-buttons button:hover, button:active {
   color: white;
   background-color: rgb(33, 37, 41);
+}
+
+.ant-popover-arrow {
+  display: none !important;
 }
