@@ -15,7 +15,7 @@ function getBase64(file) {
   });
 }
 
-const ImageLog = (props) => {
+const ImageLogs = (props) => {
   const db = fire.firestore();
   const initials = [
     {
@@ -145,9 +145,9 @@ const ImageLog = (props) => {
           </Modal>
           <Modal
             visible={previewVisible}
-            title={previewTitle}
-            footer={previewFotter}
-            closable={false}
+            title={previewFotter}
+            footer={previewTitle}
+            closable={true}
             onCancel={handleCancel}
           >
             <img alt="example" style={{ width: '100%' }} src={previewImage} />
@@ -157,4 +157,4 @@ const ImageLog = (props) => {
   );
 }
 
-export default ImageLog;
+export default ImageLogs;
