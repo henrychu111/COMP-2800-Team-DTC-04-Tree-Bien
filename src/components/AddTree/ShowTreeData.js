@@ -5,6 +5,7 @@ import editIcon from "../../images/edit.png";
 import UpdateTreeData from "../UpdateTree/UpdateTreeData";
 import ListGroup from "react-bootstrap/ListGroup";
 import { getKeyThenIncreaseKey } from "antd/lib/message";
+import { Link } from "react-router-dom";
 
 //https://www.carlrippon.com/formatting-dates-and-numbers-in-react/
 function formatDate(change_date) {
@@ -157,7 +158,9 @@ class ShowTreeData extends React.Component {
           ) : null}
         </div>
         <div id="tree-page-photo-album">
-          <button>My Tree Photo Album</button>
+          <button>
+            <Link to="/mytree/imageLogs">My Tree Photo Album</Link>
+          </button>
         </div>
         <div id="panda"></div>
       </div>
