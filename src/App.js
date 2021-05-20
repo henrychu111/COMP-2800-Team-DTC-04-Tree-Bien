@@ -27,18 +27,6 @@ function App() {
   };
 
   useEffect(() => {
-    const messaging = firebase.messaging()
-    messaging.getToken().then(() => {
-      return messaging.getToken()
-    }).then( token => {
-      console.log(token);
-    }).catch(() => {
-      console.log('error');
-    })
-    
-  }, [])
-
-  useEffect(() => {
     firebase.auth().onAuthStateChanged((loggedin) => {
       if (loggedin === null) {
           history.push("/signinmethod");
