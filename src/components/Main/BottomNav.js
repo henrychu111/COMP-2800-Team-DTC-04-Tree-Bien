@@ -41,6 +41,9 @@ const BottomNav = ({logout}) => {
         else if (window.location.pathname === "/") {
             setBottomNavOn('bottom-nav-home')
         }
+        else if (window.location.pathname === "/mytree/imageLogs") {
+            setBottomNavOn('bottom-nav-my-tree')
+        }
     })
 
     const handleonClick = () => {

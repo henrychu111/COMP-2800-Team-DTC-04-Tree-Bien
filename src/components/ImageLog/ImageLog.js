@@ -4,7 +4,9 @@ import { Upload, Modal } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import treeImage from "../../images/green_tree.png";
 import "../../css/ImageLog.css";
-import fire from "../../firebase";
+import firebase from "../../firebase";
+import { ArrowLeftOutlined } from '@ant-design/icons';
+
 
 function getBase64(file) {
   return new Promise((resolve, reject) => {
@@ -16,7 +18,7 @@ function getBase64(file) {
 }
 
 const ImageLogs = (props) => {
-  const db = fire.firestore();
+  const db = firebase.firestore();
   const initials = [
     {
       uid: '-3',
@@ -33,6 +35,7 @@ const ImageLogs = (props) => {
   const [previewTitle, setPreviewTitle] = useState('');
   const [previewFotter, setPreviewFotter] = useState('');
   const [previewItem, setPreviewItem] = useState('');
+  const [flipping, setFlipping] = useState(true);
 
   const handleCancel = () => {
     setPreviewVisible(false);
@@ -101,13 +104,19 @@ const ImageLogs = (props) => {
 
   useEffect(listenDb, []);
 
+  const handleBackButton = () => {
+    window.history.back();
+  }
+
   return (
     <>
       <div>
+        <ArrowLeftOutlined onClick={handleBackButton} className="back-button-image-log"/>
         <img
           src={treeImage}
           alt="tree-shadow"
           id="tree-page-tree-image"
+          className={flipping ? "flipping" : ""}
         ></img>
       </div>
       <div id="tree-photos">

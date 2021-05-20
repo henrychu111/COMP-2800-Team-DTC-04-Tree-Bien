@@ -43,11 +43,11 @@ function App() {
       if (loggedin === null) {
           history.push("/signinmethod");
       } else {
-        if (loggedin.email === user) {
+        if (loggedin.uid === user) {
           if(location.pathname === '/login' || location.pathname === '/signup')
             history.push("/");
         } else {
-          setUser(loggedin.email);
+          setUser(loggedin.uid);
         }
       } 
     });
@@ -58,7 +58,7 @@ function App() {
       <div className="add-padding-bottom">
         <Switch>
           <Route path="/" exact component={() => <Main />} />
-          <Route path="/mytree" exact component={() => <MyTree />} />
+          <Route path="/mytree" exact component={() => <MyTree loggedinUserMyTree={user} />} />
           <Route path="/map" exact component={() => <Map />} />
           <Route path="/directory" exact component={TreeDirectory} />
           <Route path="/directory/search" component={SearchView}></Route>

@@ -48,12 +48,16 @@ body {
   margin-bottom: 5%;
   width: 75%;
   border: none;
-  border-radius: 6%;
+  border-radius: 3px;
   font-size: 12px;
   /* background-image: url("https://www.lantra.co.uk/sites/default/files/styles/crop_article_banner/public/2020-03/tree-3822149_1920.jpg?itok=BA7VY9bK"); */
-  background-color: transparent;
-  color: rgb(97, 97, 97);
-  box-shadow: 2px 5px;
+  color: black;
+  box-shadow: 5px 5px 25px -12px rgba(83, 65, 54, 0.8);
+}
+#tree-page-photo-album button a, #tree-page-photo-album button {
+  text-decoration: none;
+  background-color: rgb(244,242,236);
+  color: black;
 }
 
 /* Add wobble */
@@ -219,4 +223,8 @@ body {
     /* transform: translateX(500px); */
     transform: translateX(85vw);
   }
+}
+
+#tree-page-photo-album {
+
 }
