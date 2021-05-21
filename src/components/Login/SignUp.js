@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../App.css';
-import fire from '../../firebase';
+import firebase from '../../firebase';
 import { Link, useHistory } from 'react-router-dom';
 
 const SignUp = (props) => {
@@ -11,7 +11,7 @@ const SignUp = (props) => {
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
-    const db = fire.firestore();
+    const db = firebase.firestore();
     const history = useHistory();
 
     const clearInputs =() => {
@@ -28,7 +28,7 @@ const SignUp = (props) => {
         e.preventDefault()
         clearErrors();
         // clearInputs();
-        fire
+        firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
         .then((userCredentials) => {
@@ -59,23 +59,6 @@ const SignUp = (props) => {
             }
         })
     };
-
-    // const authListener =() => {
-    //     fire
-    //     .auth()
-    //     .onAuthStateChanged(user => {
-    //     if(user) {
-    //         clearInputs();
-    //         setUser(user);
-    //     } else {
-    //         setUser("");
-    //     }
-    //     })
-    // };
-
-    // useEffect(() => {
-    //     authListener();
-    // });
 
     return ( 
         <section className="login">
@@ -120,7 +103,7 @@ const SignUp = (props) => {
 
                 <div className="btnContainer">
                     <button type="submit" onClick={(e) => handleSignUp(e)}>Sign Up</button>
-                    <p>Have an account? <Link className="login-link" to="/login">Sign in</Link>
+                    <p>Have an account? <Link className="login-link" to="/signinmethod">Sign in</Link>
                     </p>
                 </div>
             </form>

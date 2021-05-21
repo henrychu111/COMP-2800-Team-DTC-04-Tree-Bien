@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../App.css';
-import fire from '../../firebase';
+import firebase from '../../firebase';
 import { Link } from 'react-router-dom';
 
 // import '.../css/Login.css';
@@ -29,7 +29,7 @@ const Login = (props) => {
         e.preventDefault()
         clearErrors();
         // clearInputs();
-        fire
+        firebase
         .auth()
         .signInWithEmailAndPassword(email, password)
         .then((userCredentials) => {

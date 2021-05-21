@@ -1,0 +1,81 @@
+.navbar {
+    padding: 5px 10px 5px 10px;
+}
+
+.bottomNavIcons {
+    margin: 5px;
+}
+
+.bottomNavImage {
+    width: 30px;
+}
+
+.jumbotron {
+    background: radial-gradient(
+        ellipse at top left,
+        rgb(244,242,236) 0%,
+        rgb(243,240,230) 75%,
+        rgb(242,238,223) 100%
+    );
+    box-shadow: 0 5px 45px -12px rgba(83, 65, 54, 0.8);
+    padding: 20px 0px;
+    margin-top: 10%;
+    border-radius: 20px;
+    /* border: 1px solid black; */
+}
+
+.bottom-nav-bar {
+    background-color: rgb(244,242,236);
+    /* border-top: 1px ridge black; */
+}
+
+.button-container {
+    margin-top: 15%;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.button-container > .button-rows {
+    margin: 5%;
+}
+
+.function-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.button-rows a {
+    width: 90%;
+    border-radius: 3px;
+    background-color: rgb(244,242,236);
+    box-shadow: 5px 5px 25px -12px rgba(83, 65, 54, 0.8);
+    /* border: 1px solid black; */
+}
+
+.button-rows a:hover, .button-rows a button:hover {
+    background-color: rgb(220,214,190);
+}
+
+.button-rows a button {
+    text-decoration: none;
+    color: black;
+    background-color: rgb(244,242,236);
+}
+
+.logout-button {
+    background-color: rgb(244,242,236);
+}
+
+.ant-divider {
+    background-color: rgb(225,225,228);
+    margin: 0px;
+}
+
+.ant-divider-vertical {
+    margin: 0px;
+}
+
+#search-item {
+    width: 27px;
+    height: auto;
+}
