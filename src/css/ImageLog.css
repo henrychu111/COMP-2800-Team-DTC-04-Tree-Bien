@@ -80,3 +80,15 @@
   animation: flip 2s ease-out;
   animation-iteration-count: infinite;
 }
+
+.ant-upload-list-picture-card .ant-upload-list-item-error {
+  border-color: aliceblue;
+}
+
+.ant-tooltip-inner {
+  visibility: hidden;
+}
+
+.ant-tooltip-arrow-content {
+  visibility: hidden;
+}

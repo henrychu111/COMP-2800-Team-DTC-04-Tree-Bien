@@ -74,7 +74,7 @@ class SearchView extends React.Component{
                    <div className='inline'><Button inline style={{ marginRight: '4px' }} className={this.state.current_color === 6 ? 'mybtn2-active' : 'mybtn2'} data-v="white"  onClick={this.changeColorHandler.bind(this,'white',6)}>White</Button></div>
                </Flex>
                <WhiteSpace />
-               <Button type="success" style={{ margin: '0 60px'}} onClick={this.updateSearch}>Update Search</Button><WhiteSpace />
+               <Button type="success" style={{margin: '0 60px',  backgroundColor: 'rgb(244,242,236)'}} onClick={this.updateSearch}>Update Search</Button><WhiteSpace />
            </div>
         )
     }
