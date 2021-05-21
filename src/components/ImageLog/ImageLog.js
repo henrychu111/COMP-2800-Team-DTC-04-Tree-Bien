@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
-import { Upload, Modal } from 'antd';
+import { Upload, Modal, Typography } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import treeImage from "../../images/green_tree.png";
 import "../../css/ImageLog.css";
@@ -19,28 +19,45 @@ function getBase64(file) {
 
 const ImageLogs = (props) => {
   const db = firebase.firestore();
-  const initials = [
-    {
-      uid: '-3',
-      name: 'image.png',
-      status: 'done',
-      url: 'https://www.lantra.co.uk/sites/default/files/styles/crop_article_banner/public/2020-03/tree-3822149_1920.jpg?itok=BA7VY9bK',
-      previewFotter: ''
-    },
-  ];
-  const [fileLists, setFileLists] = useState(initials);
+  const [fileLists, setFileLists] = useState([]);
   const [previewVisible, setPreviewVisible] = useState(false);
   const [editorVisible, setEditorVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState('');
   const [previewTitle, setPreviewTitle] = useState('');
   const [previewFotter, setPreviewFotter] = useState('');
-  const [previewItem, setPreviewItem] = useState('');
   const [flipping, setFlipping] = useState(true);
+  const [deleteAlbum, setDeleteAlbum] = useState(false);
+  const [deleteArgs, setDeleteArgs] = useState({
+    uid: '',
+    list: []
+  });
+  const { Paragraph } = Typography;
 
   const handleCancel = () => {
     setPreviewVisible(false);
     setEditorVisible(false);
+    setDeleteAlbum(false);
+    setDeleteArgs({
+      uid: '',
+      list: []
+    });
   };
+
+  const handleDelete = (uid, fileList) => {
+    db.collection("users")
+    .doc(props.loggedinUserData)
+    .collection("New-Tree-Album")
+      .doc(deleteArgs.uid)
+      .delete()
+      .then(() => {
+        console.log("Form submitted");
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+      setFileLists(deleteArgs.list);
+    setDeleteAlbum(false);
+  }
 
   const handlePreview = async file => {
     if (!file.url && !file.preview) {
@@ -48,32 +65,50 @@ const ImageLogs = (props) => {
     }
 
     setPreviewImage(file.url || file.preview);
-    setPreviewVisible(true);
     setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1));
     setPreviewFotter(file.previewFotter);
+    setPreviewVisible(true);
   };
 
-  const handleChange = ({ fileList }) => {
-    const fileLen = fileList.length;
-    if (fileLen > fileLists.length) {
-      setEditorVisible(true);
+  const handleChange = async ({ file, fileList }) => {
+    if (file['status'] === 'removed') {
+      setDeleteAlbum(true);
+      setDeleteArgs({
+        uid: file['uid'],
+        list: fileList
+      });
     }
-    setFileLists(fileList);
-    if (fileLen - 1 > 0) {
-      setPreviewItem(fileList[fileLen - 1]['name']);
-      console.log(...fileList);
-      console.log(fileList[1]['thumbUrl'])
-      db.collection("users")
-      .doc(props.loggedinUserData)
-      .collection("album")
-        .doc("new-tree-album")
-        .set(...fileList)
-        .then(() => {
-          console.log("Form submitted");
+    if (!file.url && !file.preview) {
+      setFileLists(fileList);
+      file.url = await getBase64(file.originFileObj);
+      setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1));
+      console.log(file.status);
+      if (file['status'] === 'done' || 'error') {
+        let album = [];
+        album.push({
+          name: file['name'],
+          uid: file['uid'],
+          url: file['url'],
+          status: file['status'],
+          previewFotter: ''
         })
-        .catch((error) => {
-          alert(error.message);
-        });
+        console.log(album);
+        if (Object.keys(album).length > 0) {   
+          setEditorVisible(true);
+          document.getElementById('form_input').value = '';
+          db.collection("users")
+          .doc(props.loggedinUserData)
+          .collection("New-Tree-Album")
+            .doc(file['uid'])
+            .set(...album)
+            .then(() => {
+              console.log("Form submitted");
+            })
+            .catch((error) => {
+              alert(error.message);
+            });
+        }
+      }
     }
   };
   
@@ -87,13 +122,12 @@ const ImageLogs = (props) => {
   const listenDb = () => {
     db.collection("users")
     .doc(props.loggedinUserData)
-    .collection("album")
+    .collection("New-Tree-Album")
       .get()
       .then((snapshot) => {
-        console.log(snapshot.docs.length);
         let files = [];
         snapshot.docs.forEach((file) => {
-          files.push(file.data())
+          files.push(file.data());
         });
         if (files.length > 0) setFileLists(files);
       })
@@ -106,6 +140,35 @@ const ImageLogs = (props) => {
 
   const handleBackButton = () => {
     window.history.back();
+  }
+
+  const handleEditMessage = (value) => {
+    let uid ='', album = [];
+    fileLists.forEach((list, index) => {
+      let albumList = fileLists;
+      if (list['name'] === previewTitle) {
+        albumList[index]['previewFotter'] = value;
+        setFileLists(albumList);
+        setPreviewFotter(value);
+        uid = list['uid'];
+        album = albumList[index];
+      }
+    });
+    if (uid !== '' && Object.keys(album).length > 0) {
+      db.collection("users")
+           .doc(props.loggedinUserData)
+           .collection("New-Tree-Album")
+             .doc(uid)
+             .update({
+               previewFotter: value
+             })
+             .then(() => {
+               console.log("Form updated!");
+             })
+             .catch((error) => {
+               alert(error.message);
+             });
+    }
   }
 
   return (
@@ -121,7 +184,6 @@ const ImageLogs = (props) => {
       </div>
       <div id="tree-photos">
         <Upload
-            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
             listType="picture-card"
             fileList={fileLists}
             onPreview={handlePreview}
@@ -130,31 +192,37 @@ const ImageLogs = (props) => {
             {uploadButton}
           </Upload>
           <Modal
+            visible={deleteAlbum}
+            footer={'You will delete your photo!'}
+            closable={true}
+            onCancel={handleCancel}
+          >
+            <button type="submit" className="edit-submit-button" onClick={handleDelete}>
+              CONFIRM DELETE
+            </button>
+          </Modal>
+          <Modal
             visible={editorVisible}
             title={'Description'}
-            footer={'Updated'}
-            closable={false}
+            footer={''}
+            closable={true}
             onCancel={handleCancel}
           >
             <input
               type="text"
-              placeholder="text"
+              placeholder=""
               className="form_input"
+              id="form_input"
               required
-              onChange={(input) => {
-                fileLists.forEach((list, index) => {
-                  let albumList = fileLists;
-                  if (list['name'] === previewItem) {
-                    albumList[index]['previewFotter'] = input.target.value;
-                    setFileLists(albumList);
-                  }
-                })
-              }}
+              onChange={(input) => handleEditMessage(input.target.value)}
             />
+            <button type="submit" className="edit-submit-button" onClick={handleCancel}>
+              OK
+            </button>
           </Modal>
           <Modal
             visible={previewVisible}
-            title={previewFotter}
+            title={<Paragraph editable={{ onChange: handleEditMessage }}>{previewFotter}</Paragraph>}
             footer={previewTitle}
             closable={true}
             onCancel={handleCancel}

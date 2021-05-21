@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Login from "./components/Login/Login";
@@ -25,18 +26,6 @@ function App() {
     firebase.auth().signOut();
     setUser("");
   };
-
-  useEffect(() => {
-    const messaging = firebase.messaging()
-    messaging.getToken().then(() => {
-      return messaging.getToken()
-    }).then( token => {
-      console.log(token);
-    }).catch(() => {
-      console.log('error');
-    })
-    
-  }, [])
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((loggedin) => {
