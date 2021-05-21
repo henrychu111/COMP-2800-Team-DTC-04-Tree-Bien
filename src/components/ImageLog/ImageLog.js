@@ -25,7 +25,7 @@ const ImageLogs = (props) => {
   const [previewImage, setPreviewImage] = useState('');
   const [previewTitle, setPreviewTitle] = useState('');
   const [previewFotter, setPreviewFotter] = useState('');
-  const [flipping, setFlipping] = useState(true);
+  // const [flipping, setFlipping] = useState(true);
   const [deleteAlbum, setDeleteAlbum] = useState(false);
   const [deleteArgs, setDeleteArgs] = useState({
     uid: '',
@@ -179,7 +179,7 @@ const ImageLogs = (props) => {
           src={treeImage}
           alt="tree-shadow"
           id="tree-page-tree-image"
-          className={flipping ? "flipping" : ""}
+          // className={flipping ? "flipping" : ""}
         ></img>
       </div>
       <div id="tree-photos">

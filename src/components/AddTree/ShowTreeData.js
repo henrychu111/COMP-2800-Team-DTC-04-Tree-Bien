@@ -47,8 +47,8 @@ class ShowTreeData extends React.Component {
   };
 
   render() {
-    const flipping = this.state.flipping;
-    const pulsing = this.state.pulsing;
+    // const flipping = this.state.flipping;
+    // const pulsing = this.state.pulsing;
     // const wobble = this.state.wobble;
 
     return (
@@ -63,7 +63,7 @@ class ShowTreeData extends React.Component {
             // onAnimationEnd={() =>
             //   this.setState({ flipping: true, wobble: true })
             // }
-            className={flipping ? "flipping" : ""}
+            // className={flipping ? "flipping" : ""}
           ></img>
           {/* <p className={pulsing ? "pulsing" : ""} id="root-for-tree">
             Root For Trees
