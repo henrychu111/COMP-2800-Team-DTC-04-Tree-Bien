@@ -50,13 +50,13 @@ body {
   border: none;
   border-radius: 3px;
   font-size: 12px;
-  /* background-image: url("https://www.lantra.co.uk/sites/default/files/styles/crop_article_banner/public/2020-03/tree-3822149_1920.jpg?itok=BA7VY9bK"); */
   color: black;
   box-shadow: 5px 5px 25px -12px rgba(83, 65, 54, 0.8);
 }
-#tree-page-photo-album button a, #tree-page-photo-album button {
+#tree-page-photo-album button a,
+#tree-page-photo-album button {
   text-decoration: none;
-  background-color: rgb(244,242,236);
+  background-color: rgb(244, 242, 236);
   color: black;
 }
 
@@ -203,7 +203,26 @@ body {
   height: 50px;
   /* animation: walk 1s steps(12) infinite, forward 15s linear infinite; */
   animation: walk 1s steps(12) infinite, forward 15s linear infinite;
+  -webkit-animation: walk 1s steps(12) infinite, forward 15s linear infinite;
 }
+
+/* @keyframes walk {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: 424px;
+  }
+}
+
+@keyframes forward {
+  0% {
+    transform: translateX(0vw);
+  }
+  100% {
+    transform: translateX(85vw);
+  }
+} */
 
 @keyframes walk {
   0% {
@@ -216,15 +235,27 @@ body {
 
 @keyframes forward {
   0% {
-    /* transform: translateX(-40px); */
     transform: translateX(0vw);
   }
   100% {
-    /* transform: translateX(500px); */
     transform: translateX(85vw);
   }
 }
 
-#tree-page-photo-album {
+@-webkit-keyframes walk {
+  0% {
+    -webkit-background-position: 0px;
+  }
+  100% {
+    -webkit-background-position: 424px;
+  }
+}
 
+@-webkit-keyframes forward {
+  0% {
+    -webkit-transform: translateX(0vw);
+  }
+  100% {
+    -webkit-transform: translateX(85vw);
+  }
 }

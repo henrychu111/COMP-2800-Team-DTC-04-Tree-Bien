@@ -162,7 +162,7 @@ class ShowTreeData extends React.Component {
             <Link to="/mytree/imageLogs">My Tree Photo Album</Link>
           </button>
         </div>
-        <div id="panda"></div>
+        {/* <div id="panda"></div> */}
       </div>
     );
   }
