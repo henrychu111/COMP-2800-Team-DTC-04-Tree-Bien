@@ -5,7 +5,8 @@ import editIcon from "../../images/edit.png";
 import UpdateTreeData from "../UpdateTree/UpdateTreeData";
 import ListGroup from "react-bootstrap/ListGroup";
 import { getKeyThenIncreaseKey } from "antd/lib/message";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 import firebase from "../../firebase";
 const db = firebase.firestore();
 
@@ -19,6 +20,9 @@ function formatDate(change_date) {
   }).format(Date.parse(change_date));
 }
 
+const handleBackButton = () => {
+  window.history.back();
+};
 class ShowTreeData extends React.Component {
   constructor(props) {
     super(props);
@@ -75,6 +79,11 @@ class ShowTreeData extends React.Component {
     return (
       <div className="display-tree-info">
         <div>
+          <ArrowLeftOutlined
+            onClick={handleBackButton}
+            className="back-button-image"
+          />
+
           <img
             src={treeImage}
             alt="tree-shadow"
@@ -166,6 +175,20 @@ class ShowTreeData extends React.Component {
             >
               Personality:
               <b> {this.state.tree.personality} </b>
+              <img className="edit" src={editIcon}></img>
+            </ListGroup.Item>
+
+            <ListGroup.Item
+              className="info-item"
+              onClick={this.makeTogglePopup.bind(this)(
+                "location",
+                this.state.tree.location
+              )}
+              variant="primary"
+            >
+              Location:
+              <br></br>
+              <b> {this.state.tree.location} </b>
               <img className="edit" src={editIcon}></img>
             </ListGroup.Item>
           </ListGroup>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import firebase from "../../firebase";
 import "../../css/UpdateTreeData.css";
 import Modal from "react-bootstrap/Modal";
@@ -86,6 +86,7 @@ const UpdateTree = (props) => {
   const allowLength = getMaxLength(props.dictKey);
   const minHeight = getMin(props.dictKey);
   const maxHeight = getMax(props.dictKey);
+  const [locationOptions, setLocationOptions] = useState([]);
   const db = firebase.firestore();
 
   const handleSubmit = (e) => {
@@ -97,7 +98,6 @@ const UpdateTree = (props) => {
     db.collection("users")
       .doc(props.loggedinUserUpdate)
       .collection("add-new-tree")
-      // .doc("New-Tree")
       .doc(props.treeID)
 
       .update(updateDoc)
@@ -112,6 +112,19 @@ const UpdateTree = (props) => {
     props.closePopup();
   };
 
+  useEffect(() => {
+    db.collection("plantingsites").onSnapshot((snapshot) => {
+      const locationList = [];
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        const documentLocation = data.address;
+        locationList.push(documentLocation);
+        console.log("location", locationList);
+      });
+      setLocationOptions(locationList);
+    });
+  }, []);
+
   return (
     <div className="edit-data-popup">
       <div className="edit-data-popup-inner">
@@ -124,18 +137,30 @@ const UpdateTree = (props) => {
           <Modal.Body>
             <p>Change {props.value} to:</p>
             <form id="tree-update-form" onSubmit={handleSubmit}>
-              <input
-                className="edit-input"
-                type={typeOfInput}
-                value={titleText(field, typeOfInput)}
-                maxLength={allowLength}
-                pattern={pattern}
-                title={title}
-                min={minHeight}
-                max={maxHeight}
-                required
-                onChange={(input) => setField(input.target.value)}
-              />
+              {props.dictKey == "location" ? (
+                <select
+                  className="edit-select"
+                  onChange={(input) => setField(input.target.value)}
+                >
+                  {locationOptions.map((location) => (
+                    <option value={location}>{location}</option>
+                  ))}
+                </select>
+              ) : (
+                <input
+                  className="edit-input"
+                  type={typeOfInput}
+                  value={titleText(field, typeOfInput)}
+                  maxLength={allowLength}
+                  pattern={pattern}
+                  title={title}
+                  min={minHeight}
+                  max={maxHeight}
+                  required
+                  onChange={(input) => setField(input.target.value)}
+                />
+              )}
+
               <button type="submit" className="edit-submit-button">
                 Submit
               </button>

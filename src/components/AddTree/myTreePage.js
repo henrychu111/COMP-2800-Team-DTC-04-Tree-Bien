@@ -49,21 +49,9 @@ function MyTreePage({ loggedinUserMyTree }) {
           console.log("this is tree list", treeList);
         });
         setTrees(treeList);
-
-        // setTreeID(currentTreeID);
       });
   };
-
-  // useEffect(fetchDb, []);
-
   useEffect(listenDb, []);
-
-  // if (trees.length > 0) {
-  //   return ShowTree(trees, loggedinUserMyTree);
-  // } else {
-  //   return AddTree(loggedinUserMyTree);
-  // }
-  // return AddTree(trees, loggedinUserMyTree, treeID);
   return AddTree(trees, loggedinUserMyTree);
 }
 
@@ -73,12 +61,7 @@ function AddTree(trees, loggedinUserMyTree) {
 
   return (
     <div>
-      <div>{trees.length}</div>
-      <AddTreeButton
-        existingTrees={trees}
-        loggedinUser={loggedinUserMyTree}
-        // treeID={treeID}
-      />
+      <AddTreeButton existingTrees={trees} loggedinUser={loggedinUserMyTree} />
     </div>
   );
 }
