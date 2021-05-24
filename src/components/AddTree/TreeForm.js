@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import firebase from "../../firebase";
 import "../../css/TreeForm.css";
+import { ConsoleSqlOutlined, DownCircleFilled } from "@ant-design/icons";
 
 const TreeForm = (props) => {
   const [name, setName] = useState("");
@@ -12,13 +13,28 @@ const TreeForm = (props) => {
   const db = firebase.firestore();
 
   const handleSubmit = (e) => {
+    console.log(props.loggedinUserTreeForm);
     e.preventDefault();
+
+    // db.collection("users")
+    //   .doc(props.loggedinUserTreeForm)
+    //   .collection("add-new-tree")
+    //   .doc()
+    //   // .doc("New-Tree")
+
+    //   .set({
+    //     name: name,
+    //     gender: gender,
+    //     height: height,
+    //     birthday: birthday,
+    //     species: species,
+    //     personality: personality,
+    //   })
 
     db.collection("users")
       .doc(props.loggedinUserTreeForm)
       .collection("add-new-tree")
-      .doc("New-Tree")
-      .set({
+      .add({
         name: name,
         gender: gender,
         height: height,
@@ -26,7 +42,13 @@ const TreeForm = (props) => {
         species: species,
         personality: personality,
       })
-      .then(() => {
+
+      // .then(() => {
+      //   console.log("Form submitted");
+      // })
+
+      .then((docRef) => {
+        console.log("This is doc reference", docRef.id);
         console.log("Form submitted");
       })
       .catch((error) => {

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Login from "./components/Login/Login";
@@ -21,6 +20,7 @@ import TreeDirectory from "./components/TreeDirectory/TreeDirectory";
 import AboutUs from "../src/AboutUs";
 import ImageLogs from "../src/components/ImageLog/ImageLog";
 import SSO from "./components/Login/SSO";
+import ShowTreeData from "./components/AddTree/ShowTreeData";
 
 function App() {
   const [user, setUser] = useState("");
@@ -33,7 +33,7 @@ function App() {
   };
 
   useEffect(() => {
-    fire.auth().onAuthStateChanged((loggedin) => {
+    firebase.auth().onAuthStateChanged((loggedin) => {
       if (loggedin === null) {
         history.push("/signinmethod");
       } else {
@@ -65,6 +65,13 @@ function App() {
             path="/mytree/imageLogs"
             exact
             component={() => <ImageLogs loggedinUserData={user} />}
+          />
+          <Route
+            path="/mytree/showtreedata"
+            exact
+            component={() => {
+              return <ShowTreeData tree={location.state} />;
+            }}
           />
         </Switch>
         <BottomNav logout={handleLogout} login />

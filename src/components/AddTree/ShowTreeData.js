@@ -5,7 +5,9 @@ import editIcon from "../../images/edit.png";
 import UpdateTreeData from "../UpdateTree/UpdateTreeData";
 import ListGroup from "react-bootstrap/ListGroup";
 import { getKeyThenIncreaseKey } from "antd/lib/message";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import firebase from "../../firebase";
+const db = firebase.firestore();
 
 //https://www.carlrippon.com/formatting-dates-and-numbers-in-react/
 function formatDate(change_date) {
@@ -18,14 +20,16 @@ function formatDate(change_date) {
 }
 
 class ShowTreeData extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       showPopup: false,
       // wobble: false,
       flipping: true,
       pulsing: true,
+      tree: null,
     };
+    this.listendb(this.props.tree.id);
   }
 
   togglePopup() {
@@ -46,11 +50,28 @@ class ShowTreeData extends React.Component {
     };
   };
 
+  listendb(treeId) {
+    db.collection("users")
+      .doc(this.props.tree.loggedinUserData)
+      .collection("add-new-tree")
+      .doc(treeId)
+      .onSnapshot((doc) => {
+        console.log("tree field updated");
+        console.log(doc.data());
+        this.setState({ tree: doc.data() });
+      });
+  }
+
   render() {
     // const flipping = this.state.flipping;
     // const pulsing = this.state.pulsing;
     // const wobble = this.state.wobble;
+    console.log("showtreedata tree id", this.props.tree.id);
+    console.log("showtreedata userID", this.props.tree.loggedinUserData);
 
+    if (this.state.tree == null) {
+      return <div></div>;
+    }
     return (
       <div className="display-tree-info">
         <div>
@@ -75,12 +96,13 @@ class ShowTreeData extends React.Component {
               className="info-item"
               onClick={this.makeTogglePopup.bind(this)(
                 "name",
-                this.props.tree.name
+                // this.props.tree.name
+                this.state.tree.name
               )}
             >
               {" "}
               Name:
-              <b> {this.props.tree.name} </b>
+              <b> {this.state.tree.name} </b>
               <img className="edit" src={editIcon}></img>
             </ListGroup.Item>
 
@@ -88,12 +110,12 @@ class ShowTreeData extends React.Component {
               className="info-item"
               onClick={this.makeTogglePopup.bind(this)(
                 "gender",
-                this.props.tree.gender
+                this.state.tree.gender
               )}
               variant="primary"
             >
               Gender:
-              <b> {this.props.tree.gender} </b>
+              <b> {this.state.tree.gender} </b>
               <img className="edit" src={editIcon}></img>
             </ListGroup.Item>
 
@@ -101,12 +123,12 @@ class ShowTreeData extends React.Component {
               className="info-item"
               onClick={this.makeTogglePopup.bind(this)(
                 "height",
-                this.props.tree.height
+                this.state.tree.height
               )}
               variant="secondary"
             >
               Height (cm):
-              <b> {this.props.tree.height} </b>
+              <b> {this.state.tree.height} </b>
               <img className="edit" src={editIcon}></img>
             </ListGroup.Item>
 
@@ -114,43 +136,44 @@ class ShowTreeData extends React.Component {
               className="info-item"
               onClick={this.makeTogglePopup.bind(this)(
                 "birthday",
-                this.props.tree.birthday
+                this.state.tree.birthday
               )}
               variant="success"
             >
               Birthday:
-              <b> {formatDate(this.props.tree.birthday)} </b>
+              <b> {formatDate(this.state.tree.birthday)} </b>
               <img className="edit" src={editIcon}></img>
             </ListGroup.Item>
             <ListGroup.Item
               className="info-item"
               onClick={this.makeTogglePopup.bind(this)(
                 "species",
-                this.props.tree.species
+                this.state.tree.species
               )}
               variant="danger"
             >
               Species:
-              <b> {this.props.tree.species} </b>
+              <b> {this.state.tree.species} </b>
               <img className="edit" src={editIcon}></img>
             </ListGroup.Item>
             <ListGroup.Item
               className="info-item"
               onClick={this.makeTogglePopup.bind(this)(
                 "personality",
-                this.props.tree.personality
+                this.state.tree.personality
               )}
               variant="warning"
             >
               Personality:
-              <b> {this.props.tree.personality} </b>
+              <b> {this.state.tree.personality} </b>
               <img className="edit" src={editIcon}></img>
             </ListGroup.Item>
           </ListGroup>
 
           {this.state.showPopup ? (
             <UpdateTreeData
-              loggedinUserUpdate={this.props.loggedinUserData}
+              loggedinUserUpdate={this.props.tree.loggedinUserData}
+              treeID={this.props.tree.id}
               closePopup={this.togglePopup.bind(this)}
               dictKey={this.state.dictKey}
               value={this.state.value}

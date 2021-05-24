@@ -89,6 +89,7 @@ const UpdateTree = (props) => {
   const db = firebase.firestore();
 
   const handleSubmit = (e) => {
+    console.log("update tree, this is the id", props.treeID);
     e.preventDefault();
 
     const updateDoc = {};
@@ -96,7 +97,9 @@ const UpdateTree = (props) => {
     db.collection("users")
       .doc(props.loggedinUserUpdate)
       .collection("add-new-tree")
-      .doc("New-Tree")
+      // .doc("New-Tree")
+      .doc(props.treeID)
+
       .update(updateDoc)
       .then(() => {
         console.log("Updated");
