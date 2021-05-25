@@ -52,15 +52,15 @@ const ContactForm = () => {
             <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" name="email" onChange={e => setEmail(e.target.value)} id="email-input" />
+                    <Form.Control type="email" name="email" onChange={e => setEmail(e.target.value)} htmlFor="email-input" />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput2">
                     <Form.Label>Full Name</Form.Label>
-                    <Form.Control type="text" name="name" onChange={e => setName(e.target.value)} id="name-input" />
+                    <Form.Control type="text" name="name" onChange={e => setName(e.target.value)} htmlFor="name-input" />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Message</Form.Label>
-                    <Form.Control as="textarea" name="message" rows={3} onChange={e => setMessage(e.target.value)} id="message-input"/>
+                    <Form.Control as="textarea" name="message" rows={3} onChange={e => setMessage(e.target.value)} htmlFor="message-input"/>
                 </Form.Group>
                 <Button type="submit" className="contact-button">
                     Submit
