@@ -5,9 +5,7 @@ import React, { useState, useEffect } from 'react';
 
 const Profile = ({currentUser}) => {
 
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
+    const [user, setUser] = useState({});
 
 
     const db = firebase.firestore();
@@ -15,9 +13,12 @@ const Profile = ({currentUser}) => {
     const fetchUser = async () => {
         if(currentUser) {
             const doc = await db.collection('users').doc(currentUser).get()
-            setFirstName(doc.data().firstName)
-            setLastName(doc.data().lastName)
-            setEmail(doc.data().email)
+            setUser({
+                firstName: doc.data().firstName,
+                lastName: doc.data().lastName,
+                email: doc.data().email
+                
+            })
         }
     }
 
@@ -29,8 +30,8 @@ const Profile = ({currentUser}) => {
 
     return ( 
         <div style={{width: '100vw', height: '40vh', background: 'url(/background.png)', paddingTop: '10%'}}><img src="/blank_profile_picture.png" style={{ width: '150px', borderRadius: "50%", display: 'block', margin: 'auto'}}/>
-            <p style = {{textAlign: 'center', marginTop: '10px',marginBottom: '0px', color: 'white', fontSize: '30px', fontWeight: 'bold'}}>{firstName} {lastName}</p>
-            <p style = {{textAlign: 'center',  color: 'white'}}>{email}</p>
+            <p style = {{textAlign: 'center', marginTop: '10px',marginBottom: '0px', color: 'white', fontSize: '30px', fontWeight: 'bold'}}>{user.firstName} {user.lastName}</p>
+            <p style = {{textAlign: 'center',  color: 'white'}}>{user.email}</p>
         </div>
 )
 };
