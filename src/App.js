@@ -31,15 +31,19 @@ function App() {
   const handleLogout = () => {
     firebase.auth().signOut();
     setUser("");
+    history.push("/signinmethod");
   };
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((loggedin) => {
-      if (loggedin === null) {
+      if (location.pathname === "/aboutus") {
+        history.push("/aboutus");
+      }
+      else if (loggedin === null) {
         history.push("/signinmethod");
       } else {
         if (loggedin.uid === user) {
-          if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/signinmethod")
+          if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/signinmethod" || location.pathname === "/aboutus")
             history.push("/");
         } else {
           setUser(loggedin.uid);
@@ -61,7 +65,7 @@ function App() {
           <Route path="/map" exact component={() => <Map />} />
           <Route path="/directory" exact component={TreeDirectory} />
           <Route path="/directory/search" component={SearchView}></Route>
-          <Route path="/aboutus" exact component={() => <AboutUs />} />
+          <Route path="/aboutus" exact component={() => <AboutUs loggedinUserData={user}/>} />
           <Route
             path="/mytree/imageLogs"
             exact
