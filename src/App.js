@@ -21,6 +21,7 @@ import TreeDirectory from "./components/TreeDirectory/TreeDirectory";
 import AboutUs from "../src/AboutUs";
 import ImageLogs from "../src/components/ImageLog/ImageLog";
 import SSO from "./components/Login/SSO";
+import ContactForm from "./components/ContactForm/ContactForm";
 
 function App() {
   const [user, setUser] = useState("");
@@ -33,7 +34,7 @@ function App() {
   };
 
   useEffect(() => {
-    fire.auth().onAuthStateChanged((loggedin) => {
+    firebase.auth().onAuthStateChanged((loggedin) => {
       if (loggedin === null) {
         history.push("/signinmethod");
       } else {
@@ -66,6 +67,7 @@ function App() {
             exact
             component={() => <ImageLogs loggedinUserData={user} />}
           />
+          <Route path="/contact" exact component={() => <ContactForm /> } />
         </Switch>
         <BottomNav logout={handleLogout} login />
       </div>

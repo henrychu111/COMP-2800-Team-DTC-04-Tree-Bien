@@ -139,8 +139,8 @@ button {
 }
 
 .function-buttons button:hover, button:active {
-  color: white;
-  background-color: rgb(33, 37, 41);
+  color: black;
+  background-color: rgb(220,214,190);
 }
 
 .ant-popover-arrow {
