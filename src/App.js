@@ -21,6 +21,7 @@ import TreeDirectory from "./components/TreeDirectory/TreeDirectory";
 import AboutUs from "../src/AboutUs";
 import ImageLogs from "../src/components/ImageLog/ImageLog";
 import SSO from "./components/Login/SSO";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
 
 function App() {
   const [user, setUser] = useState("");
@@ -33,12 +34,12 @@ function App() {
   };
 
   useEffect(() => {
-    fire.auth().onAuthStateChanged((loggedin) => {
+    firebase.auth().onAuthStateChanged((loggedin) => {
       if (loggedin === null) {
         history.push("/signinmethod");
       } else {
         if (loggedin.uid === user) {
-          if (location.pathname === "/login" || location.pathname === "/signup")
+          if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/signinmethod")
             history.push("/");
         } else {
           setUser(loggedin.uid);
@@ -66,6 +67,7 @@ function App() {
             exact
             component={() => <ImageLogs loggedinUserData={user} />}
           />
+          <Route path="*" exact component={() => <ErrorPage />} />
         </Switch>
         <BottomNav logout={handleLogout} login />
       </div>
@@ -93,6 +95,7 @@ function App() {
             exact
             component={() => <SSO setUser={setUser} />}
           />
+          <Route path="/aboutus" exact component={() => <AboutUs />} />
         </Switch>
       )}
     </div>
