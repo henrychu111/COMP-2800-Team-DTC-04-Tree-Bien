@@ -30,28 +30,22 @@ class AddTreeButton extends React.Component {
   existingTreeButton(tree) {
     return (
       <div key={tree.id}>
-        <button className="user-trees">
-          <Link
-            to={{
-              pathname: "/mytree/showtreedata",
-              state: {
-                loggedinUserData: this.props.loggedinUser,
-                id: tree.id,
-              },
-            }}
-          >
-            {" "}
-            {tree.name} Tree
-          </Link>
-        </button>
+        <Link
+          to={{
+            pathname: "/mytree/showtreedata",
+            state: {
+              loggedinUserData: this.props.loggedinUser,
+              id: tree.id,
+            },
+          }}
+        >
+          <button className="user-trees"> {tree.name} Tree</button>
+        </Link>
       </div>
     );
   }
 
   render() {
-    console.log("Addtree userid", this.props.loggedinUser);
-    console.log("num trees: ", this.props.existingTrees.length);
-
     return (
       <div className="addTreeSection">
         <button id="add-tree-button" onClick={this.togglePopup.bind(this)}>

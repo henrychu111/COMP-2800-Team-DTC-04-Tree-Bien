@@ -143,7 +143,7 @@ const TreeForm = (props) => {
             onChange={(input) => setPersonality(input.target.value)}
           />
           <br></br>
-          <select
+          {/* <select
             className="form_input form_address"
             required
             onChange={(input) => setLocation(input.target.value)}
@@ -152,7 +152,24 @@ const TreeForm = (props) => {
               Choose location
             </option>
             {locationOptions.map((location) => (
-              <option value={location}>{location}</option>
+              <option key={location.toString()} value={location}>
+                {location}
+              </option>
+            ))}
+          </select> */}
+          <select
+            className="form_input form_address"
+            defaultValue={"DEFAULT"}
+            required
+            onChange={(input) => setLocation(input.target.value)}
+          >
+            <option value="DEFAULT" disabled>
+              Choose location
+            </option>
+            {locationOptions.map((location) => (
+              <option key={location.toString()} value={location}>
+                {location}
+              </option>
             ))}
           </select>
           <button type="submit" className="form_submit_button">

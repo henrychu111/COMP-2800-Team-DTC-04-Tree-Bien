@@ -64,7 +64,12 @@ function App() {
           <Route
             path="/mytree/imageLogs"
             exact
-            component={() => <ImageLogs loggedinUserData={user} />}
+            // component={() => <ImageLogs loggedinUserData={user} />}
+            component={() => {
+              return (
+                <ImageLogs loggedinUserData={user} tree={location.state} />
+              );
+            }}
           />
           <Route
             path="/mytree/showtreedata"

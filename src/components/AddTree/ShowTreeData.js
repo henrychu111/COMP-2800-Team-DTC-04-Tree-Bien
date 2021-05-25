@@ -12,7 +12,6 @@ const db = firebase.firestore();
 
 //https://www.carlrippon.com/formatting-dates-and-numbers-in-react/
 function formatDate(change_date) {
-  console.log(change_date);
   return new Intl.DateTimeFormat("en-GB", {
     year: "2-digit",
     month: "long",
@@ -60,8 +59,6 @@ class ShowTreeData extends React.Component {
       .collection("add-new-tree")
       .doc(treeId)
       .onSnapshot((doc) => {
-        console.log("tree field updated");
-        console.log(doc.data());
         this.setState({ tree: doc.data() });
       });
   }
@@ -70,8 +67,6 @@ class ShowTreeData extends React.Component {
     // const flipping = this.state.flipping;
     // const pulsing = this.state.pulsing;
     // const wobble = this.state.wobble;
-    console.log("showtreedata tree id", this.props.tree.id);
-    console.log("showtreedata userID", this.props.tree.loggedinUserData);
 
     if (this.state.tree == null) {
       return <div></div>;
@@ -204,9 +199,16 @@ class ShowTreeData extends React.Component {
           ) : null}
         </div>
         <div id="tree-page-photo-album">
-          <button>
-            <Link to="/mytree/imageLogs">My Tree Photo Album</Link>
-          </button>
+          <Link
+            to={{
+              pathname: "/mytree/imageLogs",
+              state: {
+                treeID: this.props.tree.id,
+              },
+            }}
+          >
+            <button>My Tree Photo Album</button>
+          </Link>
         </div>
         {/* <div id="panda"></div> */}
       </div>

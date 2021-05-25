@@ -119,7 +119,6 @@ const UpdateTree = (props) => {
         const data = doc.data();
         const documentLocation = data.address;
         locationList.push(documentLocation);
-        console.log("location", locationList);
       });
       setLocationOptions(locationList);
     });
@@ -140,10 +139,17 @@ const UpdateTree = (props) => {
               {props.dictKey == "location" ? (
                 <select
                   className="edit-select"
+                  defaultValue={"DEFAULT"}
+                  required
                   onChange={(input) => setField(input.target.value)}
                 >
+                  <option value="DEFAULT" disabled>
+                    Choose location
+                  </option>
                   {locationOptions.map((location) => (
-                    <option value={location}>{location}</option>
+                    <option key={location.toString()} value={location}>
+                      {location}
+                    </option>
                   ))}
                 </select>
               ) : (
