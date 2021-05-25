@@ -57,7 +57,7 @@ const BottomNav = ({logout}) => {
     )
 
     return (
-            <Navbar expand="lg" variant="light" className="bottom-nav-bar" fixed="bottom" >
+            <Navbar expand="lg" variant="light" className="bottom-nav-bar" fixed="bottom" id="bottom-nav-bar">
                 <Link to="/map" className="bottomNavIcons">
                     {bottomNavOn === "bottom-nav-map" ? 
                     <Image src={Mapimage} className="bottomNavImage" />
