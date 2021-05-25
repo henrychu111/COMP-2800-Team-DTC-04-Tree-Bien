@@ -58,7 +58,7 @@ function Map() {
             </div>}
             title={<div><ShopOutlined style={{ color: 'green' }} />{" " + shop.name}</div>}
           >
-            <img style={{ width: '40px' }} src="/shopping-cart-marker.png" />
+            <img style={{ width: '28px' }} src="/shopping-cart-marker.png" />
           </Popover>
         })}
         {plantingSites && plantingSites.map((site) => {
@@ -74,7 +74,7 @@ function Map() {
         })}
       </GoogleMapReact>
       <div style={{position: 'absolute', top: '10px', left: '20px', backgroundColor: 'rgba(255,255,255,0.6)', padding: '5px 15px', borderRadius: '15px'}}>
-        <img style={{ width: '25px' }} src="/shopping-cart-marker.png" />
+        <img style={{ width: '19px' }} src="/shopping-cart-marker.png" />
         <span style={{marginRight: '20px', fontSize: '16px'}}> Tree Vendor</span>
         <img style={{ width: '25px' }} src="/tree_map_icon.png" />
         <span style={{fontSize: '16px'}}> Planting Site</span>

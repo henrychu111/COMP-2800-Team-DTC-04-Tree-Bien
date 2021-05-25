@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import firebase from "../../firebase";
 import "../../css/TreeForm.css";
+import { ConsoleSqlOutlined, DownCircleFilled } from "@ant-design/icons";
 
 const TreeForm = (props) => {
   const [name, setName] = useState("");
@@ -9,24 +10,29 @@ const TreeForm = (props) => {
   const [birthday, setBirthday] = useState("");
   const [species, setSpecies] = useState("");
   const [personality, setPersonality] = useState("");
+  const [locationOptions, setLocationOptions] = useState([]);
+  const [location, setLocation] = useState("");
+
   const db = firebase.firestore();
 
   const handleSubmit = (e) => {
+    console.log(props.loggedinUserTreeForm);
     e.preventDefault();
 
     db.collection("users")
       .doc(props.loggedinUserTreeForm)
       .collection("add-new-tree")
-      .doc("New-Tree")
-      .set({
+      .add({
         name: name,
         gender: gender,
         height: height,
         birthday: birthday,
         species: species,
         personality: personality,
+        location: location,
       })
-      .then(() => {
+      .then((docRef) => {
+        console.log("This is doc reference", docRef.id);
         console.log("Form submitted");
       })
       .catch((error) => {
@@ -39,8 +45,23 @@ const TreeForm = (props) => {
     setBirthday("");
     setSpecies("");
     setPersonality("");
+    setLocation("");
     props.closePopup();
   };
+
+  useEffect(() => {
+    db.collection("plantingsites").onSnapshot((snapshot) => {
+      const locationList = [];
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        const documentLocation = data.address;
+        locationList.push(documentLocation);
+        console.log("location", locationList);
+      });
+      setLocationOptions(locationList);
+      setLocation(locationList[0]);
+    });
+  }, []);
 
   return (
     <div className="popup">
@@ -122,6 +143,35 @@ const TreeForm = (props) => {
             onChange={(input) => setPersonality(input.target.value)}
           />
           <br></br>
+          {/* <select
+            className="form_input form_address"
+            required
+            onChange={(input) => setLocation(input.target.value)}
+          >
+            <option value="" disabled selected>
+              Choose location
+            </option>
+            {locationOptions.map((location) => (
+              <option key={location.toString()} value={location}>
+                {location}
+              </option>
+            ))}
+          </select> */}
+          <select
+            className="form_input form_address"
+            defaultValue={"DEFAULT"}
+            required
+            onChange={(input) => setLocation(input.target.value)}
+          >
+            <option value="DEFAULT" disabled>
+              Choose location
+            </option>
+            {locationOptions.map((location) => (
+              <option key={location.toString()} value={location}>
+                {location}
+              </option>
+            ))}
+          </select>
           <button type="submit" className="form_submit_button">
             Set Up Tree!
           </button>

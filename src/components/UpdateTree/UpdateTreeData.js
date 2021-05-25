@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import firebase from "../../firebase";
 import "../../css/UpdateTreeData.css";
 import Modal from "react-bootstrap/Modal";
@@ -86,9 +86,11 @@ const UpdateTree = (props) => {
   const allowLength = getMaxLength(props.dictKey);
   const minHeight = getMin(props.dictKey);
   const maxHeight = getMax(props.dictKey);
+  const [locationOptions, setLocationOptions] = useState([]);
   const db = firebase.firestore();
 
   const handleSubmit = (e) => {
+    console.log("update tree, this is the id", props.treeID);
     e.preventDefault();
 
     const updateDoc = {};
@@ -96,7 +98,8 @@ const UpdateTree = (props) => {
     db.collection("users")
       .doc(props.loggedinUserUpdate)
       .collection("add-new-tree")
-      .doc("New-Tree")
+      .doc(props.treeID)
+
       .update(updateDoc)
       .then(() => {
         console.log("Updated");
@@ -108,6 +111,18 @@ const UpdateTree = (props) => {
     setField("");
     props.closePopup();
   };
+
+  useEffect(() => {
+    db.collection("plantingsites").onSnapshot((snapshot) => {
+      const locationList = [];
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        const documentLocation = data.address;
+        locationList.push(documentLocation);
+      });
+      setLocationOptions(locationList);
+    });
+  }, []);
 
   return (
     <div className="edit-data-popup">
@@ -121,18 +136,37 @@ const UpdateTree = (props) => {
           <Modal.Body>
             <p>Change {props.value} to:</p>
             <form id="tree-update-form" onSubmit={handleSubmit}>
-              <input
-                className="edit-input"
-                type={typeOfInput}
-                value={titleText(field, typeOfInput)}
-                maxLength={allowLength}
-                pattern={pattern}
-                title={title}
-                min={minHeight}
-                max={maxHeight}
-                required
-                onChange={(input) => setField(input.target.value)}
-              />
+              {props.dictKey == "location" ? (
+                <select
+                  className="edit-select"
+                  defaultValue={"DEFAULT"}
+                  required
+                  onChange={(input) => setField(input.target.value)}
+                >
+                  <option value="DEFAULT" disabled>
+                    Choose location
+                  </option>
+                  {locationOptions.map((location) => (
+                    <option key={location.toString()} value={location}>
+                      {location}
+                    </option>
+                  ))}
+                </select>
+              ) : (
+                <input
+                  className="edit-input"
+                  type={typeOfInput}
+                  value={titleText(field, typeOfInput)}
+                  maxLength={allowLength}
+                  pattern={pattern}
+                  title={title}
+                  min={minHeight}
+                  max={maxHeight}
+                  required
+                  onChange={(input) => setField(input.target.value)}
+                />
+              )}
+
               <button type="submit" className="edit-submit-button">
                 Submit
               </button>

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Login from "./components/Login/Login";
@@ -21,27 +20,37 @@ import TreeDirectory from "./components/TreeDirectory/TreeDirectory";
 import AboutUs from "../src/AboutUs";
 import ImageLogs from "../src/components/ImageLog/ImageLog";
 import SSO from "./components/Login/SSO";
+import ShowTreeData from "./components/AddTree/ShowTreeData";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
+import ContactForm from "./components/ContactForm/ContactForm";
+import Profile from "./components/UserProfile/ProfilePage"
 
 function App() {
   const [user, setUser] = useState("");
   const history = useHistory();
   const location = useLocation();
+  const [profilePhoto, setProfilePhoto] = useState("");
 
   const handleLogout = () => {
     firebase.auth().signOut();
     setUser("");
+    history.push("/signinmethod");
   };
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((loggedin) => {
-      if (loggedin === null) {
+      if (location.pathname === "/aboutus") {
+        history.push("/aboutus");
+      }
+      else if (loggedin === null) {
         history.push("/signinmethod");
       } else {
         if (loggedin.uid === user) {
-          if (location.pathname === "/login" || location.pathname === "/signup")
+          if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/signinmethod" || location.pathname === "/aboutus")
             history.push("/");
         } else {
           setUser(loggedin.uid);
+          setProfilePhoto(loggedin.photoURL)
         }
       }
     });
@@ -60,12 +69,28 @@ function App() {
           <Route path="/map" exact component={() => <Map />} />
           <Route path="/directory" exact component={TreeDirectory} />
           <Route path="/directory/search" component={SearchView}></Route>
-          <Route path="/aboutus" exact component={() => <AboutUs />} />
+          <Route path="/aboutus" exact component={() => <AboutUs loggedinUserData={user}/>} />
           <Route
             path="/mytree/imageLogs"
             exact
-            component={() => <ImageLogs loggedinUserData={user} />}
+            // component={() => <ImageLogs loggedinUserData={user} />}
+            component={() => {
+              return (
+                <ImageLogs loggedinUserData={user} tree={location.state} />
+              );
+            }}
           />
+          <Route
+            path="/mytree/showtreedata"
+            exact
+            component={() => {
+              return <ShowTreeData tree={location.state} />;
+            }}
+          />
+          <Route path="/contact" exact component={() => <ContactForm /> } />
+          <Route path="/user" exact component={() => <Profile profilePhoto = {profilePhoto} currentUser={user}/>} />
+          <Route path="*" exact component={() => <ErrorPage />} />
+          
         </Switch>
         <BottomNav logout={handleLogout} login />
       </div>
@@ -93,6 +118,7 @@ function App() {
             exact
             component={() => <SSO setUser={setUser} />}
           />
+          <Route path="/aboutus" exact component={() => <AboutUs />} />
         </Switch>
       )}
     </div>

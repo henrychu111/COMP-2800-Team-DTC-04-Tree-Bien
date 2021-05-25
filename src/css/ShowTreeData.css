@@ -25,7 +25,6 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10%;
   margin-bottom: 5%;
   width: 100px;
   height: 100px;
@@ -35,7 +34,7 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 25%;
+  margin-top: 8%;
   margin-bottom: 5%;
   width: 100px;
   height: 100px;
@@ -58,6 +57,13 @@ body {
   text-decoration: none;
   background-color: rgb(244, 242, 236);
   color: black;
+}
+
+.back-button-image {
+  position: relative;
+  left: 1%;
+  top: 10px;
+  font-size: 200%;
 }
 
 /* Add wobble */

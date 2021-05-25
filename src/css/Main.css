@@ -29,6 +29,11 @@
     /* border-top: 1px ridge black; */
 }
 
+#bottom-nav-bar {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .button-container {
     margin-top: 15%;
     display: inline-flex;
@@ -62,8 +67,16 @@
     background-color: rgb(244,242,236);
 }
 
-.logout-button {
+.popover-options {
     background-color: rgb(244,242,236);
+}
+
+.popover-options:hover, .popover-options:active {
+    color: black;
+    background-color: rgb(220,214,190);
+}
+#popover-basic {
+    width: 100px
 }
 
 .ant-divider {
@@ -78,4 +91,8 @@
 #search-item {
     width: 27px;
     height: auto;
+}
+
+#daily-tip-container {
+    text-align: center;
 }

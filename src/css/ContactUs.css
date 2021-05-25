@@ -1,0 +1,24 @@
+.contact-container {
+    position: fixed;
+  top: 35%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
+.contact-header {
+    text-align: center;
+}
+
+.contact-button {
+    text-decoration: none;
+    color: black;
+    background-color: rgb(244,242,236);
+    border: none;
+    box-shadow: 5px 5px 25px -12px rgba(83, 65, 54, 0.8);
+    margin-top: 30px;
+}
+.contact-button:hover, .contact-button:active {
+    color: black;
+    background-color: rgb(220,214,190);
+}

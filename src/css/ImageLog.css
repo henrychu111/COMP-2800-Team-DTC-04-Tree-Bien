@@ -5,6 +5,16 @@
   margin-bottom: 5%;
 }
 
+#tree-page-tree-image-album {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5%;
+  margin-top: 12.5%;
+  width: 100px;
+  height: 100px;
+}
+
 .ant-upload-list-picture-card-container {
   width: 150px;
   height: 150px;

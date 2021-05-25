@@ -64,3 +64,12 @@ input[type="number"],
 input[type="date"] {
   height: 2.375rem;
 }
+
+.edit-select {
+  display: table;
+  margin: auto;
+  width: 80%;
+  padding: 2%;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
