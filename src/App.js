@@ -21,6 +21,7 @@ import AboutUs from "../src/AboutUs";
 import ImageLogs from "../src/components/ImageLog/ImageLog";
 import SSO from "./components/Login/SSO";
 import ShowTreeData from "./components/AddTree/ShowTreeData";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
 
 function App() {
   const [user, setUser] = useState("");
@@ -30,15 +31,19 @@ function App() {
   const handleLogout = () => {
     firebase.auth().signOut();
     setUser("");
+    history.push("/signinmethod");
   };
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((loggedin) => {
-      if (loggedin === null) {
+      if (location.pathname === "/aboutus") {
+        history.push("/aboutus");
+      }
+      else if (loggedin === null) {
         history.push("/signinmethod");
       } else {
         if (loggedin.uid === user) {
-          if (location.pathname === "/login" || location.pathname === "/signup")
+          if (location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/signinmethod" || location.pathname === "/aboutus")
             history.push("/");
         } else {
           setUser(loggedin.uid);
@@ -60,7 +65,7 @@ function App() {
           <Route path="/map" exact component={() => <Map />} />
           <Route path="/directory" exact component={TreeDirectory} />
           <Route path="/directory/search" component={SearchView}></Route>
-          <Route path="/aboutus" exact component={() => <AboutUs />} />
+          <Route path="/aboutus" exact component={() => <AboutUs loggedinUserData={user}/>} />
           <Route
             path="/mytree/imageLogs"
             exact
@@ -78,6 +83,7 @@ function App() {
               return <ShowTreeData tree={location.state} />;
             }}
           />
+          <Route path="*" exact component={() => <ErrorPage />} />
         </Switch>
         <BottomNav logout={handleLogout} login />
       </div>
@@ -105,6 +111,7 @@ function App() {
             exact
             component={() => <SSO setUser={setUser} />}
           />
+          <Route path="/aboutus" exact component={() => <AboutUs />} />
         </Switch>
       )}
     </div>

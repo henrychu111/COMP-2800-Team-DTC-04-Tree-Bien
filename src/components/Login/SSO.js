@@ -58,6 +58,9 @@ const SSO = ({setUser}) => {
                     <div className="btnContainer">
                         <p>Have an account? <Link className="login-link" to="/login">Sign in</Link>
                         </p>
+                        <p>
+                            <Link className="login-link" to="/aboutus">To learn more about Tree Bien</Link>
+                        </p>
                     </div>
                 </div>
             </section>

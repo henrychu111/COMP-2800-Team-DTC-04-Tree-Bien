@@ -11,17 +11,27 @@ import Hoda from "./images/AvatarMaker_Hoda.png";
 import { useDoubleTap } from 'use-double-tap';
 import { Divider } from 'antd';
 import { Container } from 'react-bootstrap';
+import { FacebookShareButton, 
+        FacebookIcon, 
+        LinkedinShareButton, 
+        LinkedinIcon, 
+        TwitterShareButton, 
+        TwitterIcon, 
+        RedditShareButton, 
+        RedditIcon } from 'react-share';
+import { Link } from "react-router-dom";
+import { ArrowLeftOutlined } from '@ant-design/icons';
 
 import "./AboutUs.css";
 
 
-const AboutUsPage = () => {
+const AboutUsPage = ({loggedinUserData}) => {
  
   const [paulphoto, setPaul] = useState(true);
   const [hannahphoto, setHannah] = useState(true);
   const [henryphoto, setHenry] = useState(true);
   const [aprilphoto, setApril] = useState(true);
-
+  const aboutUsShare = "https://tree-bien.herokuapp.com/aboutus";
 
   const doubleTapHenry = useDoubleTap((event) => {
     setHenry(!henryphoto)
@@ -41,6 +51,9 @@ const AboutUsPage = () => {
 
   return (
     <div id="about-us-div">
+      <div id="back-button-div">
+      {loggedinUserData ? null : <Link to="/signinmethod" id="back-button-aboutus"><ArrowLeftOutlined id="back-arrow" /></Link>}
+      </div>
       <div className="jumbo-div">
         <Jumbotron className="about-us-jumbo" fluid>
           <div className="about-us-culture">
@@ -58,6 +71,21 @@ const AboutUsPage = () => {
                   " At Tree Bien, we believe each of our different strengths can create an environment where " + 
                   "each team member can ask, learn, and teach one another. Root for trees, as they are humanity’s lifeline.")}
               </p>
+            </div>
+            <div id="share-buttons">
+                <FacebookShareButton url={aboutUsShare} quote="Let's plant trees together! Root for Trees" hashtag="#treebien" className="social-buttons">
+                  <FacebookIcon size={32} round={true} />
+                </FacebookShareButton>
+                <TwitterShareButton url={aboutUsShare} quote="Let's plant a tree together! Root for Trees" hashtag="#treebien" className="social-buttons">
+                  <TwitterIcon size={32} round={true} />
+                </TwitterShareButton>
+                <LinkedinShareButton url={aboutUsShare} quote="Let's plant trees together! Root for Trees" hashtag="#treebien" className="social-buttons">
+                  <LinkedinIcon size={32} round={true} />
+                </LinkedinShareButton>
+                <RedditShareButton url={aboutUsShare} quote="Let's plant trees together! Root for Trees" hashtag="#treebien" className="social-buttons">
+                  <RedditIcon size={32} round={true} />
+                </RedditShareButton>
+
             </div>
           </div>
         </Jumbotron>
