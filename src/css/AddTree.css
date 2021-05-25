@@ -42,6 +42,7 @@
   width: 60%;
   background-color: rgb(221,229,182);
   box-shadow: 3px 3px 15px -7px rgba(83, 65, 54, 0.8);
+  line-height: 10px;
 }
 
 #tree-image-div {
