@@ -260,7 +260,7 @@ const ImageLogs = (props) => {
         <img
           src={treeImage}
           alt="tree-shadow"
-          id="tree-page-tree-image"
+          id="tree-page-tree-image-album"
           // className={flipping ? "flipping" : ""}
         ></img>
       </div>

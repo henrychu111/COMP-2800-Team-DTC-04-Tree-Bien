@@ -59,6 +59,13 @@ body {
   color: black;
 }
 
+.back-button-image {
+  position: relative;
+  left: 1%;
+  top: 10px;
+  font-size: 200%;
+}
+
 /* Add wobble */
 
 /* .wobble {

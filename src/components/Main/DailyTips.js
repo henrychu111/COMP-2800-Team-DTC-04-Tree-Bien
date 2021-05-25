@@ -10,6 +10,8 @@ const DailyTips = () => {
 
     const [dailyTips, setDailyTips] = useState([]);
     const [randomTip, setRandomTip] = useState('');
+    const [treeList, settreeList] = useState(["🌳", "🌲", "🌴", "🎋", "🍁", "🍂", "🌸"]);
+    const [randomTree, setRandomTree] = useState('');
     const db = firebase.firestore();
 
     useEffect(() => {
@@ -31,10 +33,17 @@ const DailyTips = () => {
         setRandomTip(chosenTip);
     }, [dailyTips])
 
+    useEffect(() => {
+        if (!treeList || treeList.length === 0) return;
+        const randomTreeNumber = Math.floor(Math.random() * (treeList.length - 1));
+        const chosenTree = treeList[randomTreeNumber];
+        setRandomTree(chosenTree);
+    }, [treeList])
+
     return (
         <Jumbotron fluid className="jumbotron">
-            <Container>
-                <h1>Daily Tip</h1>
+            <Container id="daily-tip-container">
+                <h1>{randomTree} Daily Tip {randomTree}</h1>
                 <p>
                     {randomTip}
                 </p>

@@ -4,6 +4,8 @@ import TreeForm from "./TreeForm";
 import "../../css/AddTree.css";
 import ShowTreeData from "./ShowTreeData";
 import { Link } from "react-router-dom";
+import treeImage from "../../images/green_tree.png";
+
 
 //reference code https://codepen.io/bastianalbers/pen/PWBYvz
 
@@ -47,9 +49,17 @@ class AddTreeButton extends React.Component {
 
   render() {
     return (
+      <div>
+        <div id="tree-image-div">
+        <img
+          src={treeImage}
+          alt="tree-shadow"
+          id="tree-page-tree-image"
+        ></img>
+        </div>
       <div className="addTreeSection">
         <button id="add-tree-button" onClick={this.togglePopup.bind(this)}>
-          Add a new tree
+          Plant a new tree
         </button>
         {this.state.showPopup ? (
           <TreeForm
@@ -58,6 +68,7 @@ class AddTreeButton extends React.Component {
           />
         ) : null}
         {this.props.existingTrees.map((tree) => this.existingTreeButton(tree))}
+      </div>
       </div>
     );
   }

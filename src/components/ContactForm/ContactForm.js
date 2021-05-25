@@ -39,9 +39,9 @@ const ContactForm = () => {
     }
 
     const clearForm = () => {
-        document.getElementById("email-input").value = '';
-        document.getElementById("name-input").value = '';
-        document.getElementById("message-input").value = '';
+        document.getElementById("exampleForm.ControlInput1").value = '';
+        document.getElementById("exampleForm.ControlInput2").value = '';
+        document.getElementById("exampleForm.ControlTextarea1").value = '';
     }
 
     return (

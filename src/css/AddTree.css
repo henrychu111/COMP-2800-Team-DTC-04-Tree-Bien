@@ -13,7 +13,7 @@
   border-radius: 3px;
   margin-bottom: 10%;
   height: 40px;
-  width: 100%;
+  width: 60%;
   background-color: rgb(244, 242, 236);
   box-shadow: 5px 5px 25px -7px rgba(83, 65, 54, 0.8);
 }
@@ -23,23 +23,33 @@
 }
 
 .addTreeSection {
-  position: absolute;
-  left: 25%;
-  right: 25%;
-  top: 18%;
+  position: relative;
+  margin-bottom: 5%;
+  text-align: center
+
 }
 
 .user-trees {
-  display: inline-flex;
+  /* display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   color: black;
   border: none;
   border-radius: 3px;
   margin-top: 5%;
   margin-bottom: 5%;
   height: 40px;
-  width: 100%;
-  background-color: rgb(244, 242, 236);
+  width: 60%;
+  background-color: rgb(221,229,182);
   box-shadow: 3px 3px 15px -7px rgba(83, 65, 54, 0.8);
+}
+
+#tree-image-div {
+  display: block;
+  margin-top: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1%;
+  width: 100px;
+  height: 100px;
 }

@@ -27,16 +27,16 @@ const Main = () => {
                     </div>
                     <Container className="button-container">
                         <Row className="justify-content-center button-rows">
-                            <Link to="/map"><button>Map</button></Link>
+                            <Link to="/map"><pre style={{margin: "0px"}}><button>🗺️   Map   🗺️</button></pre></Link>
                         </Row>
                         <Row className="justify-content-center button-rows">
-                            <Link to="/mytree"><button>My Tree</button></Link>
+                            <Link to="/mytree"><button>🌱 My Tree 🌱</button></Link>
                         </Row>
                         <Row className="justify-content-center button-rows">
-                            <Link to="/directory"><button>Directory</button></Link>
+                            <Link to="/directory"><button>📗 Directory 📗</button></Link>
                         </Row>
                         <Row className="justify-content-center button-rows">
-                            <Link to="/aboutus"><button>About Us</button></Link>
+                            <Link to="/aboutus"><button>👫 About Us 👫</button></Link>
                         </Row>
                     </Container>
                 </Container>
