@@ -75,6 +75,9 @@
     color: black;
     background-color: rgb(220,214,190);
 }
+#popover-basic {
+    width: 100px
+}
 
 .ant-divider {
     background-color: rgb(225,225,228);
@@ -89,3 +92,4 @@
     width: 27px;
     height: auto;
 }
+

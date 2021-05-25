@@ -23,11 +23,13 @@ import SSO from "./components/Login/SSO";
 import ShowTreeData from "./components/AddTree/ShowTreeData";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import ContactForm from "./components/ContactForm/ContactForm";
+import Profile from "./components/UserProfile/ProfilePage"
 
 function App() {
   const [user, setUser] = useState("");
   const history = useHistory();
   const location = useLocation();
+  const [profilePhoto, setProfilePhoto] = useState("");
 
   const handleLogout = () => {
     firebase.auth().signOut();
@@ -48,6 +50,7 @@ function App() {
             history.push("/");
         } else {
           setUser(loggedin.uid);
+          setProfilePhoto(loggedin.photoURL)
         }
       }
     });
@@ -85,7 +88,9 @@ function App() {
             }}
           />
           <Route path="/contact" exact component={() => <ContactForm /> } />
+          <Route path="/user" exact component={() => <Profile profilePhoto = {profilePhoto} currentUser={user}/>} />
           <Route path="*" exact component={() => <ErrorPage />} />
+          
         </Switch>
         <BottomNav logout={handleLogout} login />
       </div>
