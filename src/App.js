@@ -27,6 +27,7 @@ function App() {
   const [user, setUser] = useState("");
   const history = useHistory();
   const location = useLocation();
+  const [profilePhoto, setProfilePhoto] = useState("");
 
   const handleLogout = () => {
     firebase.auth().signOut();
@@ -43,6 +44,7 @@ function App() {
             history.push("/");
         } else {
           setUser(loggedin.uid);
+          setProfilePhoto(loggedin.photoURL)
         }
       }
     });
@@ -67,7 +69,7 @@ function App() {
             exact
             component={() => <ImageLogs loggedinUserData={user} />}
           />
-          <Route path="/user" exact component={() => <Profile currentUser={user}/>} />
+          <Route path="/user" exact component={() => <Profile profilePhoto = {profilePhoto} currentUser={user}/>} />
         </Switch>
         <BottomNav logout={handleLogout} login />
       </div>

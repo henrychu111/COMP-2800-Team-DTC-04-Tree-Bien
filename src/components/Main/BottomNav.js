@@ -52,7 +52,8 @@ const BottomNav = ({logout}) => {
     
     const settingPopover = (
         <Popover id="popover-basic">
-            <Button className="logout-button"variant="outline-dark" style={{fontWeight: "bold"}} onClick={logout}>Logout</Button> 
+            <Button className="logout-button" variant="outline-dark" style={{fontWeight: "bold"}} onClick={logout}>Logout</Button> 
+            <Link to="/user"><Button className="logout-button" variant="outline-dark" style={{fontWeight: "bold"}} >Profile</Button></Link>
         </Popover>
     )
 
