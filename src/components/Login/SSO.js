@@ -53,7 +53,7 @@ const SSO = ({setUser}) => {
                         <button onClick={() => handleOnClick(facebookProvider)}>Facebook</button>
                         <button onClick={() => handleOnClick(githubProvider)}>Github</button>
                         <button onClick={() => handleOnClick(googleProvider)}>Google</button>
-                        <Link to="/login" className="email-signup"><button>Email</button></Link>
+                        <Link to="/login" className="email-signup"><button className="email-signup">Email</button></Link>
                     </div>
                     <div className="btnContainer">
                         <p>Have an account? <Link className="login-link" to="/login">Sign in</Link>

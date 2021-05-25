@@ -17,6 +17,7 @@ import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import '../../css/Main.css';
 import { Divider } from 'antd';
+import ContactForm from '../ContactForm/ContactForm';
 
 
 import { BrowserRouter as Router, Redirect, Link, Switch, Route } from "react-router-dom";
@@ -52,7 +53,8 @@ const BottomNav = ({logout}) => {
     
     const settingPopover = (
         <Popover id="popover-basic">
-            <Button className="logout-button"variant="outline-dark" style={{fontWeight: "bold"}} onClick={logout}>Logout</Button> 
+            <Button className="popover-options" variant="outline-dark" style={{fontWeight: "bold"}} onClick={logout}>Logout</Button>
+            <Link to="/contact"><Button className="popover-options" variant="outline-dark" style={{fontWeight: "bold"}}>Contact</Button></Link>
         </Popover>
     )
 

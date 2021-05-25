@@ -22,6 +22,7 @@ import ImageLogs from "../src/components/ImageLog/ImageLog";
 import SSO from "./components/Login/SSO";
 import ShowTreeData from "./components/AddTree/ShowTreeData";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
+import ContactForm from "./components/ContactForm/ContactForm";
 
 function App() {
   const [user, setUser] = useState("");
@@ -83,6 +84,7 @@ function App() {
               return <ShowTreeData tree={location.state} />;
             }}
           />
+          <Route path="/contact" exact component={() => <ContactForm /> } />
           <Route path="*" exact component={() => <ErrorPage />} />
         </Switch>
         <BottomNav logout={handleLogout} login />
