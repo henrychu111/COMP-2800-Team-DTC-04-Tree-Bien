@@ -70,15 +70,20 @@ class ShowTreeData extends React.Component {
       .doc(treeId)
       .onSnapshot((doc) => {
         console.log(doc.data());
-        if(doc.data() != null){
-        db.collection("plantingsites").doc(doc.data().location).get().then((location) => {
-          if(location.exists) {
-            this.setState({ tree: {...doc.data(), location: location.data().name} });
-          } else {
-            this.setState({ tree: {...doc.data(), location: ''} });
-          }
-        })
-      }
+        if (doc.data() != null) {
+          db.collection("plantingsites")
+            .doc(doc.data().location)
+            .get()
+            .then((location) => {
+              if (location.exists) {
+                this.setState({
+                  tree: { ...doc.data(), location: location.data().name },
+                });
+              } else {
+                this.setState({ tree: { ...doc.data(), location: "" } });
+              }
+            });
+        }
       });
   }
 
@@ -134,7 +139,7 @@ class ShowTreeData extends React.Component {
             src={treeImage}
             alt="tree-shadow"
             id="tree-page-tree-image"
-            onClick={this.handleShow()}
+            // onClick={this.handleShow()}
           ></img>
         </div>
         <div className="display-item-details">
@@ -250,7 +255,9 @@ class ShowTreeData extends React.Component {
               },
             }}
           >
-            <button>My Tree Photo Album</button>
+            <button id="photo-album-button">
+              <b>My Tree Photo Album</b>
+            </button>
           </Link>
         </div>
 
@@ -269,6 +276,9 @@ class ShowTreeData extends React.Component {
             </Button>
           </Modal.Footer>
         </Modal>
+        <button id="delete-tree-button" onClick={this.handleShow()}>
+          Delete Tree
+        </button>
       </div>
     );
   }
