@@ -91,6 +91,7 @@ button {
 
 .email-signup {
   text-decoration: none;
+  color:rgb(36, 36, 36);
 }
 
 .signin-methods button, .signin-methods a button {
