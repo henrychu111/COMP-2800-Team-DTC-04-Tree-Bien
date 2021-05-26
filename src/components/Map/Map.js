@@ -6,12 +6,25 @@ import { ShopOutlined } from '@ant-design/icons';
 import firebase from '../../firebase';
 const outerLocationStyle = {width: '50px', height: '50px', backgroundColor: 'rgba(128, 204, 255, 0.5)', borderRadius:'50%'}
 const innerLocationStyle = {backgroundColor: '#4d94ff', transform:'translate(75%, 75%)', fontSize: '30px', width: '20px', height: '20px', border: '3px solid white', borderRadius: '50%'}
-function Map() {
+
+function Map({userId}) {
+  const [userTrees, setUserTrees] = useState([]);
   const [plantingSites, setPlantingSites] = useState([]);
   const [plantShops, setPlantShops] = useState([]);
   const [location, setLocation] = useState({latitude: 49.263569, longitude: -123.138573})
   const [curLocation, setCurLocation] = useState(null)
   const db = firebase.firestore();
+
+  useEffect(() => {
+    const fetchUserPlants = async () => {
+      const response = db.collection("users").doc(userId).collection("add-new-tree");
+      const data = await response.get();
+       data.docs.forEach((tree) => {
+          setUserTrees(oldTrees => [...oldTrees, {location: tree.data().location, name: tree.data().name}]);
+        })
+    }
+    fetchUserPlants();
+  }, [])
 
   useEffect(() => {
     const fetchPlantingSites = async () => {
@@ -43,6 +56,7 @@ function Map() {
   })
 }  
   }, [])
+
   return (
     <div style={{ width: '100vw', height: "93vh" }}>
       <GoogleMapReact bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_KEY }}
@@ -65,7 +79,9 @@ function Map() {
           return <Popover trigger = "click" lat={site.latitude} lng={site.longitude} key={site.id}
             content={<div>{site.address + ", " + site.city}<br/>
               {site.province + ", " + site.country + ", " + site.postalcode}<br/>
-              <b> Best Trees To Plant:</b> {site.suggestedplants}
+              <b> Best Trees To Plant:</b> {site.suggestedplants} <br/>
+              <b>Planted Trees: </b> {userTrees.length > 0 ? userTrees.filter(tree => {
+                return tree.location === site.id}).map((tree) => tree.name).join(", ") : " No Trees Planted"}  
             </div>}
             title={<div><img style={{ width: "20px" }} src="/tree_icon.png" />{" " + site.name}</div>}
           >

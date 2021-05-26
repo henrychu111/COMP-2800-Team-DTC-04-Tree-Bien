@@ -4,6 +4,7 @@ body {
 
 .display-tree-info {
   margin: 20px;
+  overflow: auto;
 }
 
 .info-item {
@@ -48,10 +49,15 @@ body {
   width: 75%;
   border: none;
   border-radius: 3px;
-  font-size: 12px;
+  font-size: 15px;
   color: black;
   box-shadow: 5px 5px 25px -12px rgba(83, 65, 54, 0.8);
 }
+
+#photo-album-button {
+  padding: 25px;
+}
+
 #tree-page-photo-album button a,
 #tree-page-photo-album button {
   text-decoration: none;
@@ -264,4 +270,22 @@ body {
   100% {
     -webkit-transform: translateX(85vw);
   }
+}
+
+div.modal-content {
+  width: 75%;
+  margin-top: 35%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#delete-tree-button {
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20%;
+  box-shadow: 5px 5px 25px -12px rgba(83, 65, 54, 0.8);
 }
