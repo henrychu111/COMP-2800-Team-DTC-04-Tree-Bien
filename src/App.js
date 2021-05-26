@@ -66,7 +66,7 @@ function App() {
             exact
             component={() => <MyTree loggedinUserMyTree={user} />}
           />
-          <Route path="/map" exact component={() => <Map />} />
+          <Route path="/map" exact component={() => <Map userId={user}/>} />
           <Route path="/directory" exact component={TreeDirectory} />
           <Route path="/directory/search" component={SearchView}></Route>
           <Route path="/aboutus" exact component={() => <AboutUs loggedinUserData={user}/>} />
