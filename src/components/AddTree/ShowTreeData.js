@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import "../../css/ShowTreeData.css";
 import treeImage from "../../images/green_tree.png";
 import editIcon from "../../images/edit.png";
@@ -7,6 +8,8 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { getKeyThenIncreaseKey } from "antd/lib/message";
 import { Link } from "react-router-dom";
 import { ArrowLeftOutlined } from "@ant-design/icons";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 import firebase from "../../firebase";
 const db = firebase.firestore();
 
@@ -22,15 +25,15 @@ function formatDate(change_date) {
 const handleBackButton = () => {
   window.history.back();
 };
+
 class ShowTreeData extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       showPopup: false,
-      // wobble: false,
-      flipping: true,
-      pulsing: true,
       tree: null,
+      showDeleteModal: false,
+      redirect: null,
     };
     this.listendb(this.props.tree.id);
   }
@@ -53,6 +56,13 @@ class ShowTreeData extends React.Component {
     };
   };
 
+  redirect() {
+    console.log("redirecting");
+    this.setState({
+      redirect: "/mytree",
+    });
+  }
+
   listendb(treeId) {
     db.collection("users")
       .doc(this.props.tree.loggedinUserData)
@@ -63,10 +73,42 @@ class ShowTreeData extends React.Component {
       });
   }
 
+  deleteDoc() {
+    db.collection("users")
+      .doc(this.props.tree.loggedinUserData)
+      .collection("add-new-tree")
+      .doc(this.props.tree.id)
+      .delete()
+      .then(() => {
+        console.log("Tree doc deleted");
+        this.handleClose();
+        this.redirect();
+      })
+      .catch((error) => {
+        console.log("error deleting tree doc: ", error);
+      });
+  }
+
+  handleClose = () => {
+    return () => {
+      this.setState({
+        showDeleteModal: false,
+      });
+    };
+  };
+
+  handleShow = () => {
+    return () => {
+      this.setState({
+        showDeleteModal: true,
+      });
+    };
+  };
+
   render() {
-    // const flipping = this.state.flipping;
-    // const pulsing = this.state.pulsing;
-    // const wobble = this.state.wobble;
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />;
+    }
 
     if (this.state.tree == null) {
       return <div></div>;
@@ -83,16 +125,8 @@ class ShowTreeData extends React.Component {
             src={treeImage}
             alt="tree-shadow"
             id="tree-page-tree-image"
-            //add new stuff
-            // onClick={() => this.setState({ flipping: false, wobble: true })}
-            // onAnimationEnd={() =>
-            //   this.setState({ flipping: true, wobble: true })
-            // }
-            // className={flipping ? "flipping" : ""}
+            onClick={this.handleShow()}
           ></img>
-          {/* <p className={pulsing ? "pulsing" : ""} id="root-for-tree">
-            Root For Trees
-          </p> */}
         </div>
         <div className="display-item-details">
           <ListGroup>
@@ -210,7 +244,22 @@ class ShowTreeData extends React.Component {
             <button>My Tree Photo Album</button>
           </Link>
         </div>
-        {/* <div id="panda"></div> */}
+
+        <Modal
+          class="delete-modal"
+          show={this.state.showDeleteModal}
+          onHide={this.handleClose()}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Delete Tree?</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Are you sure you want to delete your tree?</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.deleteDoc.bind(this)}>
+              Delete
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   }
