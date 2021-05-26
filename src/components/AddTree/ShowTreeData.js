@@ -78,8 +78,6 @@ class ShowTreeData extends React.Component {
             this.setState({ tree: {...doc.data(), location: ''} });
           }
         })
-      } else{
-        return;
       }
       });
   }
