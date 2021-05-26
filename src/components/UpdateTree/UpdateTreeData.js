@@ -112,17 +112,39 @@ const UpdateTree = (props) => {
     props.closePopup();
   };
 
+  // useEffect(() => {
+  //   db.collection("plantingsites").onSnapshot((snapshot) => {
+  //     const locationList = [];
+  //     snapshot.forEach((doc) => {
+  //       const data = doc.data();
+  //       const documentLocation = data.address;
+  //       locationList.push(documentLocation);
+  //     });
+  //     setLocationOptions(locationList);
+  //   });
+  // }, []);
+
   useEffect(() => {
     db.collection("plantingsites").onSnapshot((snapshot) => {
-      const locationList = [];
       snapshot.forEach((doc) => {
-        const data = doc.data();
-        const documentLocation = data.address;
-        locationList.push(documentLocation);
+        const id = doc.id;
+        const name = doc.data().name;
+        setLocationOptions(oldLocation => [...oldLocation, {id, name}]);
+        console.log("location", locationOptions)
       });
-      setLocationOptions(locationList);
     });
   }, []);
+
+  // useEffect(() => {
+  //   db.collection("plantingsites").onSnapshot((snapshot) => {
+  //     snapshot.forEach((doc) => {
+  //       const id = doc.id;
+  //       const name = doc.data().name;
+  //       setLocationOptions(oldLocation => [...oldLocation, {id, name}]);
+  //       console.log("location", locationOptions);
+  //     });
+  //   });
+  // }, []);
 
   return (
     <div className="edit-data-popup">
@@ -147,8 +169,8 @@ const UpdateTree = (props) => {
                     Choose location
                   </option>
                   {locationOptions.map((location) => (
-                    <option key={location.toString()} value={location}>
-                      {location}
+                    <option key={location.id} value={location.id}>
+                      {location.name}
                     </option>
                   ))}
                 </select>

@@ -4,6 +4,7 @@ body {
 
 .display-tree-info {
   margin: 20px;
+  overflow: auto;
 }
 
 .info-item {
@@ -264,4 +265,11 @@ body {
   100% {
     -webkit-transform: translateX(85vw);
   }
+}
+
+div.modal-content {
+  width: 75%;
+  margin-top: 35%;
+  margin-left: auto;
+  margin-right: auto;
 }
