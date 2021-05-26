@@ -59,7 +59,14 @@ class ShowTreeData extends React.Component {
       .collection("add-new-tree")
       .doc(treeId)
       .onSnapshot((doc) => {
-        this.setState({ tree: doc.data() });
+        console.log(doc.data());
+        db.collection("plantingsites").doc(doc.data().location).get().then((location) => {
+          if(location.exists) {
+            this.setState({ tree: {...doc.data(), location: location.data().name} });
+          } else {
+            this.setState({ tree: {...doc.data(), location: ''} });
+          }
+        })
       });
   }
 
