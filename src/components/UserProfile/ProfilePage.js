@@ -74,7 +74,7 @@ const Profile = ({currentUser, profilePhoto}) => {
             <p style = {{textAlign: 'center', marginTop: '10px',marginBottom: '0px', color: 'white', fontSize: '30px', fontWeight: 'bold'}}>{user.firstName} {user.lastName}</p>
             <p style = {{textAlign: 'center',  color: 'white'}}>{user.email}</p>
             <button onClick={showModal}>Change Avatar</button>
-            <Modal show={isOpen} onHide={hideModal}>
+            <Modal id="avatarModal" show={isOpen} onHide={hideModal}>
                 <Modal.Dialog>
                     <Modal.Header closeButton>
                         <Modal.Title>Update Avatar</Modal.Title>
