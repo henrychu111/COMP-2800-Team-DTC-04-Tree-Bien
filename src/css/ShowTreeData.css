@@ -279,14 +279,6 @@ div.modal-content {
   margin-right: auto;
 }
 
-#avatarModal .modal-content {
-  width: 100%;
-  margin-top: 0%;
-}
-
-#avatarModal {
-  margin-top: 20%;
-}
 
 #delete-tree-button {
   width: 75%;

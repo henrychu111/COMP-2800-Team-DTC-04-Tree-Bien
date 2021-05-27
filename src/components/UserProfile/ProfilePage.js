@@ -1,5 +1,6 @@
 import firebase from '../../firebase';
 import { Link, useHistory } from 'react-router-dom';
+import "../../css/ProfilePage.css";
 import Modal from 'react-bootstrap/Modal';
 import React, { useState, useEffect } from 'react';
 
@@ -37,6 +38,8 @@ const Profile = ({currentUser, profilePhoto}) => {
     if (e.target.files[0] != null) {
       if (e.target.files[0].type.startsWith('image')) {
         setImage(e.target.files[0])
+      } else {
+        alert("Please upload image file!!")
       }
     }
   }
@@ -76,7 +79,7 @@ const Profile = ({currentUser, profilePhoto}) => {
             
             <p style = {{textAlign: 'center', marginTop: '10px',marginBottom: '0px', color: 'white', fontSize: '30px', fontWeight: 'bold'}}>{user.firstName} {user.lastName}</p>
             <p style = {{textAlign: 'center',  color: 'white'}}>{user.email}</p>
-            <button onClick={showModal}>Change Avatar</button>
+            {user.profilePhoto && <button onClick={showModal}>Change Avatar</button>}
             <Modal id="avatarModal" show={isOpen} onHide={hideModal}>
                 <Modal.Dialog>
                     <Modal.Header closeButton>
