@@ -42,8 +42,8 @@ const Profile = ({currentUser, profilePhoto}) => {
   }
 
   const handleFireBaseUpload = () => {
+    if(image != null){
     const storage = firebase.storage()
-
     const uploadTask = storage.ref(`/images/${image.name}`).put(image)
     uploadTask.on('state_changed', (snapshot) => {
         setIsLoad(true)
@@ -57,7 +57,10 @@ const Profile = ({currentUser, profilePhoto}) => {
       })
     })
   }
-
+  else{
+    alert("Please choose a file to upload!")
+  }
+}
     useEffect(() => {
         fetchUser()
       }, [currentUser]);
