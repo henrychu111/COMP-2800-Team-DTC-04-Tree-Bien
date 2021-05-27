@@ -10,6 +10,11 @@ import { useLocation } from "react-router";
 import Compress from "react-image-file-resizer";
 
 function getBase64(file) {
+  /**
+ * @description Read the data in the file and convert them into a string.
+ * @param {string} file
+ * @returns {string} base64 encoded string
+ */
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -34,6 +39,9 @@ const ImageLogs = (props) => {
   const { Paragraph } = Typography;
 
   const handleCancel = () => {
+  /**
+   * @description When the user click cancel button, do not display anything.
+   */
     setPreviewVisible(false);
     setEditorVisible(false);
     setDeleteAlbum(false);
@@ -46,6 +54,11 @@ const ImageLogs = (props) => {
   const { treeID } = props.tree;
 
   const handleDelete = (uid, fileList) => {
+   /**
+   * @description Delete the tree from users' album.
+   * @param {number} uid
+   * @param {list} fileList
+   */
     db.collection("users")
       .doc(props.loggedinUserData)
       .collection("add-new-tree")
@@ -64,6 +77,10 @@ const ImageLogs = (props) => {
   };
 
   const handlePreview = async (file) => {
+  /**
+   * @description Preview the trees of users.
+   * @param {string} file
+   */
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj);
     }
@@ -76,17 +93,21 @@ const ImageLogs = (props) => {
     setPreviewVisible(true);
   };
 
-  /* https://dev.to/wchr/compress-images-in-react-react-image-file-resize-4oni */
+  /**
+  * Resize the image.
+  * I found this code on blog.
+  *
+  * @author Erick Wachira
+  * @see https://blog.bywachira.com/post/how-to-compress-images-in-react-series-2
+  */
+
   function resizeImage(file,cb) {
+   /**
+   * @description Resize the image that user uploads.
+   */
     Compress.imageFileResizer(
-      file, 
-      480, 
-      480, 
-      "JPEG", 
-      70, 
-      0,
+      file, 480, 480, "JPEG",  70, 0,
       (uri) => {
-        console.log(uri);
         cb(uri)
       },
       "base64" 
@@ -94,6 +115,11 @@ const ImageLogs = (props) => {
   }
 
   const handleChange = async ({ file, fileList }) => {
+   /**
+   * @description Handle delete Album, add new preview tile and add new trees to the Album.
+   * @param {string} file
+   * @param {list} fileList
+   */
     if (file["status"] === "removed") {
       setDeleteAlbum(true);
       setDeleteArgs({
@@ -153,6 +179,9 @@ const ImageLogs = (props) => {
   );
 
   const listenDb = () => {
+    /**
+   * @description Add new tree and treeID into snapshot.
+   */
     console.log("this is tree id", treeID);
     db.collection("users")
       .doc(props.loggedinUserData)
@@ -179,6 +208,9 @@ const ImageLogs = (props) => {
   };
 
   const handleEditMessage = (value) => {
+    /**
+   * @description When the user updates the tree, display this tree and add it into user's Album.
+   */
     let uid = "",
       album = [];
     fileLists.forEach((list, index) => {
