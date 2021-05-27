@@ -38,7 +38,7 @@ import pic_18 from "../TreeDirectory/images/p-18.jpg";
 import pic_19 from "../TreeDirectory/images/p-19.jpg";
 const db = fire.firestore()
 
-const data = [];
+var data = [];
 const imgs = [pic_1,pic_2,pic_3,pic_4,pic_5,pic_6,pic_7,pic_8,pic_9,pic_10,pic_11,pic_12,pic_13,pic_14,pic_15,pic_16,pic_17,pic_18,pic_19]
 
 let pageIndex = 0;
@@ -46,6 +46,13 @@ let pageIndex = 0;
 const dataBlobs = {};
 
 function genData(keyword = "", feet = "", color = "") {
+/**
+ * @description Read the data of tree and convert them into a list dataBlob with length <30.
+ * @param {string} keyword
+ * @param {string} feet
+ * @param {string} color
+ * @returns {string} dataBlob
+ */
   console.log(keyword, feet, color, "-----");
   const NUM_ROWS = data.length;
   const dataBlob = {};
@@ -98,12 +105,19 @@ function genData(keyword = "", feet = "", color = "") {
 
     dataBlob[`${i}`] = `row - ${i}`;
   }
+
   return dataBlob;
 }
 
 class TreeDirectory extends React.Component {
   constructor(props) {
     super(props);
+    /**
+     * @description Given the sectionID, read the data from dataBlob of this position.
+     * @param {list} dataBlob
+     * @param {number} sectionID
+     * @returns {string} getSectionData
+     */
 
     const getSectionData = (dataBlob, sectionID) => dataBlob[sectionID];
     const getRowData = (dataBlob, sectionID, rowID) => dataBlob[rowID];
@@ -122,11 +136,19 @@ console.log(this.props.location)
       color_query: this.props.location.state
         ? this.props.location.state.color
         : "",
-      keyword_query: "",
+      keyword_query: this.props.location.state
+          ? this.props.location.state.keyword_query
+          : "",
     };
+
+    console.log(this.state.keyword_query)
   }
 
   setDataSource() {
+   /**
+   * @description Set up the searching tree list.
+   * @returns {ListView} dataSource
+   */
     const hei =
       document.documentElement.clientHeight -
       ReactDOM.findDOMNode(this.lv).parentNode.offsetTop;
@@ -143,6 +165,11 @@ console.log(this.props.location)
   }
 
   componentDidMount() {
+  /**
+   * @description Add ID for each tree data.
+   * @returns {snapshot} doc
+   */
+    data = []
     db.collection('Tree-Directory').get().then((snapshot)=>{
 		let index= 0;
       snapshot.forEach(doc => {
@@ -158,12 +185,21 @@ console.log(this.props.location)
   }
 
   onChange = (value) => {
+  /**
+   * @description Update the searching keywords.
+   * @param {string} value
+   * @returns {string} keyword_query
+   */
+
     this.setState({
       keyword_query: value,
     });
   };
 
   submitCancel = () => {
+  /**
+   * @description When click the "cancel", empty the searching bar and display none in the list.
+   */
     console.log(this.refs);
     this.refs.searchBar.doClear(false);
     this.setState({
@@ -179,6 +215,12 @@ console.log(this.props.location)
   };
 
   submitSearch = (event) => {
+   /**
+   * @description Generate a list of trees which fit the searching content.
+   * @param {MouseEvent} event
+   * @returns {ListView} dataSource
+   */
+
     if (this.state.color_query || this.state.feet_query) {
       this.setState({
         keyword_query: "",
@@ -190,6 +232,11 @@ console.log(this.props.location)
       this.state.feet_query,
       this.state.color_query
     );
+    if (Object.keys(this.rData).length === 0) {
+      this.props.history.push("/directory/empty");
+      return false
+    }
+
     this.setState({
       dataSource: this.state.dataSource.cloneWithRows(this.rData),
       isLoading: false,
@@ -210,46 +257,49 @@ console.log(this.props.location)
     );
     const row = (rowData, sectionID, rowID) => {
       const obj = data[rowID];
-      return (
-        <div key={rowID} style={{ padding: "0 15px" }}>
-          <div
-            style={{
-              lineHeight: "50px",
-              color: "#DDE5B6",
-              fontSize: 18,
-              fontWeight: "bold",
-              borderBottom: "1px solid #F6F6F6",
-            }}
-          >
-            {obj.title}
-          </div>
-          <div
-            style={{
-              display: "-webkit-box",
-              display: "flex",
-              padding: "15px 0",
-            }}
-          >
-            <img
-              style={{ height: "64px", marginRight: "15px" }}
-              src={obj.img}
-              alt=""
-            />
-            <div style={{ lineHeight: 1 }}>
+      if (rowID == -1) {
+          this.props.history.push("/directory/empty");
+      } else {
+        return (
+            <div key={rowID} style={{ padding: "0 15px" }}>
               <div
-                style={{
-                  marginBottom: "8px",
-                  textAlign: "left",
-                  color: "#ADC178",
-                }}
+                  style={{
+                    lineHeight: "50px",
+                    color: "#DDE5B6",
+                    fontSize: 18,
+                    fontWeight: "bold",
+                    borderBottom: "1px solid #F6F6F6",
+                  }}
               >
-                {" "}
-                {obj.description}
+                {obj.title}
+              </div>
+              <div
+                  style={{
+                    display: "flex",
+                    padding: "15px 0",
+                  }}
+              >
+                <img
+                    style={{ height: "64px", marginRight: "15px" }}
+                    src={obj.img}
+                    alt=""
+                />
+                <div style={{ lineHeight: 1 }}>
+                  <div
+                      style={{
+                        marginBottom: "8px",
+                        textAlign: "left",
+                        color: "#ADC178",
+                      }}
+                  >
+                    {" "}
+                    {obj.description}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      );
+        );
+      }
     };
     const loadingDiv = (<div style={{ padding: 30, textAlign: "center" }}>
     Loading...
@@ -272,6 +322,7 @@ console.log(this.props.location)
             <SearchBar
               placeholder="Which tree are you looking for"
               maxLength={50}
+              value={this.state.keyword_query}
               cancelText="Cancel"
               onSubmit={this.submitSearch}
               onChange={this.onChange}
@@ -299,6 +350,3 @@ console.log(this.props.location)
   }
 }
 export default TreeDirectory;
-
-
-

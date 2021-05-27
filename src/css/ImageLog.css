@@ -48,6 +48,11 @@
   font-size: 200%;
 }
 
+.form_input {
+  width: 93%;
+  border:1px solid #34aa41
+}
+
 /* flip */
 /* https://github.com/kaustubhmenon/animation-library/blob/master/css/flip.css */
 @-webkit-keyframes flip {

@@ -24,6 +24,7 @@ import ShowTreeData from "./components/AddTree/ShowTreeData";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import ContactForm from "./components/ContactForm/ContactForm";
 import Profile from "./components/UserProfile/ProfilePage"
+import SearchEmpty from "./components/TreeDirectory/SearchEmpty";
 
 function App() {
   const [user, setUser] = useState("");
@@ -56,6 +57,11 @@ function App() {
     });
   }, [user]);
 
+  const uploadPhoto = (photoURL) => {
+    firebase.auth().currentUser.updateProfile({ photoURL })
+    setProfilePhoto(photoURL)
+  }
+
   const defaultRoute = () => {
     return (
       <div className="add-padding-bottom">
@@ -68,6 +74,7 @@ function App() {
           />
           <Route path="/map" exact component={() => <Map userId={user}/>} />
           <Route path="/directory" exact component={TreeDirectory} />
+          <Route path="/directory/empty" component={SearchEmpty} />
           <Route path="/directory/search" component={SearchView}></Route>
           <Route path="/aboutus" exact component={() => <AboutUs loggedinUserData={user}/>} />
           <Route
@@ -88,7 +95,7 @@ function App() {
             }}
           />
           <Route path="/contact" exact component={() => <ContactForm /> } />
-          <Route path="/user" exact component={() => <Profile profilePhoto = {profilePhoto} currentUser={user}/>} />
+          <Route path="/user" exact component={() => <Profile profilePhoto = {profilePhoto} currentUser={user} uploadPhotoURL={uploadPhoto}/>} />
           <Route path="*" exact component={() => <ErrorPage />} />
           
         </Switch>
