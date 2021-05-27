@@ -24,6 +24,7 @@ import ShowTreeData from "./components/AddTree/ShowTreeData";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import ContactForm from "./components/ContactForm/ContactForm";
 import Profile from "./components/UserProfile/ProfilePage"
+import SearchEmpty from "./components/TreeDirectory/SearchEmpty";
 
 function App() {
   const [user, setUser] = useState("");
@@ -68,6 +69,7 @@ function App() {
           />
           <Route path="/map" exact component={() => <Map userId={user}/>} />
           <Route path="/directory" exact component={TreeDirectory} />
+          <Route path="/directory/empty" component={SearchEmpty} />
           <Route path="/directory/search" component={SearchView}></Route>
           <Route path="/aboutus" exact component={() => <AboutUs loggedinUserData={user}/>} />
           <Route
