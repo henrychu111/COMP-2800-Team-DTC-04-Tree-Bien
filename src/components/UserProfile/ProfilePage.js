@@ -24,16 +24,14 @@ const Profile = ({currentUser, profilePhoto, uploadPhotoURL}) => {
     };
     
     const fetchUser = async () => {
-        if(currentUser && profilePhoto) {
-            const doc = await db.collection('users').doc(currentUser).get()
-            setUser({
-                firstName: doc.data().firstName,
-                lastName: doc.data().lastName,
-                email: doc.data().email,
-                bio: doc.data().bio,
-                profilePhoto
-            })
-        }
+        const doc = await db.collection('users').doc(currentUser).get()
+        setUser({
+            firstName: doc.data().firstName,
+            lastName: doc.data().lastName,
+            email: doc.data().email,
+            bio: doc.data().bio,
+            profilePhoto
+        })
     }
   
     useEffect(() => {
@@ -78,7 +76,7 @@ const handleSubmit = (event) =>{
   event.preventDefault();
   db.collection("users")
   .doc(currentUser)
-  .update({bio: user.bio})
+  .update({bio: user.bio ? user.bio : ""})
   setFormDisplay(false);
   if(user.bio) {
     setIsBioAvailable(true)
@@ -98,14 +96,14 @@ const uploadPhoto = (photoURL) => {
 
     return (
        <div> 
-       <div style={{width: '100vw', height: '40vh', background: 'url(/backgroundim.png)', paddingTop: '10%'}}>
-            {user.firstName && <img src={ user.profilePhoto ? user.profilePhoto : "/blank_profile_picture.png"} style={{ width: '150px', height: '150px', borderRadius: "50%", display: 'block', margin: 'auto', background: 'white', border: '1px solid black'}}/>}
-            
-            <p style = {{textAlign: 'center', marginTop: '10px',marginBottom: '0px', color: 'white', fontSize: '30px', fontWeight: 'bold'}}>{user.firstName} {user.lastName}</p>
-            <p style = {{textAlign: 'center',  color: 'white'}}>{user.email}</p>
-            {user.profilePhoto && <button onClick={showModal}>Change Avatar</button>}
-            <Modal id="avatarModal" show={isOpen} onHide={hideModal}>
-                <Modal.Dialog>
+        <div style={{width: '100vw', height: '300px', background: 'url(/backgroundim.png)', paddingTop: '10%', marginBottom: "15px"}}>
+              {user.firstName && <img src={ user.profilePhoto ? user.profilePhoto : "/blank_profile_picture.png"} style={{ width: '150px', height: '150px', borderRadius: "50%", display: 'block', margin: 'auto', background: 'white', border: '1px solid black'}}/>}
+              
+              <p style = {{textAlign: 'center', marginTop: '10px',marginBottom: '0px', color: 'white', fontSize: '30px', fontWeight: 'bold'}}>{user.firstName} {user.lastName}</p>
+              <p style = {{textAlign: 'center',  color: 'white'}}>{user.email}</p>
+
+            {user.firstName && <button onClick={showModal}>Change Avatar</button>}
+            <Modal id="avatarModal" show={isOpen} onHide={hideModal}>    
                     <Modal.Header closeButton>
                         <Modal.Title>Update Avatar</Modal.Title>
                     </Modal.Header>
@@ -120,12 +118,12 @@ const uploadPhoto = (photoURL) => {
                         <button 
                         disabled={isLoad}
                         onClick={!isLoad ? handleFireBaseUpload : null}>{isLoad ? 'Loading…' : 'Upload Image'}</button>
-                    </Modal.Footer>
-                </Modal.Dialog>
+                    </Modal.Footer>               
         </Modal>
         </div>
         <div>
-          {user.firstName ? !user.bio ? <button hidden={isBioAvailable} onClick={() => {
+          {user.firstName ? !user.bio ? 
+          <button style ={{float: "left"}} hidden = {isBioAvailable} onClick={() => {
             setFormDisplay(true);
             setIsBioAvailable(true);
           }}>Add Bio</button> : <div><button hidden={formDisplay} onClick={() => {

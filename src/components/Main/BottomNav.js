@@ -55,7 +55,7 @@ const BottomNav = ({logout}) => {
         <Popover id="popover-basic">
             <Button className="popover-options" variant="outline-dark" style={{fontWeight: "bold"}} onClick={logout}>Logout</Button>
             <Link to="/contact"><Button className="popover-options" variant="outline-dark" style={{fontWeight: "bold"}}>Contact</Button></Link>
-            <Link to="/user"><Button className="logout-button" variant="outline-dark" style={{fontWeight: "bold"}} >Profile</Button></Link>
+            <Link to="/user"><Button className="popover-options" variant="outline-dark" style={{fontWeight: "bold"}} >Profile</Button></Link>
         </Popover>
     )
 
