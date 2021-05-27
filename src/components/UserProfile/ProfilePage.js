@@ -5,12 +5,15 @@ import Modal from 'react-bootstrap/Modal';
 import React, { useState, useEffect } from 'react';
 
 
-const Profile = ({currentUser, profilePhoto}) => {
-
+const Profile = ({currentUser, profilePhoto, uploadPhotoURL}) => {
     const [user, setUser] = useState({});
     const [image, setImage] = useState();
     const [isOpen, setIsOpen] = useState(false);
     const [isLoad, setIsLoad] = useState(false);
+    const [formDisplay, setFormDisplay] = useState(false);
+    const [isBioAvailable, setIsBioAvailable] = useState(false);
+    const db = firebase.firestore();
+
 
     const showModal = () => {
       setIsOpen(true);
@@ -19,8 +22,7 @@ const Profile = ({currentUser, profilePhoto}) => {
     const hideModal = () => {
       setIsOpen(false);
     };
-    const db = firebase.firestore();
-
+    
     const fetchUser = async () => {
         if(currentUser && profilePhoto) {
             const doc = await db.collection('users').doc(currentUser).get()
@@ -28,10 +30,17 @@ const Profile = ({currentUser, profilePhoto}) => {
                 firstName: doc.data().firstName,
                 lastName: doc.data().lastName,
                 email: doc.data().email,
+                bio: doc.data().bio,
                 profilePhoto
             })
         }
     }
+  
+    useEffect(() => {
+      if(user.bio) {
+        setIsBioAvailable(true);
+      }
+    }, [])
 
     
   const handleImageAsFile = (e) => {
@@ -64,18 +73,33 @@ const Profile = ({currentUser, profilePhoto}) => {
     alert("Please choose a file to upload!")
   }
 }
-    useEffect(() => {
-        fetchUser()
-      }, [currentUser]);
 
-    const uploadPhoto = (photoURL) => {
-        firebase.auth().currentUser.updateProfile({ photoURL })
-        setUser({...user, profilePhoto: photoURL});
-    }
+const handleSubmit = (event) =>{
+  event.preventDefault();
+  db.collection("users")
+  .doc(currentUser)
+  .update({bio: user.bio})
+  setFormDisplay(false);
+  if(user.bio) {
+    setIsBioAvailable(true)
+  } else {
+    setIsBioAvailable(false)
+  }
+}
 
-    return ( 
-        <div style={{width: '100vw', height: '40vh', background: 'url(/backgroundim.png)', paddingTop: '10%'}}>
-            <img src={user.profilePhoto ? user.profilePhoto : "/blank_profile_picture.png"} style={{ width: '150px', height: '150px', borderRadius: "50%", display: 'block', margin: 'auto'}}/>
+useEffect(() => {
+    fetchUser()
+  }, [currentUser]);
+
+const uploadPhoto = (photoURL) => {
+  uploadPhotoURL(photoURL);
+  setUser({...user, profilePhoto: photoURL});
+}
+
+    return (
+       <div> 
+       <div style={{width: '100vw', height: '40vh', background: 'url(/backgroundim.png)', paddingTop: '10%'}}>
+            {user.firstName && <img src={ user.profilePhoto ? user.profilePhoto : "/blank_profile_picture.png"} style={{ width: '150px', height: '150px', borderRadius: "50%", display: 'block', margin: 'auto', background: 'white', border: '1px solid black'}}/>}
             
             <p style = {{textAlign: 'center', marginTop: '10px',marginBottom: '0px', color: 'white', fontSize: '30px', fontWeight: 'bold'}}>{user.firstName} {user.lastName}</p>
             <p style = {{textAlign: 'center',  color: 'white'}}>{user.email}</p>
@@ -100,6 +124,21 @@ const Profile = ({currentUser, profilePhoto}) => {
                 </Modal.Dialog>
         </Modal>
         </div>
+        <div>
+          {user.firstName ? !user.bio ? <button hidden={isBioAvailable} onClick={() => {
+            setFormDisplay(true);
+            setIsBioAvailable(true);
+          }}>Add Bio</button> : <div><button hidden={formDisplay} onClick={() => {
+            setFormDisplay(true);
+          }}>Edit Bio</button><p style={{fontSize: '24px', textAlign: "center", padding: '20px'}} hidden={formDisplay}>{user.bio}</p>
+          </div> : null}
+          <form onSubmit={handleSubmit} hidden={!formDisplay}>
+            <textarea style={{width: '100%', height: '200px', fontSize: '18px', padding: '5px'}} value={user.bio} 
+            onChange = {(event) => setUser({...user, bio: event.target.value})}/>
+            <button type="submit">Update</button>
+          </form>
+        </div> 
+      </div>  
     )
 };
 export default Profile
