@@ -129,8 +129,8 @@ const UpdateTree = (props) => {
       snapshot.forEach((doc) => {
         const id = doc.id;
         const name = doc.data().name;
-        setLocationOptions(oldLocation => [...oldLocation, {id, name}]);
-        console.log("location", locationOptions)
+        setLocationOptions((oldLocation) => [...oldLocation, { id, name }]);
+        console.log("location", locationOptions);
       });
     });
   }, []);
@@ -161,11 +161,11 @@ const UpdateTree = (props) => {
               {props.dictKey == "location" ? (
                 <select
                   className="edit-select"
-                  defaultValue={"DEFAULT"}
+                  defaultValue={""}
                   required
                   onChange={(input) => setField(input.target.value)}
                 >
-                  <option value="DEFAULT" disabled>
+                  <option value="" disabled>
                     Choose location
                   </option>
                   {locationOptions.map((location) => (
