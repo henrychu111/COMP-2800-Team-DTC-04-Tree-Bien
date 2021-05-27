@@ -146,7 +146,7 @@ const ImageLogs = (props) => {
         console.log(album);
         if (Object.keys(album).length > 0) {
           setEditorVisible(true);
-          document.getElementById("form_input").value = "";
+          document.getElementById("description_form").value = "";
           resizeImage(file.originFileObj,uri=>{
             album.forEach(item=>{
               item.url = uri
@@ -290,8 +290,8 @@ const ImageLogs = (props) => {
           <input
             type="text"
             placeholder=""
-            className="form_input"
-            id="form_input"
+            className="description_form"
+            id="description_form"
             required
             onChange={(input) => handleEditMessage(input.target.value)}
           />
