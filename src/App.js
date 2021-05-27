@@ -57,6 +57,11 @@ function App() {
     });
   }, [user]);
 
+  const uploadPhoto = (photoURL) => {
+    firebase.auth().currentUser.updateProfile({ photoURL })
+    setProfilePhoto(photoURL)
+  }
+
   const defaultRoute = () => {
     return (
       <div className="add-padding-bottom">
@@ -90,7 +95,7 @@ function App() {
             }}
           />
           <Route path="/contact" exact component={() => <ContactForm /> } />
-          <Route path="/user" exact component={() => <Profile profilePhoto = {profilePhoto} currentUser={user}/>} />
+          <Route path="/user" exact component={() => <Profile profilePhoto = {profilePhoto} currentUser={user} uploadPhotoURL={uploadPhoto}/>} />
           <Route path="*" exact component={() => <ErrorPage />} />
           
         </Switch>
