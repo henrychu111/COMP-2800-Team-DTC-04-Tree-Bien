@@ -34,3 +34,11 @@
     border-color: #8fc1b7;
     color: white;
 }
+.placeholder {
+    font-size: 26px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    margin-top: 200px;
+}

@@ -7,6 +7,7 @@ import "../../css/ImageLog.css";
 import firebase from "../../firebase";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useLocation } from "react-router";
+import Compress from "react-image-file-resizer";
 
 function getBase64(file) {
   return new Promise((resolve, reject) => {
@@ -25,7 +26,6 @@ const ImageLogs = (props) => {
   const [previewImage, setPreviewImage] = useState("");
   const [previewTitle, setPreviewTitle] = useState("");
   const [previewFotter, setPreviewFotter] = useState("");
-  // const [flipping, setFlipping] = useState(true);
   const [deleteAlbum, setDeleteAlbum] = useState(false);
   const [deleteArgs, setDeleteArgs] = useState({
     uid: "",
@@ -44,22 +44,6 @@ const ImageLogs = (props) => {
   };
 
   const { treeID } = props.tree;
-
-  // const handleDelete = (uid, fileList) => {
-  //   db.collection("users")
-  //   .doc(props.loggedinUserData)
-  //   .collection("New-Tree-Album")
-  //     .doc(deleteArgs.uid)
-  //     .delete()
-  //     .then(() => {
-  //       console.log("Form submitted");
-  //     })
-  //     .catch((error) => {
-  //       alert(error.message);
-  //     });
-  //     setFileLists(deleteArgs.list);
-  //   setDeleteAlbum(false);
-  // }
 
   const handleDelete = (uid, fileList) => {
     db.collection("users")
@@ -92,6 +76,23 @@ const ImageLogs = (props) => {
     setPreviewVisible(true);
   };
 
+  /* https://dev.to/wchr/compress-images-in-react-react-image-file-resize-4oni */
+  function resizeImage(file,cb) {
+    Compress.imageFileResizer(
+      file, 
+      480, 
+      480, 
+      "JPEG", 
+      70, 
+      0,
+      (uri) => {
+        console.log(uri);
+        cb(uri)
+      },
+      "base64" 
+    );
+  }
+
   const handleChange = async ({ file, fileList }) => {
     if (file["status"] === "removed") {
       setDeleteAlbum(true);
@@ -117,25 +118,14 @@ const ImageLogs = (props) => {
           previewFotter: "",
         });
         console.log(album);
-        // if (Object.keys(album).length > 0) {
-        //   setEditorVisible(true);
-        //   document.getElementById("form_input").value = "";
-        //   db.collection("users")
-        //     .doc(props.loggedinUserData)
-        //     .collection("New-Tree-Album")
-        //     .doc(file["uid"])
-        //     .set(...album)
-        //     .then(() => {
-        //       console.log("Form submitted");
-        //     })
-        //     .catch((error) => {
-        //       alert(error.message);
-        //     });
-        // }
         if (Object.keys(album).length > 0) {
           setEditorVisible(true);
           document.getElementById("form_input").value = "";
-          db.collection("users")
+          resizeImage(file.originFileObj,uri=>{
+            album.forEach(item=>{
+              item.url = uri
+            })
+            db.collection("users")
             .doc(props.loggedinUserData)
             .collection("add-new-tree")
             .doc(treeID)
@@ -148,6 +138,8 @@ const ImageLogs = (props) => {
             .catch((error) => {
               alert(error.message);
             });
+          })
+          
         }
       }
     }
@@ -159,23 +151,6 @@ const ImageLogs = (props) => {
       <div style={{ marginTop: 8 }}>Upload</div>
     </div>
   );
-
-  // const listenDb = () => {
-  //   db.collection("users")
-  //     .doc(props.loggedinUserData)
-  //     .collection("New-Tree-Album")
-  //     .get()
-  //     .then((snapshot) => {
-  //       let files = [];
-  //       snapshot.docs.forEach((file) => {
-  //         files.push(file.data());
-  //       });
-  //       if (files.length > 0) setFileLists(files);
-  //     })
-  //     .catch((error) => {
-  //       alert(error.message);
-  //     });
-  // };
 
   const listenDb = () => {
     console.log("this is tree id", treeID);
@@ -217,19 +192,6 @@ const ImageLogs = (props) => {
       }
     });
     if (uid !== "" && Object.keys(album).length > 0) {
-      // db.collection("users")
-      //   .doc(props.loggedinUserData)
-      //   .collection("New-Tree-Album")
-      //   .doc(uid)
-      //   .update({
-      //     previewFotter: value,
-      //   })
-      //   .then(() => {
-      //     console.log("Form updated!");
-      //   })
-      //   .catch((error) => {
-      //     alert(error.message);
-      //   });
 
       db.collection("users")
         .doc(props.loggedinUserData)
@@ -261,7 +223,6 @@ const ImageLogs = (props) => {
           src={treeImage}
           alt="tree-shadow"
           id="tree-page-tree-image-album"
-          // className={flipping ? "flipping" : ""}
         ></img>
       </div>
       <div id="tree-photos">

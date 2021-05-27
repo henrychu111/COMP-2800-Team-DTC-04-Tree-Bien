@@ -3,7 +3,7 @@ import { Button, List, SearchBar,WhiteSpace,WingBlank,ListView,TabBar,NavBar, Ic
 import 'antd-mobile/dist/antd-mobile.css';
 import {BrowserRouter as Router, Route,Link} from "react-router-dom";
 import '../../css/TreeDirectory.css';
-import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+import 'antd/dist/antd.css';
 import { Empty } from 'antd';
 
 class SearchEmpty extends React.Component{

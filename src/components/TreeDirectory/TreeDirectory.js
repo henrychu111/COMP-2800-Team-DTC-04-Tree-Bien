@@ -46,6 +46,13 @@ let pageIndex = 0;
 const dataBlobs = {};
 
 function genData(keyword = "", feet = "", color = "") {
+/**
+ * @description Read the data of tree and convert them into a list dataBlob with length <30.
+ * @param {string} keyword
+ * @param {string} feet
+ * @param {string} color
+ * @returns {string} dataBlob
+ */
   console.log(keyword, feet, color, "-----");
   const NUM_ROWS = data.length;
   const dataBlob = {};
@@ -105,6 +112,12 @@ function genData(keyword = "", feet = "", color = "") {
 class TreeDirectory extends React.Component {
   constructor(props) {
     super(props);
+    /**
+     * @description Given the sectionID, read the data from dataBlob of this position.
+     * @param {list} dataBlob
+     * @param {number} sectionID
+     * @returns {string} getSectionData
+     */
 
     const getSectionData = (dataBlob, sectionID) => dataBlob[sectionID];
     const getRowData = (dataBlob, sectionID, rowID) => dataBlob[rowID];
@@ -132,6 +145,10 @@ console.log(this.props.location)
   }
 
   setDataSource() {
+   /**
+   * @description Set up the searching tree list.
+   * @returns {ListView} dataSource
+   */
     const hei =
       document.documentElement.clientHeight -
       ReactDOM.findDOMNode(this.lv).parentNode.offsetTop;
@@ -148,6 +165,10 @@ console.log(this.props.location)
   }
 
   componentDidMount() {
+  /**
+   * @description Add ID for each tree data.
+   * @returns {snapshot} doc
+   */
     data = []
     db.collection('Tree-Directory').get().then((snapshot)=>{
 		let index= 0;
@@ -164,12 +185,21 @@ console.log(this.props.location)
   }
 
   onChange = (value) => {
+  /**
+   * @description Update the searching keywords.
+   * @param {string} value
+   * @returns {string} keyword_query
+   */
+
     this.setState({
       keyword_query: value,
     });
   };
 
   submitCancel = () => {
+  /**
+   * @description When click the "cancel", empty the searching bar and display none in the list.
+   */
     console.log(this.refs);
     this.refs.searchBar.doClear(false);
     this.setState({
@@ -185,6 +215,12 @@ console.log(this.props.location)
   };
 
   submitSearch = (event) => {
+   /**
+   * @description Generate a list of trees which fit the searching content.
+   * @param {MouseEvent} event
+   * @returns {ListView} dataSource
+   */
+
     if (this.state.color_query || this.state.feet_query) {
       this.setState({
         keyword_query: "",
