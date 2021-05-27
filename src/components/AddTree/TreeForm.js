@@ -170,11 +170,11 @@ const TreeForm = (props) => {
           </select> */}
           <select
             className="form_input form_address"
-            defaultValue={"DEFAULT"}
+            defaultValue={""}
             required
             onChange={(input) => setLocation(input.target.value)}
           >
-            <option value="DEFAULT" disabled>
+            <option value="" disabled>
               Choose location
             </option>
             {locationOptions.map((location) => (
