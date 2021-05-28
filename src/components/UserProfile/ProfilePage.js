@@ -152,10 +152,10 @@ const uploadPhoto = (photoURL) => {
                     <Modal.Body>
                             <div className="uploadAvatar">
                               <input id="input-modal" 
-                                    name="avatar" 
-                                    type="file" 
-                                    onChange={(e) => 
-                                    handleImageAsFile(e)} />
+                                     name="avatar" 
+                                     type="file" 
+                                     onChange={(e) => 
+                                     handleImageAsFile(e)} />
                             </div>
                     </Modal.Body>
                     <Modal.Footer>
@@ -186,11 +186,10 @@ const uploadPhoto = (photoURL) => {
               id= "bio-textarea" 
               value={user.bio} 
               onChange = {(event) => 
-                setUser({...user, bio: event.target.value})}
-            />
+                setUser({...user, bio: event.target.value})}/>
             <button type="submit">Update</button>
-          </form>
-        </div> 
+        </form>
+      </div> 
     </div>  
     )
 };
