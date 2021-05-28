@@ -32,6 +32,7 @@ function Map({userId}) {
   useEffect(() => {
     /**
      * @description Fetch planting sites information 
+     * information is compiled through personal research
      */
     const fetchPlantingSites = async () => {
       const response = db.collection("plantingsites");
@@ -46,6 +47,7 @@ function Map({userId}) {
   useEffect(() => {
     /**
      * @description Fetch plant shop information
+     * information is compiled through personal research
      */
     const fetchPlantingShops = async () => {
       const response = db.collection("plantshops");
@@ -84,6 +86,9 @@ function Map({userId}) {
              lng={curLocation.longitude} >
              <div id="inner-location"/></div>}
         {plantShops && plantShops.map((shop) => {
+          /**
+           * @description maps through plant shops and displays information
+           */
           return (
             <Popover trigger = "click" 
                      lat={shop.latitude} 
@@ -101,6 +106,9 @@ function Map({userId}) {
           )
         })}
         {plantingSites && plantingSites.map((site) => {
+          /**
+           * @description maps through planting sites and displays information
+           */
           return (
             <Popover trigger = "click" 
                      lat={site.latitude} 
