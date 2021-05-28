@@ -188,7 +188,6 @@ class ShowTreeData extends React.Component {
             src={treeImage}
             alt="tree-shadow"
             id="tree-page-tree-image"
-            // onClick={this.handleShow()}
           ></img>
         </div>
         <div className="display-item-details">
@@ -197,7 +196,6 @@ class ShowTreeData extends React.Component {
               className="info-item"
               onClick={this.makeTogglePopup.bind(this)(
                 "name",
-                // this.props.tree.name
                 this.state.tree.name
               )}
             >
