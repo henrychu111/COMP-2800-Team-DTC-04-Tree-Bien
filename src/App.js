@@ -33,12 +33,18 @@ function App() {
   const [profilePhoto, setProfilePhoto] = useState("");
 
   const handleLogout = () => {
+    /**
+     * @description Log users out and redirect them to the login screen.
+     */
     firebase.auth().signOut();
     setUser("");
     history.push("/signinmethod");
   };
 
   useEffect(() => {
+    /**
+     * @description Direct users to different pages depending on the login status.
+     */
     firebase.auth().onAuthStateChanged((loggedin) => {
       if (location.pathname === "/aboutus") {
         history.push("/aboutus");
@@ -64,6 +70,9 @@ function App() {
 
   const defaultRoute = () => {
     return (
+      /**
+       * @description Route all the pages and their props if the user is logged in.
+       */
       <div className="add-padding-bottom">
         <Switch>
           <Route path="/" exact component={() => <Main />} />
@@ -105,6 +114,9 @@ function App() {
   };
 
   return (
+    /**
+     * @description Route to different pages depending on the login status.
+     */
     <div className="App">
       {user ? (
         <Route component={defaultRoute} />
@@ -118,7 +130,7 @@ function App() {
           <Route
             path="/signup"
             exact
-            component={() => <SignUp setUser={setUser} />}
+            component={() => <SignUp />}
           />
           <Route
             path="/signinmethod"

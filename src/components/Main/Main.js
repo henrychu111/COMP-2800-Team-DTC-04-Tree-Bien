@@ -5,12 +5,14 @@ import firebase from '../../firebase';
 import '../../css/Main.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 const Main = () => {
     const [authenticated, setAuthenticated] = useState(false);
 
     useEffect(() => {
+        /**
+         * @description Check to see if the user is logged in, if not, they are sent to the login screen.
+         */
         firebase.auth().onAuthStateChanged(loggedin => {
             if (loggedin !== null) {
                 setAuthenticated(true);
@@ -19,6 +21,9 @@ const Main = () => {
       });
 
     return (
+        /**
+         * @description Render the page buttons on main screen.
+         */
         <div>
             {authenticated ? (
                 <Container className="container">

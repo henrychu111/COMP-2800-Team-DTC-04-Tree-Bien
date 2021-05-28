@@ -11,7 +11,16 @@ const ContactForm = () => {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
 
+    /**
+     * show tables start
+     * This show tables block of code was adapted from code found here:
+     * @source https://medium.com/@eesh.t/send-email-using-emailjs-and-react-form-9993bb6929d8
+     */
     const handleSubmit = (e) => {
+        /**
+         * @description Handle sending email using EmailJS API.
+         * @param {event} e
+         */
         e.preventDefault();
         console.log(e);
 
@@ -39,12 +48,18 @@ const ContactForm = () => {
     }
 
     const clearForm = () => {
+        /**
+         * @description Clear form after submission.
+         */
         document.getElementById("exampleForm.ControlInput1").value = '';
         document.getElementById("exampleForm.ControlInput2").value = '';
         document.getElementById("exampleForm.ControlTextarea1").value = '';
     }
 
     return (
+        /**
+         * @description Render Contact Form
+         */
         <Container className="contact-container">
             <div>
                 <h1 className="contact-header">Contact Us</h1>

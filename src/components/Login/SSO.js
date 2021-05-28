@@ -14,7 +14,17 @@ const SSO = ({setUser}) => {
     const db = firebase.firestore();
     const history = useHistory();
 
+
+    /**
+     * show tables start
+     * This show tables block of code was adapted from code found here:
+     * @source https://www.youtube.com/watch?v=MG3ZTfdxODA&ab_channel=WebDevSimplifiedWebDevSimplifiedVerified
+     */
     const handleOnClick = async (provider) => {
+        /**
+         * @description Login user depending on which service provider they selected, and create user collection.
+         * @param {function} provider
+         */
         const res = await socialMediaAuth(provider);
         console.log(res);
         setEmail(res.email);
@@ -43,6 +53,9 @@ const SSO = ({setUser}) => {
     };
 
     return (
+        /**
+         * @description Render Login options for user, and link to About Us Page.
+         */
         <div>
             <section className="login">
                 <div className="loginContainer">

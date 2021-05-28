@@ -15,6 +15,9 @@ const DailyTips = () => {
     const db = firebase.firestore();
 
     useEffect(() => {
+        /**
+         * @description Access tips document in Firebase collection, and put into array.
+         */
         db.collection("tips")
         .where("random", "==", 1)
         .get()
@@ -25,6 +28,9 @@ const DailyTips = () => {
     }, [])
 
     useEffect(() => {
+        /**
+         * @description Choose a random tip from the array.
+         */
         if (!dailyTips || dailyTips.length === 0) return;
         const chosenNumber = Math.floor(Math.random() * (dailyTips.length - 1));
         console.log(dailyTips);
@@ -34,6 +40,9 @@ const DailyTips = () => {
     }, [dailyTips])
 
     useEffect(() => {
+        /**
+         * @description Choose a random emoji from array
+         */
         if (!treeList || treeList.length === 0) return;
         const randomTreeNumber = Math.floor(Math.random() * (treeList.length - 1));
         const chosenTree = treeList[randomTreeNumber];
@@ -41,6 +50,9 @@ const DailyTips = () => {
     }, [treeList])
 
     return (
+        /**
+         * @description Render daily tips jumbotron.
+         */
         <Jumbotron fluid className="jumbotron">
             <Container id="daily-tip-container">
                 <h1>{randomTree} Daily Tip {randomTree}</h1>

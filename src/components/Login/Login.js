@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../../App.css';
 import firebase from '../../firebase';
 import { Link } from 'react-router-dom';
-
-// import '.../css/Login.css';
 
 
 const Login = (props) => {
@@ -14,21 +12,26 @@ const Login = (props) => {
     const [passwordError, setPasswordError] = useState('');
     const setUser = props.setUser
     
-
-    const clearInputs =() => {
-        setEmail('');
-        setPassword('');
-      };
-    
     const clearErrors = () => {
+        /**
+         * @description Clear errors
+         */
         setEmailError('');
         setPasswordError('');
       };
 
+    /**
+     * show tables start
+     * This show tables block of code was adapted from code found here:
+     * @source https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+     */
     const handleLogin = (e) => {
+        /**
+         * @description Handle email login by authentication with Firebase.
+         * @param {event} e
+         */
         e.preventDefault()
         clearErrors();
-        // clearInputs();
         firebase
         .auth()
         .signInWithEmailAndPassword(email, password)
@@ -50,6 +53,9 @@ const Login = (props) => {
     };
 
     return ( 
+        /**
+         * @description Render Email Login Page
+         */
         <section className="login">
             <form className="loginContainer">
                 <div className="loginTitleContainer">

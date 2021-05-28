@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import Treeimage from '../../images/tree-icon.png';
 import TreeimageSelected from '../../images/tree-icon-selected.png';
@@ -17,11 +16,7 @@ import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import '../../css/Main.css';
 import { Divider } from 'antd';
-import ContactForm from '../ContactForm/ContactForm';
-
-
 import { BrowserRouter as Router, Redirect, Link, Switch, Route } from "react-router-dom";
-
 
 
 const BottomNav = ({logout}) => {
@@ -30,6 +25,9 @@ const BottomNav = ({logout}) => {
     const [bottomNavSettings, setbottomNavSettings] = useState(true);
 
     useEffect(() => {
+        /**
+         * @description Change color of bottom nav icons depending on the page they are on.
+         */
         if (window.location.pathname === "/map") {
             setBottomNavOn('bottom-nav-map')
         }
@@ -48,10 +46,16 @@ const BottomNav = ({logout}) => {
     })
 
     const handleonClick = () => {
+        /**
+         * @description Changes the color of settings icon when it is pressed.
+         */
         setbottomNavSettings(!bottomNavSettings);
     }
     
     const settingPopover = (
+        /**
+         * @description Show pop over of options.
+         */
         <Popover id="popover-basic">
             <Button className="popover-options" variant="outline-dark" style={{fontWeight: "bold"}} onClick={logout}>Logout</Button>
             <Link to="/contact"><Button className="popover-options" variant="outline-dark" style={{fontWeight: "bold"}}>Contact</Button></Link>
@@ -60,44 +64,47 @@ const BottomNav = ({logout}) => {
     )
 
     return (
-            <Navbar expand="lg" variant="light" className="bottom-nav-bar" fixed="bottom" id="bottom-nav-bar">
-                <Link to="/map" className="bottomNavIcons">
-                    {bottomNavOn === "bottom-nav-map" ? 
-                    <Image src={Mapimage} className="bottomNavImage" />
-                : <Image src={MapimageSelected} className="bottomNavImage" />
-                }
-                </Link>
-                <Divider type="vertical" />
-                <Link to="/mytree" className="bottomNavIcons">
-                    {bottomNavOn === "bottom-nav-my-tree" ?
-                    <Image src={Treeimage} className="bottomNavImage" />
-                : <Image src={TreeimageSelected} className="bottomNavImage" />
-                }
-                </Link>
-                <Divider type="vertical" />
-                <Link to="/" className="bottomNavIcons">
-                    {bottomNavOn === "bottom-nav-home" ?
-                    <Image src={Homeimage} className="bottomNavImage" />
-                : <Image src={HomeimageSelected} className="bottomNavImage" />
-                }
-                </Link>
-                <Divider type="vertical" />
-                <Link to="/directory" className="bottomNavIcons">
-                    {bottomNavOn === "bottom-nav-directory" ?
-                    <Image src={Searchimage} className="bottomNavImage" id="search-item"/>
-                : <Image src={SearchimageSelected} className="bottomNavImage" id="search-item"/>
-                }
-                </Link>
-                <Divider type="vertical" />
-                <div className="bottomNavIcons">
-                    <OverlayTrigger trigger="click" placement="top" overlay={settingPopover}>
-                        {bottomNavSettings ? 
-                        <Image src={SettingimageSelected} className="bottomNavImage" id="settingImage" onClick={handleonClick}/> : 
-                        <Image src={Settingimage} className="bottomNavImage" id="settingImage" onClick={handleonClick}/>
-                        }
-                    </OverlayTrigger>
-                </div>
-            </Navbar>
+        /**
+         * @description Render the nav bar with links to each page
+         */
+        <Navbar expand="lg" variant="light" className="bottom-nav-bar" fixed="bottom" id="bottom-nav-bar">
+            <Link to="/map" className="bottomNavIcons">
+                {bottomNavOn === "bottom-nav-map" ? 
+                <Image src={Mapimage} className="bottomNavImage" />
+            : <Image src={MapimageSelected} className="bottomNavImage" />
+            }
+            </Link>
+            <Divider type="vertical" />
+            <Link to="/mytree" className="bottomNavIcons">
+                {bottomNavOn === "bottom-nav-my-tree" ?
+                <Image src={Treeimage} className="bottomNavImage" />
+            : <Image src={TreeimageSelected} className="bottomNavImage" />
+            }
+            </Link>
+            <Divider type="vertical" />
+            <Link to="/" className="bottomNavIcons">
+                {bottomNavOn === "bottom-nav-home" ?
+                <Image src={Homeimage} className="bottomNavImage" />
+            : <Image src={HomeimageSelected} className="bottomNavImage" />
+            }
+            </Link>
+            <Divider type="vertical" />
+            <Link to="/directory" className="bottomNavIcons">
+                {bottomNavOn === "bottom-nav-directory" ?
+                <Image src={Searchimage} className="bottomNavImage" id="search-item"/>
+            : <Image src={SearchimageSelected} className="bottomNavImage" id="search-item"/>
+            }
+            </Link>
+            <Divider type="vertical" />
+            <div className="bottomNavIcons">
+                <OverlayTrigger trigger="click" placement="top" overlay={settingPopover}>
+                    {bottomNavSettings ? 
+                    <Image src={SettingimageSelected} className="bottomNavImage" id="settingImage" onClick={handleonClick}/> : 
+                    <Image src={Settingimage} className="bottomNavImage" id="settingImage" onClick={handleonClick}/>
+                    }
+                </OverlayTrigger>
+            </div>
+        </Navbar>
     )
 }
 
