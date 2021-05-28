@@ -18,6 +18,7 @@ class SearchEmpty extends React.Component {
     submitSearch = (event) => {
         /**
         * Submit the search keywords in the search bar.
+        * @param {object} event
         */
         this.props.history.push("/directory", {
             keyword_query: this.state.keyword_query,
@@ -27,6 +28,7 @@ class SearchEmpty extends React.Component {
     onChange = (value) => {
         /**
          * Get the value from the search bar.
+         * @param {object} value
          */
         this.setState({
             keyword_query: value,

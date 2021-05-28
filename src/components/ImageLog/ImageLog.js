@@ -194,6 +194,9 @@ const ImageLogs = (props) => {
   useEffect(listenDb, []);
 
   const handleBackButton = () => {
+    /**
+     * Return user to previous page.
+     */
     window.history.back();
   };
 
@@ -218,7 +221,6 @@ const ImageLogs = (props) => {
         .doc(props.loggedinUserData)
         .collection("add-new-tree")
         .doc(treeID)
-
         .collection("New-Tree-Album")
         .doc(uid)
         .update({

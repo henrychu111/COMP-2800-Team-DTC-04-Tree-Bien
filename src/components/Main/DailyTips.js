@@ -5,7 +5,6 @@ import '../../css/Main.css';
 import firebase from "../../firebase";
 
 
-
 const DailyTips = () => {
     /**
      * @description Render daily tips jumbotron.
@@ -36,7 +35,6 @@ const DailyTips = () => {
          */
         if (!dailyTips || dailyTips.length === 0) return;
         const chosenNumber = Math.floor(Math.random() * (dailyTips.length - 1));
-        console.log(dailyTips);
         const chosenArray = dailyTips[chosenNumber];
         const chosenTip = chosenArray["tip"];
         setRandomTip(chosenTip);

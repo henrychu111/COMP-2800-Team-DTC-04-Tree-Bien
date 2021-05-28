@@ -112,6 +112,9 @@ class TreeDirectory extends React.Component {
     const getRowData = (dataBlob, sectionID, rowID) => dataBlob[rowID];
 
     const dataSource = new ListView.DataSource({
+      /**
+       * Change state of dataSource.
+       */
       rowHasChanged: (row1, row2) => row1 !== row2,
     });
     this.state = {
@@ -133,7 +136,6 @@ class TreeDirectory extends React.Component {
   setDataSource() {
     /**
     * Set up the searching tree list.
-    * @returns {ListView} dataSource
     */
     const hei =
       document.documentElement.clientHeight -
@@ -153,7 +155,6 @@ class TreeDirectory extends React.Component {
   componentDidMount() {
     /**
      * Add ID for each tree data.
-     * @returns {snapshot} doc
      */
     data = []
     db.collection('Tree-Directory').get().then((snapshot) => {
@@ -173,7 +174,6 @@ class TreeDirectory extends React.Component {
     /**
      * Update the searching keywords.
      * @param {string} value
-     * @returns {string} keyword_query
      */
 
     this.setState({
@@ -201,8 +201,7 @@ class TreeDirectory extends React.Component {
   submitSearch = (event) => {
     /**
     * Generate a list of trees which fit the searching content.
-    * @param {MouseEvent} event
-    * @returns {ListView} dataSource
+    * @param {object} event
     */
 
     if (this.state.color_query || this.state.feet_query) {

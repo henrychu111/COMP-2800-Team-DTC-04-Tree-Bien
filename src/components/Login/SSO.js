@@ -11,7 +11,9 @@ import { Link, useHistory } from "react-router-dom";
 const SSO = ({ setUser }) => {
   /**
    * @description Render Login options for user, and link to About Us Page.
+   * @param {function} setUser
    */
+  
   const [fname, setFirstName] = useState("");
   const [lname, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -20,14 +22,14 @@ const SSO = ({ setUser }) => {
   const history = useHistory();
 
   /**
-   * show tables start
-   * This show tables block of code was adapted from code found here:
-   * @source https://www.youtube.com/watch?v=MG3ZTfdxODA&ab_channel=WebDevSimplifiedWebDevSimplifiedVerified
+   * This block of code was adapted from code found here:
+   * @author Daily Web Coding
+   * @see https://www.youtube.com/watch?v=MG3ZTfdxODA&ab_channel=WebDevSimplifiedWebDevSimplifiedVerified
    */
   const handleOnClick = async (provider) => {
     /**
      * @description Login user depending on which service provider they selected, and create user collection.
-     * @param {function} provider
+     * @param {object} provider
      */
     const res = await socialMediaAuth(provider);
     console.log(res);
@@ -54,10 +56,6 @@ const SSO = ({ setUser }) => {
         console.log(err);
       });
   };
-  /**
-   * show tables end
-   * @source https://www.youtube.com/watch?v=MG3ZTfdxODA&ab_channel=WebDevSimplifiedWebDevSimplifiedVerified
-   */
 
   return (
     <div>

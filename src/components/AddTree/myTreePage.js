@@ -21,8 +21,6 @@ function MyTreePage({ loggedinUserMyTree }) {
           const currentTreeID = doc.id;
           let treeObj = { ...doc.data(), ["id"]: currentTreeID };
           treeList.push(treeObj);
-          // console.log("this is treelist", treeList);
-          // console.log({ loggedinUserMyTree });
         });
         setTrees(treeList);
       });

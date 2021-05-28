@@ -18,6 +18,7 @@ class SearchView extends React.Component {
     updateSearch = (event) => {
         /**
          * Update the search tree result and add the tree with certain feet and colour.
+         * @param {object} event
          */
         this.props.history.push("/directory", {
             feet: this.state.feet,
@@ -28,6 +29,9 @@ class SearchView extends React.Component {
     changeFeetHandler = (v, i, event) => {
         /**
          * Change the feet of a tree to i.
+         * @param {object} v
+         * @param {object} i
+         * @param {object} event
          */
         this.setState({
             feet: v,
@@ -38,6 +42,9 @@ class SearchView extends React.Component {
     changeColorHandler = (v, i, event) => {
         /**
          * Change the colour of a tree to i.
+         * @param {object} v
+         * @param {object} i
+         * @param {object} event
          */
         this.setState({
             color: v,

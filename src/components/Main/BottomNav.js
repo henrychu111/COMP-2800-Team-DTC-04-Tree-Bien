@@ -22,8 +22,9 @@ import { BrowserRouter as Router, Redirect, Link, Switch, Route } from "react-ro
 const BottomNav = ({logout}) => {
     /**
      * @description Render the nav bar with links to each page
+     * @param {function} logout
      */
-
+    
     const [bottomNavOn, setBottomNavOn] = useState('');
     const [bottomNavSettings, setbottomNavSettings] = useState(true);
 

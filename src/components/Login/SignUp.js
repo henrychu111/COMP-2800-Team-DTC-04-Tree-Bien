@@ -5,7 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 const SignUp = () => {
     /**
-     * @description Render Email Sign Up Page
+     * @description Render Email Sign Up Page.
      */
 
     const [fname, setFirstName] = useState('');
@@ -18,18 +18,23 @@ const SignUp = () => {
     const history = useHistory();
     
     /**
-     * show tables start
-     * This show tables block of code was adapted from code found here:
-     * @source https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+     * This block of code was adapted from code found here:
+     * @author h3webdevtuts
+     * @see https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
      */
     const clearErrors = () => {
         /**
-         * @description Clear errors
+         * @description Clear errors.
          */
         setEmailError('');
         setPasswordError('');
     };
 
+    /**
+     * This block of code was adapted from code found here:
+     * @author h3webdevtuts
+     * @see https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+     */
     const handleSignUp = (e) => {
         /**
          * @description Create user with given Email and Password on Firebase Authentication, and create user collection on Firestore.
@@ -70,6 +75,11 @@ const SignUp = () => {
     };
 
     return ( 
+        /**
+         * This block of code was adapted from code found here:
+         * @author h3webdevtuts
+         * @see https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+         */
         <section className="login">
             <form className="loginContainer">
                 <div className="loginTitleContainer">
@@ -117,10 +127,6 @@ const SignUp = () => {
                 </div>
             </form>
         </section>
-        /**
-         * show tables end
-         * @source https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
-         */
 )
 };
 export default SignUp

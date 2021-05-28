@@ -6,8 +6,10 @@ import { Link } from 'react-router-dom';
 
 const Login = (props) => {
     /**
-     * @description Render Email Login Page
+     * @description Render Email Login Page.
+     * @param {object} props
      */
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
@@ -15,18 +17,23 @@ const Login = (props) => {
     const setUser = props.setUser
     
     /**
-     * show tables start
-     * This show tables block of code was adapted from code found here:
-     * @source https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+     * This block of code was adapted from code found here:
+     * @author h3webdevtuts
+     * @see https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
      */
     const clearErrors = () => {
         /**
-         * @description Clear errors
+         * @description Clear errors.
          */
         setEmailError('');
         setPasswordError('');
       };
 
+    /**
+     * This block of code was adapted from code found here:
+     * @author h3webdevtuts
+     * @see https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+     */
     const handleLogin = (e) => {
         /**
          * @description Handle email login by authentication with Firebase.
@@ -55,6 +62,11 @@ const Login = (props) => {
     };
 
     return ( 
+        /**
+         * This block of code was adapted from code found here:
+         * @author h3webdevtuts
+         * @see https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+         */
         <section className="login">
             <form className="loginContainer">
                 <div className="loginTitleContainer">
@@ -88,10 +100,6 @@ const Login = (props) => {
                 </div>
             </form>
         </section>
-        /**
-         * show tables end
-         * @source https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
-         */
 )
 };
 export default Login;

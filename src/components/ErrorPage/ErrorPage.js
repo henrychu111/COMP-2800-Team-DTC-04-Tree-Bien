@@ -3,8 +3,9 @@ import "../../css/ErrorPage.css";
 
 const ErrorPage = () => {
     /**
-     * @description Render Error Page
+     * @description Render Error Page.
      */
+    
     return (
         <div>
             <div className="main-div">

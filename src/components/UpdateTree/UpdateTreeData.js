@@ -79,7 +79,7 @@ function getTitleMessage(value) {
 
 /**
  * Return number 16 or 10 depending on the value.
- * @param {*} value
+ * @param {string} value
  * @returns number 16 if value string is name, gender, species or personality, else return number 10
  */
 function getMaxLength(value) {
