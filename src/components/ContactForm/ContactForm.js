@@ -46,6 +46,10 @@ const ContactForm = () => {
         })
         clearForm();
     }
+    /**
+     * show tables end
+     * @source https://medium.com/@eesh.t/send-email-using-emailjs-and-react-form-9993bb6929d8
+     */
 
     const clearForm = () => {
         /**

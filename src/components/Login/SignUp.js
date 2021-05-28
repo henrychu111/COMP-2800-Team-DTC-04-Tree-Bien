@@ -117,6 +117,10 @@ const SignUp = () => {
                 </div>
             </form>
         </section>
+        /**
+         * show tables end
+         * @source https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+         */
 )
 };
 export default SignUp

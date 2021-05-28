@@ -51,6 +51,10 @@ const SSO = ({setUser}) => {
             console.log(err);
         })
     };
+    /**
+     * show tables end
+     * @source https://www.youtube.com/watch?v=MG3ZTfdxODA&ab_channel=WebDevSimplifiedWebDevSimplifiedVerified
+     */
 
     return (
         /**

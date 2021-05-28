@@ -12,6 +12,11 @@ const Login = (props) => {
     const [passwordError, setPasswordError] = useState('');
     const setUser = props.setUser
     
+    /**
+     * show tables start
+     * This show tables block of code was adapted from code found here:
+     * @source https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+     */
     const clearErrors = () => {
         /**
          * @description Clear errors
@@ -20,11 +25,6 @@ const Login = (props) => {
         setPasswordError('');
       };
 
-    /**
-     * show tables start
-     * This show tables block of code was adapted from code found here:
-     * @source https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
-     */
     const handleLogin = (e) => {
         /**
          * @description Handle email login by authentication with Firebase.
@@ -89,6 +89,10 @@ const Login = (props) => {
                 </div>
             </form>
         </section>
+        /**
+         * show tables end
+         * @source https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+         */
 )
 };
 export default Login;
