@@ -1,4 +1,3 @@
-
 #tree-photos {
   margin-left: 6%;
   margin-right: 6%;
@@ -53,8 +52,13 @@
   border:1px solid #34aa41
 }
 
-/* flip */
-/* https://github.com/kaustubhmenon/animation-library/blob/master/css/flip.css */
+/**
+* Flip
+* I found this code on github.
+
+* @author kaustubhmenon
+* @see https://github.com/kaustubhmenon/animation-library/blob/master/css/flip.css
+*/
 @-webkit-keyframes flip {
   0% {
     -webkit-transform: rotate3d(0, 1, 0, 0deg);

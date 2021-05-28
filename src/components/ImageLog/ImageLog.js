@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "antd/dist/antd.css";
 import { Upload, Modal, Typography } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined, ArrowLeftOutlined } from "@ant-design/icons";
 import treeImage from "../../images/green_tree.png";
 import "../../css/ImageLog.css";
 import firebase from "../../firebase";
-import { ArrowLeftOutlined } from "@ant-design/icons";
-import { useLocation } from "react-router";
 import Compress from "react-image-file-resizer";
 
 function getBase64(file) {
   /**
- * @description Read the data in the file and convert them into a string.
- * @param {string} file
- * @returns {string} base64 encoded string
- */
+   * Read the data in the file and convert them into a string.
+   * @param {string} file
+   * @returns {string} base64 encoded string
+   */
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -39,9 +37,9 @@ const ImageLogs = (props) => {
   const { Paragraph } = Typography;
 
   const handleCancel = () => {
-  /**
-   * @description When the user click cancel button, do not display anything.
-   */
+    /**
+     * When the user click cancel button, do not display anything.
+     */
     setPreviewVisible(false);
     setEditorVisible(false);
     setDeleteAlbum(false);
@@ -54,11 +52,11 @@ const ImageLogs = (props) => {
   const { treeID } = props.tree;
 
   const handleDelete = (uid, fileList) => {
-   /**
-   * @description Delete the tree from users' album.
-   * @param {number} uid
-   * @param {list} fileList
-   */
+    /**
+    * Delete the tree from users' album.
+    * @param {number} uid
+    * @param {list} fileList
+    */
     db.collection("users")
       .doc(props.loggedinUserData)
       .collection("add-new-tree")
@@ -77,10 +75,10 @@ const ImageLogs = (props) => {
   };
 
   const handlePreview = async (file) => {
-  /**
-   * @description Preview the trees of users.
-   * @param {string} file
-   */
+    /**
+     * Preview the trees of users.
+     * @param {string} file
+     */
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj);
     }
@@ -100,26 +98,22 @@ const ImageLogs = (props) => {
   * @author Erick Wachira
   * @see https://blog.bywachira.com/post/how-to-compress-images-in-react-series-2
   */
-
-  function resizeImage(file,cb) {
-   /**
-   * @description Resize the image that user uploads.
-   */
+  function resizeImage(file, cb) {
     Compress.imageFileResizer(
-      file, 480, 480, "JPEG",  70, 0,
+      file, 480, 480, "JPEG", 70, 0,
       (uri) => {
         cb(uri)
       },
-      "base64" 
+      "base64"
     );
   }
 
   const handleChange = async ({ file, fileList }) => {
-   /**
-   * @description Handle delete Album, add new preview tile and add new trees to the Album.
-   * @param {string} file
-   * @param {list} fileList
-   */
+    /**
+    * Handle delete Album, add new preview tile and add new trees to the Album.
+    * @param {string} file
+    * @param {list} fileList
+    */
     if (file["status"] === "removed") {
       setDeleteAlbum(true);
       setDeleteArgs({
@@ -133,7 +127,6 @@ const ImageLogs = (props) => {
       setPreviewTitle(
         file.name || file.url.substring(file.url.lastIndexOf("/") + 1)
       );
-      console.log(file.status);
       if (file["status"] === "done" || "error") {
         let album = [];
         album.push({
@@ -143,29 +136,27 @@ const ImageLogs = (props) => {
           status: file["status"],
           previewFotter: "",
         });
-        console.log(album);
         if (Object.keys(album).length > 0) {
           setEditorVisible(true);
           document.getElementById("description_form").value = "";
-          resizeImage(file.originFileObj,uri=>{
-            album.forEach(item=>{
+          resizeImage(file.originFileObj, uri => {
+            album.forEach(item => {
               item.url = uri
             })
             db.collection("users")
-            .doc(props.loggedinUserData)
-            .collection("add-new-tree")
-            .doc(treeID)
-            .collection("New-Tree-Album")
-            .doc(file["uid"])
-            .set(...album)
-            .then(() => {
-              console.log("Form submitted");
-            })
-            .catch((error) => {
-              alert(error.message);
-            });
+              .doc(props.loggedinUserData)
+              .collection("add-new-tree")
+              .doc(treeID)
+              .collection("New-Tree-Album")
+              .doc(file["uid"])
+              .set(...album)
+              .then(() => {
+                console.log("Form submitted");
+              })
+              .catch((error) => {
+                alert(error.message);
+              });
           })
-          
         }
       }
     }
@@ -180,9 +171,8 @@ const ImageLogs = (props) => {
 
   const listenDb = () => {
     /**
-   * @description Add new tree and treeID into snapshot.
-   */
-    console.log("this is tree id", treeID);
+     * Add new tree and treeID into snapshot.
+     */
     db.collection("users")
       .doc(props.loggedinUserData)
       .collection("add-new-tree")
@@ -209,8 +199,8 @@ const ImageLogs = (props) => {
 
   const handleEditMessage = (value) => {
     /**
-   * @description When the user updates the tree, display this tree and add it into user's Album.
-   */
+     * When the user updates the tree, display this tree and add it into user's Album.
+     */
     let uid = "",
       album = [];
     fileLists.forEach((list, index) => {
@@ -224,7 +214,6 @@ const ImageLogs = (props) => {
       }
     });
     if (uid !== "" && Object.keys(album).length > 0) {
-
       db.collection("users")
         .doc(props.loggedinUserData)
         .collection("add-new-tree")

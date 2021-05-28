@@ -1,18 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import fire from '../../firebase'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 import {
-  Button,
-  List,
   SearchBar,
   WhiteSpace,
-  WingBlank,
   ListView,
-  TabBar,
   NavBar,
   Icon,
-  Tabs,
 } from "antd-mobile";
 import "antd-mobile/dist/antd-mobile.css";
 import "../../css/TreeDirectory.css";
@@ -39,21 +34,16 @@ import pic_19 from "../TreeDirectory/images/p-19.jpg";
 const db = fire.firestore()
 
 var data = [];
-const imgs = [pic_1,pic_2,pic_3,pic_4,pic_5,pic_6,pic_7,pic_8,pic_9,pic_10,pic_11,pic_12,pic_13,pic_14,pic_15,pic_16,pic_17,pic_18,pic_19]
-
-let pageIndex = 0;
-
-const dataBlobs = {};
+const imgs = [pic_1, pic_2, pic_3, pic_4, pic_5, pic_6, pic_7, pic_8, pic_9, pic_10, pic_11, pic_12, pic_13, pic_14, pic_15, pic_16, pic_17, pic_18, pic_19]
 
 function genData(keyword = "", feet = "", color = "") {
-/**
- * @description Read the data of tree and convert them into a list dataBlob with length <30.
- * @param {string} keyword
- * @param {string} feet
- * @param {string} color
- * @returns {string} dataBlob
- */
-  console.log(keyword, feet, color, "-----");
+  /**
+   * Read the data of tree and convert them into a list dataBlob with length <30.
+   * @param {string} keyword
+   * @param {string} feet
+   * @param {string} color
+   * @returns {string} dataBlob
+   */
   const NUM_ROWS = data.length;
   const dataBlob = {};
   for (let i = 0; i < NUM_ROWS; i++) {
@@ -113,10 +103,9 @@ class TreeDirectory extends React.Component {
   constructor(props) {
     super(props);
     /**
-     * @description Given the sectionID, read the data from dataBlob of this position.
+     * Given the sectionID, read the data from dataBlob of this position.
      * @param {list} dataBlob
      * @param {number} sectionID
-     * @returns {string} getSectionData
      */
 
     const getSectionData = (dataBlob, sectionID) => dataBlob[sectionID];
@@ -125,7 +114,6 @@ class TreeDirectory extends React.Component {
     const dataSource = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2,
     });
-console.log(this.props.location)
     this.state = {
       dataSource,
       isLoading: true,
@@ -137,18 +125,16 @@ console.log(this.props.location)
         ? this.props.location.state.color
         : "",
       keyword_query: this.props.location.state
-          ? this.props.location.state.keyword_query
-          : "",
+        ? this.props.location.state.keyword_query
+        : "",
     };
-
-    console.log(this.state.keyword_query)
   }
 
   setDataSource() {
-   /**
-   * @description Set up the searching tree list.
-   * @returns {ListView} dataSource
-   */
+    /**
+    * Set up the searching tree list.
+    * @returns {ListView} dataSource
+    */
     const hei =
       document.documentElement.clientHeight -
       ReactDOM.findDOMNode(this.lv).parentNode.offsetTop;
@@ -165,31 +151,30 @@ console.log(this.props.location)
   }
 
   componentDidMount() {
-  /**
-   * @description Add ID for each tree data.
-   * @returns {snapshot} doc
-   */
+    /**
+     * Add ID for each tree data.
+     * @returns {snapshot} doc
+     */
     data = []
-    db.collection('Tree-Directory').get().then((snapshot)=>{
-		let index= 0;
+    db.collection('Tree-Directory').get().then((snapshot) => {
+      let index = 0;
       snapshot.forEach(doc => {
         data.push({
-          id:doc.id,
+          id: doc.id,
           ...doc.data(),
-		  img:imgs[index++]
+          img: imgs[index++]
         })
-        console.log(data)
       })
       this.setDataSource()
     })
   }
 
   onChange = (value) => {
-  /**
-   * @description Update the searching keywords.
-   * @param {string} value
-   * @returns {string} keyword_query
-   */
+    /**
+     * Update the searching keywords.
+     * @param {string} value
+     * @returns {string} keyword_query
+     */
 
     this.setState({
       keyword_query: value,
@@ -197,10 +182,9 @@ console.log(this.props.location)
   };
 
   submitCancel = () => {
-  /**
-   * @description When click the "cancel", empty the searching bar and display none in the list.
-   */
-    console.log(this.refs);
+    /**
+     * When click the "cancel", empty the searching bar and display none in the list.
+     */
     this.refs.searchBar.doClear(false);
     this.setState({
       keyword_query: "",
@@ -215,11 +199,11 @@ console.log(this.props.location)
   };
 
   submitSearch = (event) => {
-   /**
-   * @description Generate a list of trees which fit the searching content.
-   * @param {MouseEvent} event
-   * @returns {ListView} dataSource
-   */
+    /**
+    * Generate a list of trees which fit the searching content.
+    * @param {MouseEvent} event
+    * @returns {ListView} dataSource
+    */
 
     if (this.state.color_query || this.state.feet_query) {
       this.setState({
@@ -258,51 +242,51 @@ console.log(this.props.location)
     const row = (rowData, sectionID, rowID) => {
       const obj = data[rowID];
       if (rowID == -1) {
-          this.props.history.push("/directory/empty");
+        this.props.history.push("/directory/empty");
       } else {
         return (
-            <div key={rowID} style={{ padding: "0 15px" }}>
-              <div
+          <div key={rowID} style={{ padding: "0 15px" }}>
+            <div
+              style={{
+                lineHeight: "50px",
+                color: "#DDE5B6",
+                fontSize: 18,
+                fontWeight: "bold",
+                borderBottom: "1px solid #F6F6F6",
+              }}
+            >
+              {obj.title}
+            </div>
+            <div
+              style={{
+                display: "flex",
+                padding: "15px 0",
+              }}
+            >
+              <img
+                style={{ height: "64px", marginRight: "15px" }}
+                src={obj.img}
+                alt=""
+              />
+              <div style={{ lineHeight: 1 }}>
+                <div
                   style={{
-                    lineHeight: "50px",
-                    color: "#DDE5B6",
-                    fontSize: 18,
-                    fontWeight: "bold",
-                    borderBottom: "1px solid #F6F6F6",
+                    marginBottom: "8px",
+                    textAlign: "left",
+                    color: "#ADC178",
                   }}
-              >
-                {obj.title}
-              </div>
-              <div
-                  style={{
-                    display: "flex",
-                    padding: "15px 0",
-                  }}
-              >
-                <img
-                    style={{ height: "64px", marginRight: "15px" }}
-                    src={obj.img}
-                    alt=""
-                />
-                <div style={{ lineHeight: 1 }}>
-                  <div
-                      style={{
-                        marginBottom: "8px",
-                        textAlign: "left",
-                        color: "#ADC178",
-                      }}
-                  >
-                    {" "}
-                    {obj.description}
-                  </div>
+                >
+                  {" "}
+                  {obj.description}
                 </div>
               </div>
             </div>
+          </div>
         );
       }
     };
     const loadingDiv = (<div style={{ padding: 30, textAlign: "center" }}>
-    Loading...
+      Loading...
     </div>)
 
     return (
@@ -331,7 +315,7 @@ console.log(this.props.location)
           </div>
         )}
         renderFooter={() => (
-          this.state.isLoading?loadingDiv:null
+          this.state.isLoading ? loadingDiv : null
         )}
         renderRow={row}
         renderSeparator={separator}
@@ -341,7 +325,6 @@ console.log(this.props.location)
         }}
         pageSize={10}
         onScroll={() => {
-          console.log("scroll");
         }}
         scrollRenderAheadDistance={500}
         onEndReachedThreshold={10}
