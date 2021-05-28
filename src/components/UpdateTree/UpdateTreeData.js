@@ -3,12 +3,22 @@ import firebase from "../../firebase";
 import "../../css/UpdateTreeData.css";
 import Modal from "react-bootstrap/Modal";
 
+/**
+ * Check if value is string height, if so return string "cm".
+ * @param {string} value
+ * @returns string (cm)
+ */
 function checkIfHeight(value) {
   if (value == "height") {
     return "(cm)";
   }
 }
 
+/**
+ * Check value's string and return corresponding string.
+ * @param {string} value
+ * @returns string date if value is "birthday", string number if value is "height", else return string "text"
+ */
 function checkInputType(value) {
   if (value == "birthday") {
     return "date";
@@ -19,6 +29,12 @@ function checkInputType(value) {
   }
 }
 
+/**
+ * Change string to titled text.
+ * @param {string} value
+ * @param {String} typeOfInput
+ * @returns value string as titled text
+ */
 function titleText(value, typeOfInput) {
   if (typeOfInput == "text") {
     return value.charAt(0).toUpperCase() + value.slice(1);
@@ -27,6 +43,11 @@ function titleText(value, typeOfInput) {
   }
 }
 
+/**
+ * Return regex for characters if value is string name, gender, species, or personality.
+ * @param {string} value
+ * @returns regex for characters if value is string name, gender, species, or personality
+ */
 function getPattern(value) {
   if (
     value == "name" ||
@@ -38,6 +59,11 @@ function getPattern(value) {
   }
 }
 
+/**
+ * Return different string messages depending on value string.
+ * @param {string} value
+ * @returns string "Should only contain letters" if param value is name, gender, species, or personality, else return "Should only contain numbers"
+ */
 function getTitleMessage(value) {
   if (
     value == "name" ||
@@ -51,6 +77,11 @@ function getTitleMessage(value) {
   }
 }
 
+/**
+ * Return number 16 or 10 depending on the value.
+ * @param {*} value
+ * @returns number 16 if value string is name, gender, species or personality, else return number 10
+ */
 function getMaxLength(value) {
   if (
     value == "name" ||
@@ -64,19 +95,38 @@ function getMaxLength(value) {
   }
 }
 
+/**
+ * Return number zero if value string is height.
+ * @param {string} value
+ * @returns number zero
+ */
 function getMin(value) {
   if (value == "height") {
     return 0;
   }
 }
 
+/**
+ * Return number 99999999 if value string is height.
+ * @param {string} value
+ * @returns number 99999999
+ */
 function getMax(value) {
   if (value == "height") {
     return 99999999;
   }
 }
 
-//for modal https://react-bootstrap.github.io/components/modal/
+/**
+ * Update tree data by editing input field in pop up modal.
+ * Part of the code is found on https://react-bootstrap.github.io/components/modal/
+ *
+ * @author Bootstrap
+ * @see https://react-bootstrap.github.io/
+ *
+ * @param {object} props - consists info of logged in user ID, tree doc ID, dictKey, value and closePopup
+ * @returns pop up modal with dynamic field for editing
+ */
 const UpdateTree = (props) => {
   const [field, setField] = useState("");
   const measurement = checkIfHeight(props.dictKey);
@@ -89,9 +139,12 @@ const UpdateTree = (props) => {
   const [locationOptions, setLocationOptions] = useState([]);
   const db = firebase.firestore();
 
-  const handleSubmit = (e) => {
-    console.log("update tree, this is the id", props.treeID);
-    e.preventDefault();
+  /**
+   * Update new field input to FireStore.
+   * @param {object} event - syntheticBaseEvent
+   */
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
     const updateDoc = {};
     updateDoc[props.dictKey] = field;
@@ -99,7 +152,6 @@ const UpdateTree = (props) => {
       .doc(props.loggedinUserUpdate)
       .collection("add-new-tree")
       .doc(props.treeID)
-
       .update(updateDoc)
       .then(() => {
         console.log("Updated");
@@ -112,40 +164,20 @@ const UpdateTree = (props) => {
     props.closePopup();
   };
 
-  // useEffect(() => {
-  //   db.collection("plantingsites").onSnapshot((snapshot) => {
-  //     const locationList = [];
-  //     snapshot.forEach((doc) => {
-  //       const data = doc.data();
-  //       const documentLocation = data.address;
-  //       locationList.push(documentLocation);
-  //     });
-  //     setLocationOptions(locationList);
-  //   });
-  // }, []);
-
+  /**
+   * Query FireStore for planting sites and store results in const LocationOptions as a list.
+   */
   useEffect(() => {
     db.collection("plantingsites").onSnapshot((snapshot) => {
       snapshot.forEach((doc) => {
         const id = doc.id;
         const name = doc.data().name;
         setLocationOptions((oldLocation) => [...oldLocation, { id, name }]);
-        console.log("location", locationOptions);
       });
     });
   }, []);
 
-  // useEffect(() => {
-  //   db.collection("plantingsites").onSnapshot((snapshot) => {
-  //     snapshot.forEach((doc) => {
-  //       const id = doc.id;
-  //       const name = doc.data().name;
-  //       setLocationOptions(oldLocation => [...oldLocation, {id, name}]);
-  //       console.log("location", locationOptions);
-  //     });
-  //   });
-  // }, []);
-
+  //Edit field popup
   return (
     <div className="edit-data-popup">
       <div className="edit-data-popup-inner">

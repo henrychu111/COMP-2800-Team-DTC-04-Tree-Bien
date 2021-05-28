@@ -87,15 +87,15 @@
 }
 
 /* Fix date field collapse on iphone
-https://github.com/twbs/bootstrap/issues/23307 */
+code from: https://github.com/twbs/bootstrap/issues/23307 */
 input[type="text"],
 input[type="number"],
 input[type="date"] {
   height: 2.375rem;
 }
 
-/* Add placeholder in birthday field input */
-/* https://stackoverflow.com/questions/18146350/how-do-i-simulate-placeholder-functionality-on-input-date-field/34565565 */
+/* Add placeholder in birthday field input
+code from https://stackoverflow.com/questions/18146350/how-do-i-simulate-placeholder-functionality-on-input-date-field/34565565 */
 input[type="date"]:before {
   content: attr(placeholder) !important;
   color: grey;
