@@ -1,34 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../../App.css';
 import firebase from '../../firebase';
 import { Link } from 'react-router-dom';
 
-// import '.../css/Login.css';
-
 
 const Login = (props) => {
-
+    /**
+     * @description Render Email Login Page.
+     * @param {object} props
+     */
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const setUser = props.setUser
     
-
-    const clearInputs =() => {
-        setEmail('');
-        setPassword('');
-      };
-    
+    /**
+     * This block of code was adapted from code found here:
+     * @author h3webdevtuts
+     * @see https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+     */
     const clearErrors = () => {
+        /**
+         * @description Clear errors.
+         */
         setEmailError('');
         setPasswordError('');
       };
 
+    /**
+     * This block of code was adapted from code found here:
+     * @author h3webdevtuts
+     * @see https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+     */
     const handleLogin = (e) => {
+        /**
+         * @description Handle email login by authentication with Firebase.
+         * @param {event} e
+         */
         e.preventDefault()
         clearErrors();
-        // clearInputs();
         firebase
         .auth()
         .signInWithEmailAndPassword(email, password)
@@ -50,6 +62,11 @@ const Login = (props) => {
     };
 
     return ( 
+        /**
+         * This block of code was adapted from code found here:
+         * @author h3webdevtuts
+         * @see https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+         */
         <section className="login">
             <form className="loginContainer">
                 <div className="loginTitleContainer">

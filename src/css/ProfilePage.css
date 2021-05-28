@@ -1,9 +1,74 @@
 
+#background-image {
+  width: 100vw; 
+  height: 320px; 
+  background: radial-gradient(
+    ellipse at top left,
+    rgba(102, 172, 38, 255) 0%,
+    rgba(102, 172, 38, 255) 50%,
+    rgba(78, 152, 60, 255) 100%
+  );
+  padding-top: 80px;
+}
+
+#blank-image {
+  width: 150px; 
+  height: 150px;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
+  background: white;
+  border: 1px solid black;
+}
+
+#username {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  color: white; 
+  font-size: 30px; 
+  font-weight: bold;
+}
+
+#user-email {
+  text-align: center;
+  color: white;
+}
+
+#input-modal {
+  margin-top: 20px; 
+  margin-bottom: 20px; 
+}
+
+#bio-text {
+  font-size: 24px;
+  text-align: center;
+  padding: 20px;
+}
+
+#bio-textarea {
+  width: 98%;
+  height: 200px;
+  font-size: 18px;
+  padding: 5px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 1%;
+}
+
+#changeAvatarBtn {
+  border: 1px solid burlywood;
+}
+.bioBtn {
+  border: 1px solid burlywood;
+  border-top: none;
+}
+
 #avatarModal .modal-content {
     width: 100% !important;
     margin-top: 0% !important;
-  }
+}
   
-  #avatarModal {
+#avatarModal {
     margin-top: 50% !important;
-  }
+}

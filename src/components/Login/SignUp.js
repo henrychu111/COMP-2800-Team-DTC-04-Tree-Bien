@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../../App.css';
 import firebase from '../../firebase';
 import { Link, useHistory } from 'react-router-dom';
 
-const SignUp = (props) => {
+const SignUp = () => {
+    /**
+     * @description Render Email Sign Up Page.
+     */
 
     const [fname, setFirstName] = useState('');
     const [lname, setLastName] = useState('');
@@ -13,21 +16,32 @@ const SignUp = (props) => {
     const [passwordError, setPasswordError] = useState('');
     const db = firebase.firestore();
     const history = useHistory();
-
-    const clearInputs =() => {
-        setEmail('');
-        setPassword('');
-      };
     
+    /**
+     * This block of code was adapted from code found here:
+     * @author h3webdevtuts
+     * @see https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+     */
     const clearErrors = () => {
-    setEmailError('');
-    setPasswordError('');
+        /**
+         * @description Clear errors.
+         */
+        setEmailError('');
+        setPasswordError('');
     };
 
+    /**
+     * This block of code was adapted from code found here:
+     * @author h3webdevtuts
+     * @see https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+     */
     const handleSignUp = (e) => {
+        /**
+         * @description Create user with given Email and Password on Firebase Authentication, and create user collection on Firestore.
+         * @param {event} e
+         */
         e.preventDefault()
         clearErrors();
-        // clearInputs();
         firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
@@ -61,6 +75,11 @@ const SignUp = (props) => {
     };
 
     return ( 
+        /**
+         * This block of code was adapted from code found here:
+         * @author h3webdevtuts
+         * @see https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+         */
         <section className="login">
             <form className="loginContainer">
                 <div className="loginTitleContainer">

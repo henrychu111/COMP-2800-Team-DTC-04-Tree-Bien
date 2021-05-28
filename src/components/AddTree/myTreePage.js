@@ -1,25 +1,15 @@
 import { useState, useEffect } from "react";
 import AddTreeButton from "./AddTree";
-import ShowTreeData from "./ShowTreeData";
 import firebase from "../../firebase";
 
+/**
+ * Query database to complile a list of tree objects
+ * @param {string} loggedinUserMyTree - logged in user Firestore document ID
+ * @returns AddTree function with a list of tree object(s) and the logged in user Firestore document ID string passed into it
+ */
 function MyTreePage({ loggedinUserMyTree }) {
-  //if database has NO entry, return AddTree
-  //else return ShowTree
   const [trees, setTrees] = useState([]);
   const db = firebase.firestore();
-
-  // const fetchDb = () => {
-  //   db.collection("users")
-  //     .doc(loggedinUserMyTree)
-  //     .collection("add-new-tree")
-  //     .get()
-  //     .then((snapshot) => {
-  //       snapshot.docs.forEach((tree) => {
-  //         setTrees([...trees, tree.data()]);
-  //       });
-  //     });
-  // };
 
   const listenDb = () => {
     db.collection("users")
@@ -39,6 +29,12 @@ function MyTreePage({ loggedinUserMyTree }) {
   return AddTree(trees, loggedinUserMyTree);
 }
 
+/**
+ * Return AddTreeButton component enclosed in div
+ * @param {object} trees - list of tree(s) object
+ * @param {string} loggedinUserMyTree - logged in user Firestore document ID
+ * @returns divs enclosing AddTreeButton component with trees and loggedinUserMyTree params passed into it
+ */
 function AddTree(trees, loggedinUserMyTree) {
   return (
     <div>
@@ -46,20 +42,5 @@ function AddTree(trees, loggedinUserMyTree) {
     </div>
   );
 }
-
-// function ShowTree(trees, loggedinUserMyTree) {
-//   return (
-//     <div>
-//       {trees &&
-//         trees.map((tree, idx) => (
-//           <ShowTreeData
-//             loggedinUserData={loggedinUserMyTree}
-//             key={idx}
-//             tree={tree}
-//           />
-//         ))}
-//     </div>
-//   );
-// }
 
 export default MyTreePage;

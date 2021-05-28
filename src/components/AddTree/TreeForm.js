@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../../firebase";
 import "../../css/TreeForm.css";
-import { ConsoleSqlOutlined, DownCircleFilled } from "@ant-design/icons";
 
+/**
+ * Return an add new tree form.
+ * @param {object} props
+ * @returns a form to add a new tree
+ */
 const TreeForm = (props) => {
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
@@ -12,12 +16,14 @@ const TreeForm = (props) => {
   const [personality, setPersonality] = useState("");
   const [locationOptions, setLocationOptions] = useState([]);
   const [location, setLocation] = useState("");
-
   const db = firebase.firestore();
 
-  const handleSubmit = (e) => {
-    console.log(props.loggedinUserTreeForm);
-    e.preventDefault();
+  /**
+   * Add form inputs into FireStore, reset form value to blank, and close popup.
+   * @param {object} event - syntheticBaseEvent
+   */
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
     db.collection("users")
       .doc(props.loggedinUserTreeForm)
@@ -49,31 +55,20 @@ const TreeForm = (props) => {
     props.closePopup();
   };
 
-  // useEffect(() => {
-  //   db.collection("plantingsites").onSnapshot((snapshot) => {
-  //     const locationList = [];
-  //     snapshot.forEach((doc) => {
-  //       const data = doc.data();
-  //       const documentLocation = data.address;
-  //       locationList.push(documentLocation);
-  //       console.log("location", locationList);
-  //     });
-  //     setLocationOptions(locationList);
-  //     setLocation(locationList[0]);
-  //   });
-  // }, []);
-
+  /**
+   * Query FireStore for planting sites and store results in const LocationOptions as a list.
+   */
   useEffect(() => {
     db.collection("plantingsites").onSnapshot((snapshot) => {
       snapshot.forEach((doc) => {
         const id = doc.id;
         const name = doc.data().name;
-        setLocationOptions(oldLocation => [...oldLocation, {id, name}]);
-        console.log("location", locationOptions);
+        setLocationOptions((oldLocation) => [...oldLocation, { id, name }]);
       });
     });
   }, []);
 
+  //Add tree form with fields: name, gender, height, birthday, species, personality, and location
   return (
     <div className="popup">
       <div className="popup_inner">
@@ -118,7 +113,6 @@ const TreeForm = (props) => {
             onChange={(input) => setHeight(input.target.value)}
           />
           <br></br>
-
           <input
             type="date"
             placeholder="Birthday"
@@ -128,7 +122,6 @@ const TreeForm = (props) => {
             required
             onChange={(input) => setBirthday(input.target.value)}
           />
-
           <br></br>
           <input
             type="text"
@@ -154,20 +147,6 @@ const TreeForm = (props) => {
             onChange={(input) => setPersonality(input.target.value)}
           />
           <br></br>
-          {/* <select
-            className="form_input form_address"
-            required
-            onChange={(input) => setLocation(input.target.value)}
-          >
-            <option value="" disabled selected>
-              Choose location
-            </option>
-            {locationOptions.map((location) => (
-              <option key={location.toString()} value={location}>
-                {location}
-              </option>
-            ))}
-          </select> */}
           <select
             className="form_input form_address"
             defaultValue={""}

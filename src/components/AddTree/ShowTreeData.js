@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Redirect } from "react-router-dom";
 import "../../css/ShowTreeData.css";
 import treeImage from "../../images/green_tree.png";
 import editIcon from "../../images/edit.png";
 import UpdateTreeData from "../UpdateTree/UpdateTreeData";
 import ListGroup from "react-bootstrap/ListGroup";
-import { getKeyThenIncreaseKey } from "antd/lib/message";
 import { Link } from "react-router-dom";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import Modal from "react-bootstrap/Modal";
@@ -13,7 +12,15 @@ import Button from "react-bootstrap/Button";
 import firebase from "../../firebase";
 const db = firebase.firestore();
 
-//https://www.carlrippon.com/formatting-dates-and-numbers-in-react/
+/**
+ * Format date.
+ * This code is found on https://www.carlrippon.com/formatting-dates-and-numbers-in-react/
+ *
+ * @author Carl Rippon
+ * @see https://www.carlrippon.com/
+ * @param {string} change_date - string indicating the date in YYYY-MM-DD form
+ * @returns string in Day Month Year form, like "03 May 21"
+ */
 function formatDate(change_date) {
   return new Intl.DateTimeFormat("en-GB", {
     year: "2-digit",
@@ -22,10 +29,20 @@ function formatDate(change_date) {
   }).format(Date.parse(change_date));
 }
 
+/**
+ * Load previous URL in history list.
+ */
 const handleBackButton = () => {
   window.history.back();
 };
 
+/**
+ * Show tree data Class.
+ * Part of the code is found on https://codepen.io/bastianalbers/pen/PWBYvz
+ *
+ * @author Bastian Albers
+ * @see https://codepen.io/bastianalbers
+ */
 class ShowTreeData extends React.Component {
   constructor(props) {
     super(props);
@@ -38,6 +55,9 @@ class ShowTreeData extends React.Component {
     this.listendb(this.props.tree.id);
   }
 
+  /**
+   * Set state of showPopup to opposite boolean, dictKey and value to null.
+   */
   togglePopup() {
     this.setState({
       showPopup: !this.state.showPopup,
@@ -46,6 +66,12 @@ class ShowTreeData extends React.Component {
     });
   }
 
+  /**
+   * Set state of showPopup to opposite boolean, dictKey and value to actual string values.
+   * @param {string} dictKey - one of the following fields: name, gender, height, birthday, species, personality, or location
+   * @param {string} value - user entered value for the field
+   * @returns changed state of showPopup, dictKey and value
+   */
   makeTogglePopup = (dictKey, value) => {
     return () => {
       this.setState({
@@ -56,6 +82,9 @@ class ShowTreeData extends React.Component {
     };
   };
 
+  /**
+   * Redirect to /mytree page by changing state of redirect.
+   */
   redirect() {
     console.log("redirecting");
     this.setState({
@@ -63,6 +92,10 @@ class ShowTreeData extends React.Component {
     });
   }
 
+  /**
+   * Listen to changes in FireStore and update location state.
+   * @param {string} treeId - tree document ID in Firestore
+   */
   listendb(treeId) {
     db.collection("users")
       .doc(this.props.tree.loggedinUserData)
@@ -71,27 +104,29 @@ class ShowTreeData extends React.Component {
       .onSnapshot((doc) => {
         console.log(doc.data());
         if (doc.data() != null) {
-          if(doc.data().location !== "") {
+          if (doc.data().location !== "") {
             db.collection("plantingsites")
-            .doc(doc.data().location)
-            .get()
-            .then((location) => {
-              if (location.exists) {
-                this.setState({
-                  tree: { ...doc.data(), location: location.data().name },
-                });
-              } else {
-                this.setState({ tree: { ...doc.data(), location: "" } });
-              }
-            });
+              .doc(doc.data().location)
+              .get()
+              .then((location) => {
+                if (location.exists) {
+                  this.setState({
+                    tree: { ...doc.data(), location: location.data().name },
+                  });
+                } else {
+                  this.setState({ tree: { ...doc.data(), location: "" } });
+                }
+              });
           } else {
             this.setState({ tree: { ...doc.data(), location: "" } });
           }
-          
         }
       });
   }
 
+  /**
+   * Delete document from FireStore.
+   */
   deleteDoc() {
     db.collection("users")
       .doc(this.props.tree.loggedinUserData)
@@ -108,6 +143,10 @@ class ShowTreeData extends React.Component {
       });
   }
 
+  /**
+   * Set showDeleteModal state to false.
+   * @returns showDeleteModal state as false
+   */
   handleClose = () => {
     return () => {
       this.setState({
@@ -116,6 +155,10 @@ class ShowTreeData extends React.Component {
     };
   };
 
+  /**
+   * Set showDeleteModal state to true.
+   * @returns showDeleteModal state as true
+   */
   handleShow = () => {
     return () => {
       this.setState({
@@ -124,14 +167,15 @@ class ShowTreeData extends React.Component {
     };
   };
 
+  //Renders tree data page showing name, gender, height, birthday, species, personality, and location of the specific tree
   render() {
     if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />;
     }
-
     if (this.state.tree == null) {
       return <div></div>;
     }
+
     return (
       <div className="display-tree-info">
         <div>
@@ -144,7 +188,6 @@ class ShowTreeData extends React.Component {
             src={treeImage}
             alt="tree-shadow"
             id="tree-page-tree-image"
-            // onClick={this.handleShow()}
           ></img>
         </div>
         <div className="display-item-details">
@@ -153,7 +196,6 @@ class ShowTreeData extends React.Component {
               className="info-item"
               onClick={this.makeTogglePopup.bind(this)(
                 "name",
-                // this.props.tree.name
                 this.state.tree.name
               )}
             >
