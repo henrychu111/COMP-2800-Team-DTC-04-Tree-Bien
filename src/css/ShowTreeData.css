@@ -72,71 +72,6 @@ body {
   font-size: 200%;
 }
 
-/* Add wobble */
-
-/* .wobble {
-  animation: wobble 1s 1;
-  animation-iteration-count: infinite;
-}
-
-@keyframes wobble {
-  25% {
-    transform: rotate(15deg);
-  }
-  50% {
-    transform: rotate(-30deg);
-  }
-  75% {
-    transform: rotate(5deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-} */
-
-/* flip */
-/* https://github.com/kaustubhmenon/animation-library/blob/master/css/flip.css */
-@-webkit-keyframes flip {
-  0% {
-    -webkit-transform: rotate3d(0, 1, 0, 0deg);
-  }
-  100% {
-    -webkit-transform: rotate3d(0, 1, 0, -180deg);
-  }
-}
-@-moz-keyframes flip {
-  0% {
-    -moz-transform: rotate3d(0, 1, 0, 0deg);
-  }
-  100% {
-    -moz-transform: rotate3d(0, 1, 0, -180deg);
-  }
-}
-@-o-keyframes flip {
-  0% {
-    -o-transform: rotate3d(0, 1, 0, 0deg);
-  }
-  100% {
-    -o-transform: rotate3d(0, 1, 0, -180deg);
-  }
-}
-@keyframes flip {
-  0% {
-    transform: rotate3d(0, 1, 0, 0deg);
-  }
-  100% {
-    transform: rotate3d(0, 1, 0, -180deg);
-  }
-}
-
-.flipping {
-  -webkit-animation: flip 2s ease-out;
-  -moz-animation: flip 2s ease-out;
-  -o-animation: flip 2s ease-out;
-  animation: flip 2s ease-out;
-  animation-iteration-count: infinite;
-}
-
 .edit {
   width: 15px;
   height: 15px;
@@ -144,132 +79,10 @@ body {
   float: right;
 }
 
-/* Pulse */
-/* https://github.com/kaustubhmenon/animation-library/blob/master/css/attention.css */
-/* @-webkit-keyframes pulse {
-  0% {
-    -webkit-transform: scale3d(1, 1, 1);
-  }
-  50% {
-    -webkit-transform: scale3d(1.1, 1.1, 1.1);
-  }
-  100% {
-    -webkit-transform: scale3d(1, 1, 1);
-  }
-}
-@-moz-keyframes pulse {
-  0% {
-    -moz-transform: scale3d(1, 1, 1);
-  }
-  50% {
-    -moz-transform: scale3d(1.1, 1.1, 1.1);
-  }
-  100% {
-    -moz-transform: scale3d(1, 1, 1);
-  }
-}
-@-o-keyframes pulse {
-  0% {
-    -o-transform: scale3d(1, 1, 1);
-  }
-  50% {
-    -o-transform: scale3d(1.1, 1.1, 1.1);
-  }
-  100% {
-    -o-transform: scale3d(1, 1, 1);
-  }
-}
-@keyframes pulse {
-  0% {
-    transform: scale3d(1, 1, 1);
-  }
-  50% {
-    transform: scale3d(1.1, 1.1, 1.1);
-  }
-  100% {
-    transform: scale3d(1, 1, 1);
-  }
-}
-
-.pulsing {
-  -webkit-animation: pulse 2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  -moz-animation: pulse 2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  -o-animation: pulse 2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  animation: pulse 2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  animation-iteration-count: infinite; 
-} */
-
 #root-for-tree {
   text-align: center;
   font-size: 1.2em;
   color: rgb(61, 148, 61);
-}
-
-/* Panda walking animation */
-/* Tutorial: https://www.youtube.com/watch?v=HMxAwpdmHpM */
-
-#panda {
-  background: url(../images/panda2.png);
-  margin-top: 3%;
-  width: 32px;
-  height: 50px;
-  /* animation: walk 1s steps(12) infinite, forward 15s linear infinite; */
-  animation: walk 1s steps(12) infinite, forward 15s linear infinite;
-  -webkit-animation: walk 1s steps(12) infinite, forward 15s linear infinite;
-}
-
-/* @keyframes walk {
-  0% {
-    background-position: 0px;
-  }
-  100% {
-    background-position: 424px;
-  }
-}
-
-@keyframes forward {
-  0% {
-    transform: translateX(0vw);
-  }
-  100% {
-    transform: translateX(85vw);
-  }
-} */
-
-@keyframes walk {
-  0% {
-    background-position: 0px;
-  }
-  100% {
-    background-position: 424px;
-  }
-}
-
-@keyframes forward {
-  0% {
-    transform: translateX(0vw);
-  }
-  100% {
-    transform: translateX(85vw);
-  }
-}
-
-@-webkit-keyframes walk {
-  0% {
-    -webkit-background-position: 0px;
-  }
-  100% {
-    -webkit-background-position: 424px;
-  }
-}
-
-@-webkit-keyframes forward {
-  0% {
-    -webkit-transform: translateX(0vw);
-  }
-  100% {
-    -webkit-transform: translateX(85vw);
-  }
 }
 
 div.modal-content {
@@ -278,7 +91,6 @@ div.modal-content {
   margin-left: auto;
   margin-right: auto;
 }
-
 
 #delete-tree-button {
   width: 75%;

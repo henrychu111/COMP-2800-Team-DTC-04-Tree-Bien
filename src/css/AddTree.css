@@ -25,14 +25,10 @@
 .addTreeSection {
   position: relative;
   margin-bottom: 5%;
-  text-align: center
-
+  text-align: center;
 }
 
 .user-trees {
-  /* display: inline-flex;
-  align-items: center;
-  justify-content: center; */
   color: black;
   border: none;
   border-radius: 3px;
@@ -40,7 +36,7 @@
   margin-bottom: 5%;
   height: 40px;
   width: 60%;
-  background-color: rgb(221,229,182);
+  background-color: rgb(221, 229, 182);
   box-shadow: 3px 3px 15px -7px rgba(83, 65, 54, 0.8);
   line-height: 10px;
 }
