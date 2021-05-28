@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import fire from '../../firebase'
-import { BrowserRouter as Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {
   SearchBar,
   WhiteSpace,
