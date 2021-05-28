@@ -7,6 +7,9 @@ import emailjs from 'emailjs-com';
 
 
 const ContactForm = () => {
+    /**
+     * @description Render Contact Form
+     */
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
@@ -61,9 +64,6 @@ const ContactForm = () => {
     }
 
     return (
-        /**
-         * @description Render Contact Form
-         */
         <Container className="contact-container">
             <div>
                 <h1 className="contact-header">Contact Us</h1>

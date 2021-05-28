@@ -6,7 +6,9 @@ import { Link, useHistory } from 'react-router-dom';
 
 
 const SSO = ({setUser}) => {
-
+    /**
+     * @description Render Login options for user, and link to About Us Page.
+     */
     const [fname, setFirstName] = useState('');
     const [lname, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -57,9 +59,6 @@ const SSO = ({setUser}) => {
      */
 
     return (
-        /**
-         * @description Render Login options for user, and link to About Us Page.
-         */
         <div>
             <section className="login">
                 <div className="loginContainer">

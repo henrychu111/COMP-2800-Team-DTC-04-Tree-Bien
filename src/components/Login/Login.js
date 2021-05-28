@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 
 
 const Login = (props) => {
-
+    /**
+     * @description Render Email Login Page
+     */
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
@@ -53,9 +55,6 @@ const Login = (props) => {
     };
 
     return ( 
-        /**
-         * @description Render Email Login Page
-         */
         <section className="login">
             <form className="loginContainer">
                 <div className="loginTitleContainer">

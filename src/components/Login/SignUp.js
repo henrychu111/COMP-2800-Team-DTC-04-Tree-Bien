@@ -4,6 +4,9 @@ import firebase from '../../firebase';
 import { Link, useHistory } from 'react-router-dom';
 
 const SignUp = () => {
+    /**
+     * @description Render Email Sign Up Page
+     */
 
     const [fname, setFirstName] = useState('');
     const [lname, setLastName] = useState('');
@@ -14,19 +17,19 @@ const SignUp = () => {
     const db = firebase.firestore();
     const history = useHistory();
     
-    const clearErrors = () => {
-        /**
-         * @description Clear errors
-         */
-    setEmailError('');
-    setPasswordError('');
-    };
-
     /**
      * show tables start
      * This show tables block of code was adapted from code found here:
      * @source https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
      */
+    const clearErrors = () => {
+        /**
+         * @description Clear errors
+         */
+        setEmailError('');
+        setPasswordError('');
+    };
+
     const handleSignUp = (e) => {
         /**
          * @description Create user with given Email and Password on Firebase Authentication, and create user collection on Firestore.
@@ -67,9 +70,6 @@ const SignUp = () => {
     };
 
     return ( 
-        /**
-         * @description Render Email Sign Up Page
-         */
         <section className="login">
             <form className="loginContainer">
                 <div className="loginTitleContainer">

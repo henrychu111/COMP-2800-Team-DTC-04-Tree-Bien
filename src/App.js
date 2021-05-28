@@ -27,6 +27,9 @@ import Profile from "./components/UserProfile/ProfilePage"
 import SearchEmpty from "./components/TreeDirectory/SearchEmpty";
 
 function App() {
+  /**
+   * @description Route to different pages depending on the login status.
+   */
   const [user, setUser] = useState("");
   const history = useHistory();
   const location = useLocation();
@@ -113,9 +116,6 @@ function App() {
   };
 
   return (
-    /**
-     * @description Route to different pages depending on the login status.
-     */
     <div className="App">
       {user ? (
         <Route component={defaultRoute} />

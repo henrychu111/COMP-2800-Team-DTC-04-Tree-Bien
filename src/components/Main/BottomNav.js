@@ -20,6 +20,9 @@ import { BrowserRouter as Router, Redirect, Link, Switch, Route } from "react-ro
 
 
 const BottomNav = ({logout}) => {
+    /**
+     * @description Render the nav bar with links to each page
+     */
 
     const [bottomNavOn, setBottomNavOn] = useState('');
     const [bottomNavSettings, setbottomNavSettings] = useState(true);
@@ -64,9 +67,6 @@ const BottomNav = ({logout}) => {
     )
 
     return (
-        /**
-         * @description Render the nav bar with links to each page
-         */
         <Navbar expand="lg" variant="light" className="bottom-nav-bar" fixed="bottom" id="bottom-nav-bar">
             <Link to="/map" className="bottomNavIcons">
                 {bottomNavOn === "bottom-nav-map" ? 

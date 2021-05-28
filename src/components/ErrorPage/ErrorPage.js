@@ -2,10 +2,10 @@ import React from 'react'
 import "../../css/ErrorPage.css";
 
 const ErrorPage = () => {
+    /**
+     * @description Render Error Page
+     */
     return (
-        /**
-         * @description Render Error Page
-         */
         <div>
             <div className="main-div">
                 <h1 className="error-message">There are no trees here... </h1>

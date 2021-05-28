@@ -7,6 +7,10 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
 const Main = () => {
+    /**
+     * @description Render the page buttons on main screen.
+     */
+
     const [authenticated, setAuthenticated] = useState(false);
 
     useEffect(() => {
@@ -21,9 +25,6 @@ const Main = () => {
       });
 
     return (
-        /**
-         * @description Render the page buttons on main screen.
-         */
         <div>
             {authenticated ? (
                 <Container className="container">

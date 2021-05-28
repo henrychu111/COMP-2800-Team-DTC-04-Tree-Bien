@@ -7,6 +7,9 @@ import firebase from "../../firebase";
 
 
 const DailyTips = () => {
+    /**
+     * @description Render daily tips jumbotron.
+     */
 
     const [dailyTips, setDailyTips] = useState([]);
     const [randomTip, setRandomTip] = useState('');
@@ -50,9 +53,6 @@ const DailyTips = () => {
     }, [treeList])
 
     return (
-        /**
-         * @description Render daily tips jumbotron.
-         */
         <Jumbotron fluid className="jumbotron">
             <Container id="daily-tip-container">
                 <h1>{randomTree} Daily Tip {randomTree}</h1>
