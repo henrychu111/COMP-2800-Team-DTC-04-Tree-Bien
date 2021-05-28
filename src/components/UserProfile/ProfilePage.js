@@ -1,11 +1,12 @@
 import firebase from '../../firebase';
 import { Link, useHistory } from 'react-router-dom';
 import "../../css/ProfilePage.css";
-import Modal from 'react-bootstrap/Modal';
+import {Modal, Form} from 'react-bootstrap';
 import React, { useState, useEffect } from 'react';
 
 
 const Profile = ({currentUser, profilePhoto, uploadPhotoURL}) => {
+
     const [user, setUser] = useState({});
     const [image, setImage] = useState();
     const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +14,6 @@ const Profile = ({currentUser, profilePhoto, uploadPhotoURL}) => {
     const [formDisplay, setFormDisplay] = useState(false);
     const [isBioAvailable, setIsBioAvailable] = useState(false);
     const db = firebase.firestore();
-
     
     const showModal = () => {
     /**
@@ -105,6 +105,7 @@ const Profile = ({currentUser, profilePhoto, uploadPhotoURL}) => {
 const handleSubmit = (event) =>{
     /**
      * @description Adds/updates bio to user in database
+     * @params event: action when form is submitted
      */
   event.preventDefault();
   db.collection("users")
@@ -121,7 +122,7 @@ const handleSubmit = (event) =>{
 const uploadPhoto = (photoURL) => {
     /**
      * @description Upload image url to photo url of user
-     * @params photoURL the new image url 
+     * @params photoURL: the new image url 
      */
   uploadPhotoURL(photoURL);
   setUser({...user, profilePhoto: photoURL});
@@ -132,47 +133,65 @@ const uploadPhoto = (photoURL) => {
      * @description Renders profile page
      */
        <div> 
-        <div style={{width: '100vw', height: '300px', background: 'url(/backgroundim.png)', paddingTop: '10%', marginBottom: "15px"}}>
-              {user.firstName && <img src={ user.profilePhoto ? user.profilePhoto : "/blank_profile_picture.png"} style={{ width: '150px', height: '150px', borderRadius: "50%", display: 'block', margin: 'auto', background: 'white', border: '1px solid black'}}/>}
-              
-              <p style = {{textAlign: 'center', marginTop: '10px',marginBottom: '0px', color: 'white', fontSize: '30px', fontWeight: 'bold'}}>{user.firstName} {user.lastName}</p>
-              <p style = {{textAlign: 'center',  color: 'white'}}>{user.email}</p>
+        <div id="background-image" >
+              {user.firstName &&  
+              <img src={user.profilePhoto ? user.profilePhoto : 
+                "/blank_profile_picture.png"} id = "blank-image" />}  
 
-            {user.firstName && <button onClick={showModal}>Change Avatar</button>}
-            <Modal id="avatarModal" show={isOpen} onHide={hideModal}>    
+              <p id= "username" >{user.firstName} {user.lastName} </p>
+              <p id= "user-email" >{user.email} </p>
+      </div>
+      {user.firstName && 
+            <button id="changeAvatarBtn" onClick={showModal}>Change Avatar</button>}
+            <Modal id="avatarModal" 
+              show={isOpen} onHide={hideModal}>    
                     <Modal.Header closeButton>
                         <Modal.Title>Update Avatar</Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>
                             <div className="uploadAvatar">
-                            <input style={{ marginTop: '20px', marginBottom: '20px' }} name="avatar" type="file" onChange={(e) => handleImageAsFile(e)} />
+                              <input id="input-modal" 
+                                    name="avatar" 
+                                    type="file" 
+                                    onChange={(e) => 
+                                    handleImageAsFile(e)} />
                             </div>
                     </Modal.Body>
                     <Modal.Footer>
                         <button onClick={hideModal}>Cancel</button>
-                        <button 
-                        disabled={isLoad}
-                        onClick={!isLoad ? handleFireBaseUpload : null}>{isLoad ? 'Loading…' : 'Upload Image'}</button>
+                        <button disabled={isLoad}
+                          onClick={!isLoad ? handleFireBaseUpload : null}>
+                          {isLoad ? 'Loading…' : 'Upload Image'}
+                        </button>
                     </Modal.Footer>               
-        </Modal>
-        </div>
-        <div>
-          {user.firstName ? !user.bio ? 
-          <button style ={{float: "left"}} hidden = {isBioAvailable} onClick={() => {
-            setFormDisplay(true);
-            setIsBioAvailable(true);
-          }}>Add Bio</button> : <div><button hidden={formDisplay} onClick={() => {
-            setFormDisplay(true);
-          }}>Edit Bio</button><p style={{fontSize: '24px', textAlign: "center", padding: '20px'}} hidden={formDisplay}>{user.bio}</p>
-          </div> : null}
-          <form onSubmit={handleSubmit} hidden={!formDisplay}>
-            <textarea style={{width: '100%', height: '200px', fontSize: '18px', padding: '5px'}} value={user.bio} 
-            onChange = {(event) => setUser({...user, bio: event.target.value})}/>
+              </Modal>
+      <div> {user.firstName ? !user.bio ? 
+          <button className="bioBtn" hidden = {isBioAvailable} 
+            onClick={() => {
+              setFormDisplay(true);
+              setIsBioAvailable(true) }}>
+            Add Bio
+          </button> : 
+          <div>
+            <button  className="bioBtn" hidden={formDisplay} onClick={() => 
+              { setFormDisplay(true) }}>Edit Bio </button>
+            <p id= "bio-text" hidden={formDisplay}> {user.bio} </p>
+          </div> : null
+        }
+        <form onSubmit={handleSubmit} hidden={!formDisplay}>
+            <Form.Control
+              as="textarea"
+              placeholder="Add Bio..."
+              id= "bio-textarea" 
+              value={user.bio} 
+              onChange = {(event) => 
+                setUser({...user, bio: event.target.value})}
+            />
             <button type="submit">Update</button>
           </form>
         </div> 
-      </div>  
+    </div>  
     )
 };
 export default Profile

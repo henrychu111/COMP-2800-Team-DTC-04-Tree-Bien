@@ -8,6 +8,7 @@ const outerLocationStyle = {width: '50px', height: '50px', backgroundColor: 'rgb
 const innerLocationStyle = {backgroundColor: '#4d94ff', transform:'translate(75%, 75%)', fontSize: '30px', width: '20px', height: '20px', border: '3px solid white', borderRadius: '50%'}
 
 function Map({userId}) {
+
   const [userTrees, setUserTrees] = useState([]);
   const [plantingSites, setPlantingSites] = useState([]);
   const [plantShops, setPlantShops] = useState([]);
@@ -16,6 +17,9 @@ function Map({userId}) {
   const db = firebase.firestore();
 
   useEffect(() => {
+    /**
+     * @description Fetch user trees information 
+     */
     const fetchUserPlants = async () => {
       const response = db.collection("users").doc(userId).collection("add-new-tree");
       const data = await response.get();
@@ -27,6 +31,9 @@ function Map({userId}) {
   }, [])
 
   useEffect(() => {
+    /**
+     * @description Fetch planting sites information 
+     */
     const fetchPlantingSites = async () => {
       const response = db.collection("plantingsites");
       const data = await response.get();
@@ -38,6 +45,9 @@ function Map({userId}) {
   }, [])
 
   useEffect(() => {
+    /**
+     * @description Fetch plant shop information
+     */
     const fetchPlantingShops = async () => {
       const response = db.collection("plantshops");
       const data = await response.get();
@@ -49,6 +59,9 @@ function Map({userId}) {
   }, [])
 
   useEffect(() => {
+    /**
+     * @description Centers user location if location allowed
+     */
     if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
     setLocation({latitude: position.coords.latitude, longitude: position.coords.longitude});
@@ -58,6 +71,9 @@ function Map({userId}) {
   }, [])
 
   return (
+    /**
+     * @description Renders Google map and icons for planting sites, planting shops, and user location
+     */
     <div style={{ width: '100vw', height: "93vh" }}>
       <GoogleMapReact bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_KEY }}
         defaultZoom={13} center={{ lat: location.latitude, lng: location.longitude}}
