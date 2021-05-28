@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../../App.css';
 import firebase from '../../firebase';
 import { Link, useHistory } from 'react-router-dom';
 
-const SignUp = (props) => {
+const SignUp = () => {
+    /**
+     * @description Render Email Sign Up Page
+     */
 
     const [fname, setFirstName] = useState('');
     const [lname, setLastName] = useState('');
@@ -13,21 +16,27 @@ const SignUp = (props) => {
     const [passwordError, setPasswordError] = useState('');
     const db = firebase.firestore();
     const history = useHistory();
-
-    const clearInputs =() => {
-        setEmail('');
-        setPassword('');
-      };
     
+    /**
+     * show tables start
+     * This show tables block of code was adapted from code found here:
+     * @source https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+     */
     const clearErrors = () => {
-    setEmailError('');
-    setPasswordError('');
+        /**
+         * @description Clear errors
+         */
+        setEmailError('');
+        setPasswordError('');
     };
 
     const handleSignUp = (e) => {
+        /**
+         * @description Create user with given Email and Password on Firebase Authentication, and create user collection on Firestore.
+         * @param {event} e
+         */
         e.preventDefault()
         clearErrors();
-        // clearInputs();
         firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
@@ -108,6 +117,10 @@ const SignUp = (props) => {
                 </div>
             </form>
         </section>
+        /**
+         * show tables end
+         * @source https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+         */
 )
 };
 export default SignUp

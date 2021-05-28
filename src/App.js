@@ -27,18 +27,27 @@ import Profile from "./components/UserProfile/ProfilePage"
 import SearchEmpty from "./components/TreeDirectory/SearchEmpty";
 
 function App() {
+  /**
+   * @description Route to different pages depending on the login status.
+   */
   const [user, setUser] = useState("");
   const history = useHistory();
   const location = useLocation();
   const [profilePhoto, setProfilePhoto] = useState("");
 
   const handleLogout = () => {
+    /**
+     * @description Log users out and redirect them to the login screen.
+     */
     firebase.auth().signOut();
     setUser("");
     history.push("/signinmethod");
   };
 
   useEffect(() => {
+    /**
+     * @description Direct users to different pages depending on the login status.
+     */
     firebase.auth().onAuthStateChanged((loggedin) => {
       if (location.pathname === "/aboutus") {
         history.push("/aboutus");
@@ -64,6 +73,9 @@ function App() {
 
   const defaultRoute = () => {
     return (
+      /**
+       * @description Route all the pages and their props if the user is logged in.
+       */
       <div className="add-padding-bottom">
         <Switch>
           <Route path="/" exact component={() => <Main />} />
@@ -80,7 +92,6 @@ function App() {
           <Route
             path="/mytree/imageLogs"
             exact
-            // component={() => <ImageLogs loggedinUserData={user} />}
             component={() => {
               return (
                 <ImageLogs loggedinUserData={user} tree={location.state} />
@@ -118,7 +129,7 @@ function App() {
           <Route
             path="/signup"
             exact
-            component={() => <SignUp setUser={setUser} />}
+            component={() => <SignUp />}
           />
           <Route
             path="/signinmethod"

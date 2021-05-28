@@ -1,3 +1,9 @@
+/**
+* show tables start
+* This show tables block of code was adapted from code found here: 
+@source https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+*/
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -127,6 +133,11 @@ button {
 .login .loginContainer .loginTitleContainer h1 {
   color: rgb(240,234,210);
 }
+
+/**
+* show tables end
+* @source https://www.youtube.com/watch?v=cFgoSrOui2M&ab_channel=h3webdevtuts
+*/
 
 .add-padding-bottom {
   padding-bottom: 40px;
